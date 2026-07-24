@@ -1,0 +1,510 @@
+@import "tailwindcss";
+
+:root {
+  --background: #eeeeee;
+  --foreground: #04326d;
+  --brand: #6C63FF;
+  --brand-light: #b2bed6;
+  --brand-deep: #4f46e5;
+  --surface: #ffffff;
+  --muted: #5c6b8c;
+  --border-custom: #b2bed6;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand: var(--brand);
+  --color-brand-light: var(--brand-light);
+  --color-brand-deep: var(--brand-deep);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --color-border-custom: var(--border-custom);
+  
+  --font-sans: var(--font-geist-sans), sans-serif;
+  --font-display: var(--font-plus-jakarta), sans-serif;
+  
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(178, 190, 214, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(108, 99, 255, 0.08) 0px, transparent 50%);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #eeeeee;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b2bed6;
+  border-radius: 9999px;
+  border: 2px solid #eeeeee;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6C63FF;
+}
+
+/* Smooth selection colors */
+::selection {
+  background-color: rgba(108, 99, 255, 0.15);
+  color: #6C63FF;
+}
+
+/* Premium utility classes */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(178, 190, 214, 0.4);
+}
+
+.glass-panel-dark {
+  background: rgba(4, 50, 109, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hero-glow {
+  background: radial-gradient(circle at 50% 50%, rgba(108, 99, 255, 0.15) 0%, rgba(238, 238, 238, 0) 70%);
+}
+
+.purple-glow-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.purple-glow-hover:hover {
+  box-shadow: 0 12px 35px -10px rgba(4, 50, 109, 0.15);
+  border-color: rgba(108, 99, 255, 0.4);
+}
+
+/* ==========================================================================
+   CUSTOM COMPONENT CARD LAYOUTS (Converted from Styled Components)
+   ========================================================================== */
+
+/* Rotating Cards Stack styling */
+.wrap_card {
+  position: relative;
+  overflow: hidden;
+  width: var(--w-wrap-card);
+  height: calc(var(--h-card) / 1.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  --w-card: 150px;
+  --h-card: 200px;
+  --rotate-card: 15deg;
+  --insetX-card: 28px;
+  --t-card: calc(var(--insetX-card) * 1.25);
+  --w-wrap-card: calc(var(--w-card) + calc(calc(var(--w-card) / 2) * 2));
+}
+
+.wrap_card_content {
+  background-color: rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+  position: relative;
+  width: calc(100% - calc(var(--pd) * 2));
+  height: calc(100% - calc(var(--pd) * 2));
+  border-radius: calc(var(--round) - var(--pd));
+}
+
+.wrap_card_content > span {
+  font-size: 150px;
+  font-weight: 800;
+  line-height: 0.75;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  inset: 50% 0 0 50%;
+  transform: translate(-50%, -50%);
+  background-clip: text;
+  -webkit-text-stroke-width: 2px;
+  color: transparent;
+  opacity: 0;
+  background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.7) 100%);
+  animation: opacity 0s cubic-bezier(1, 0, 0, 1) forwards var(--delay) reverse;
+}
+
+.wrap_card_content > svg {
+  height: 48px;
+  width: 48px;
+  position: absolute;
+  inset: 50% 0 0 50%;
+  opacity: 1;
+  animation: opacity 8.4s cubic-bezier(1, 0, 0, 1) forwards calc(var(--delay) - 4.3s);
+  transform: translate(-50%, -50%);
+}
+
+.rotating-card:nth-child(1) {
+  --delay: 4.3s;
+}
+
+.rotating-card:nth-child(2) {
+  --delay: 7.3s;
+}
+
+.rotating-card:nth-child(3) {
+  --delay: 10.3s;
+}
+
+.rotating-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  overflow: hidden;
+  animation: rotating 9s cubic-bezier(0.75, 0, 0, 1.01) infinite 0s;
+  border-radius: var(--round);
+  background: var(--bg);
+  order: var(--order);
+  width: var(--w-card);
+  height: var(--h-card);
+  z-index: var(--z1);
+  top: var(--t1);
+  left: var(--l1);
+  right: var(--r1);
+  transform: var(--trans1);
+  --pd: 4px;
+  --round: 16px;
+  --x1: var(--insetX-card);
+  --x2: calc(var(--w-wrap-card) - calc(var(--w-card) + var(--insetX-card)));
+  --to-left: rotate(calc(var(--rotate-card) * -1));
+  --to-center: calc(var(--w-card) / 2);
+  --to-right: rotate(calc(var(--rotate-card) * 1));
+}
+
+.rotating-card:nth-child(1) {
+  --order: 2;
+  --bg: radial-gradient(circle, #6C63FF 0%, #04326d 100%);
+  --z1: 2;
+  --t1: 0;
+  --l1: var(--to-center);
+  --r1: var(--to-center);
+  --trans1: rotate(calc(var(--rotate-card) * 0));
+  --z2: 0;
+  --t2: var(--t-card);
+  --l2: var(--x1);
+  --r2: var(--x2);
+  --trans2: var(--to-left);
+  --z3: 0;
+  --t3: var(--t-card);
+  --l3: var(--x2);
+  --r3: var(--x1);
+  --trans3: var(--to-right);
+}
+
+.rotating-card:nth-child(2) {
+  --order: 3;
+  --bg: radial-gradient(circle, #b2bed6 0%, #04326d 100%);
+  --z1: 0;
+  --t1: var(--t-card);
+  --l1: var(--x2);
+  --r1: var(--x1);
+  --trans1: var(--to-right);
+  --z2: 2;
+  --t2: 0;
+  --l2: var(--to-center);
+  --r2: var(--to-center);
+  --trans2: rotate(calc(var(--rotate-card) * 0));
+  --z3: 0;
+  --t3: var(--t-card);
+  --l3: var(--x1);
+  --r3: var(--x2);
+  --trans3: var(--to-left);
+}
+
+.rotating-card:nth-child(3) {
+  --order: 1;
+  --bg: radial-gradient(circle, #6C63FF 0%, #b2bed6 100%);
+  --z1: 0;
+  --t1: var(--t-card);
+  --l1: var(--x1);
+  --r1: var(--x2);
+  --trans1: var(--to-left);
+  --z2: 0;
+  --t2: var(--t-card);
+  --l2: var(--x2);
+  --r2: var(--x1);
+  --trans2: var(--to-right);
+  --z3: 2;
+  --t3: 0;
+  --l3: var(--to-center);
+  --r3: var(--to-center);
+  --trans3: rotate(calc(var(--rotate-card) * 0));
+}
+
+@keyframes rotating {
+  0%, 99.99% {
+    z-index: var(--z1);
+    top: var(--t1);
+    left: var(--l1);
+    right: var(--r1);
+    transform: var(--trans1);
+  }
+  33.33% {
+    z-index: var(--z2);
+    top: var(--t2);
+    left: var(--l2);
+    right: var(--r2);
+    transform: var(--trans2);
+  }
+  66.66% {
+    z-index: var(--z3);
+    top: var(--t3);
+    left: var(--l3);
+    right: var(--r3);
+    transform: var(--trans3);
+  }
+}
+
+.rotating_lines {
+  position: absolute;
+  inset: auto 0 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+}
+
+.rotating_lines::after {
+  content: "";
+  width: 100%;
+  height: 0px;
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  --mask-bg: #eeeeee;
+  background: var(--mask-bg);
+  mask-image: radial-gradient(50% 200px at top, transparent 20%, var(--mask-bg));
+}
+
+.rotating_line {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rotating_line::before,
+.rotating_line::after {
+  content: "";
+  position: absolute;
+  inset: auto;
+  background: linear-gradient(
+    to right,
+    var(--gradient-a-line, rgba(0, 0, 0, 0)),
+    var(--gradient-b-line, rgba(0, 0, 0, 0)),
+    var(--gradient-c-line, rgba(0, 0, 0, 0))
+  );
+  filter: var(--blur-line);
+  width: var(--w-line);
+  height: var(--h-line);
+}
+
+.rotating_line:nth-child(1)::before {
+  --blur-line: blur(4px);
+  --w-line: 100%;
+  --h-line: 5px;
+  --gradient-b-line: #04326d;
+}
+
+.rotating_line:nth-child(1)::after {
+  --w-line: 100%;
+  --h-line: 1px;
+  --gradient-b-line: #6C63FF;
+}
+
+.rotating_line:nth-child(2)::before {
+  --blur-line: blur(4px);
+  --w-line: 50%;
+  --h-line: 5px;
+  --gradient-b-line: #b2bed6;
+}
+
+.rotating_line:nth-child(2)::after {
+  --w-line: 50%;
+  --h-line: 1px;
+  --gradient-b-line: #04326d;
+}
+
+/* Sliding Social Media Card styling */
+.social_card {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  background: #ffffff;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: rgba(4, 50, 109, 0.1) 0px 7px 29px 0px;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 2px solid var(--border-custom);
+  cursor: pointer;
+}
+
+.social_background {
+  position: absolute;
+  inset: 0;
+  background-color: var(--foreground);
+  background-image: linear-gradient(43deg, var(--foreground) 0%, var(--brand) 100%);
+}
+
+.social_logo {
+  position: absolute;
+  right: 50%;
+  bottom: 50%;
+  transform: translate(50%, 50%);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  font-size: 1.3em;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 3px;
+}
+
+.social_icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
+
+.social_icon .svg {
+  fill: rgba(255, 255, 255, 0.85);
+  width: 100%;
+  transition: all 0.5s ease-in-out;
+}
+
+.social_box {
+  position: absolute;
+  padding: 10px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  background: rgba(255, 255, 255, 0.25);
+  border-top: 2px solid rgb(255, 255, 255);
+  border-right: 1px solid white;
+  border-radius: 10% 13% 42% 0% / 10% 12% 75% 0%;
+  box-shadow: rgba(4, 50, 109, 0.15) -7px 7px 29px 0px;
+  transform-origin: bottom left;
+  transition: all 1s ease-in-out;
+}
+
+.social_box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+
+.social_box:hover .svg {
+  fill: white;
+}
+
+.social_box1 {
+  width: 70%;
+  height: 70%;
+  bottom: -70%;
+  left: -70%;
+}
+
+.social_box1::before {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #ff53d4 60%, #62c2fe 90%);
+}
+
+.social_box1:hover::before {
+  opacity: 1;
+}
+
+.social_box1:hover .svg {
+  filter: drop-shadow(0 0 5px white);
+}
+
+.social_box2 {
+  width: 50%;
+  height: 50%;
+  bottom: -50%;
+  left: -50%;
+  transition-delay: 0.1s;
+}
+
+.social_box2::before {
+  background: radial-gradient(circle at 30% 107%, #91e9ff 0%, #00ACEE 90%);
+}
+
+.social_box2:hover::before {
+  opacity: 1;
+}
+
+.social_box2:hover .svg {
+  filter: drop-shadow(0 0 5px white);
+}
+
+.social_box3 {
+  width: 30%;
+  height: 30%;
+  bottom: -30%;
+  left: -30%;
+  transition-delay: 0.2s;
+}
+
+.social_box3::before {
+  background: radial-gradient(circle at 30% 107%, #969fff 0%, #b349ff 90%);
+}
+
+.social_box3:hover::before {
+  opacity: 1;
+}
+
+.social_box3:hover .svg {
+  filter: drop-shadow(0 0 5px white);
+}
+
+.social_box4 {
+  width: 10%;
+  height: 10%;
+  bottom: -10%;
+  left: -10%;
+  transition-delay: 0.3s;
+}
+
+.social_card:hover {
+  transform: scale(1.05);
+}
+
+.social_card:hover .social_box {
+  bottom: -1px;
+  left: -1px;
+}
+
+.social_card:hover .social_logo {
+  transform: translate(75px, -75px);
+  letter-spacing: 0px;
+}
