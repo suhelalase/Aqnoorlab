@@ -26,8 +26,8 @@ const SITE_URL = "https://aqnoorlabs.com";
 
 export const metadata: Metadata = {
   title: {
-    default: "AqNoorLabs",
-    template: "%s | AqNoorLabs",
+    default: "aqnoorlabs",
+    template: "%s | aqnoorlabs",
   },
   description:
     "AqNoorLabs is a premium software development company building custom websites, web apps, mobile apps, desktop software, and AI automation systems for startups and enterprises.",

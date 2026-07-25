@@ -9,7 +9,7 @@ import CursorFollower from "@/components/CursorFollower";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AqNoorLabs",
+  title: "aqnoorlabs",
   description:
     "AqNoorLabs builds custom websites, web applications, mobile apps, desktop software, and AI automation systems. Work with a premium software development company trusted by startups and enterprises.",
   alternates: {

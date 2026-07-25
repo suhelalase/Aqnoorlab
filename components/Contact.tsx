@@ -18,7 +18,7 @@ const contactSchema = z.object({
     .string()
     .min(7, { message: "Please enter a valid mobile number." })
     .regex(/^[+]?[0-9\s\-().]{7,20}$/, { message: "Please enter a valid mobile number." }),
-  message: z.string().min(10, { message: "Message must be at least 10 characters." }),
+  message: z.string().optional(),
 });
 
 type ContactFormValues = z.infer<typeof contactSchema>;
@@ -211,7 +211,7 @@ export default function Contact() {
                   {/* Message */}
                   <div className="space-y-1.5">
                     <Label htmlFor="message" className="text-xs font-semibold uppercase tracking-wider text-foreground">
-                      Project Message <span className="text-destructive">*</span>
+                      Project Message <span className="text-muted-foreground font-normal normal-case">(optional)</span>
                     </Label>
                     <textarea
                       id="message"
