@@ -14,6 +14,10 @@ import { Badge } from "@/components/ui/badge";
 const contactSchema = z.object({
   fullName: z.string().min(2, { message: "Name must be at least 2 characters." }),
   email: z.string().email({ message: "Please enter a valid email address." }),
+  mobile: z
+    .string()
+    .min(7, { message: "Please enter a valid mobile number." })
+    .regex(/^[+]?[0-9\s\-().]{7,20}$/, { message: "Please enter a valid mobile number." }),
   message: z.string().min(10, { message: "Message must be at least 10 characters." }),
 });
 
@@ -33,6 +37,7 @@ export default function Contact() {
     defaultValues: {
       fullName: "",
       email: "",
+      mobile: "",
       message: "",
     },
   });
@@ -150,7 +155,7 @@ export default function Contact() {
                   {/* Name */}
                   <div className="space-y-1.5">
                     <Label htmlFor="fullName" className="text-xs font-semibold uppercase tracking-wider text-foreground">
-                      Full Name
+                      Full Name <span className="text-destructive">*</span>
                     </Label>
                     <Input
                       id="fullName"
@@ -168,7 +173,7 @@ export default function Contact() {
                   {/* Email */}
                   <div className="space-y-1.5">
                     <Label htmlFor="email" className="text-xs font-semibold uppercase tracking-wider text-foreground">
-                      Email Address
+                      Email Address <span className="text-destructive">*</span>
                     </Label>
                     <Input
                       id="email"
@@ -184,10 +189,29 @@ export default function Contact() {
                     )}
                   </div>
 
+                  {/* Mobile Number */}
+                  <div className="space-y-1.5">
+                    <Label htmlFor="mobile" className="text-xs font-semibold uppercase tracking-wider text-foreground">
+                      Mobile Number <span className="text-destructive">*</span>
+                    </Label>
+                    <Input
+                      id="mobile"
+                      type="tel"
+                      placeholder="+91 98765 43210"
+                      {...register("mobile")}
+                      className={`rounded-xl border bg-background/50 focus:border-primary/50 text-foreground placeholder:text-muted-foreground/60 ${
+                        errors.mobile ? "border-destructive focus:border-destructive" : "border-border/40"
+                      }`}
+                    />
+                    {errors.mobile && (
+                      <p className="text-xs text-destructive">{errors.mobile.message}</p>
+                    )}
+                  </div>
+
                   {/* Message */}
                   <div className="space-y-1.5">
                     <Label htmlFor="message" className="text-xs font-semibold uppercase tracking-wider text-foreground">
-                      Project Message
+                      Project Message <span className="text-destructive">*</span>
                     </Label>
                     <textarea
                       id="message"
