@@ -29,12 +29,12 @@ export function CTABlock() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.2, duration: 0.6 }}
               >
-                <h2 className="mb-6 text-3xl font-bold text-foreground md:text-4xl lg:text-5xl tracking-tight">
-                  Ready to Architect Your Next System?
+                <h2 className="mb-6 text-4xl font-extrabold text-foreground md:text-5xl lg:text-6xl tracking-tight">
+                  Ready to Build Your Next Project?
                 </h2>
 
-                <p className="mx-auto mb-8 max-w-2xl text-lg text-muted-foreground md:text-xl leading-relaxed">
-                  Let's design and deploy your custom solution. Contact us today to discuss architecture design, caching setups, user flows, and modern hosting.
+                <p className="mx-auto mb-10 max-w-3xl text-xl text-muted-foreground md:text-2xl leading-relaxed font-medium">
+                  Tell us what you&apos;re trying to build — we&apos;ll show you exactly how we&apos;d do it, what it costs, and how long it&apos;ll take.
                 </p>
 
                 <motion.div
@@ -42,12 +42,12 @@ export function CTABlock() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.4, duration: 0.6 }}
-                  className="flex flex-col justify-center gap-4 sm:flex-row items-center"
+                  className="flex flex-col justify-center gap-5 sm:flex-row items-center"
                 >
                   <a href="#contact">
-                    <Button size="lg" className="group w-full gap-2 sm:w-auto rounded-full font-semibold cursor-pointer">
-                      Start a Conversation
-                      <MessageSquare className="h-4 w-4 transition-transform group-hover:scale-110" />
+                    <Button size="lg" className="group w-full gap-2.5 sm:w-auto rounded-full font-bold text-base md:text-lg px-9 py-6 cursor-pointer shadow-xl shadow-primary/25 hover:scale-105 transition-transform">
+                      Get a Free Quote
+                      <MessageSquare className="h-5 w-5 transition-transform group-hover:scale-110" />
                     </Button>
                   </a>
 
@@ -55,10 +55,10 @@ export function CTABlock() {
                     <Button
                       size="lg"
                       variant="outline"
-                      className="group w-full gap-2 sm:w-auto rounded-full font-semibold cursor-pointer"
+                      className="group w-full gap-2.5 sm:w-auto rounded-full font-bold text-base md:text-lg px-9 py-6 cursor-pointer hover:scale-105 transition-transform"
                     >
-                      View Projects
-                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      See Our Work
+                      <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                     </Button>
                   </a>
                 </motion.div>
@@ -68,15 +68,15 @@ export function CTABlock() {
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.6, duration: 0.6 }}
-                  className="mt-8 flex flex-col items-center justify-center gap-4 text-sm text-muted-foreground sm:flex-row sm:gap-8"
+                  className="mt-10 flex flex-col items-center justify-center gap-4 text-base text-muted-foreground sm:flex-row sm:gap-8 font-medium"
                 >
                   <div className="flex items-center gap-2">
-                    <div className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
-                    <span className="text-emerald-600 font-medium">Open to new projects</span>
+                    <div className="h-2.5 w-2.5 animate-pulse rounded-full bg-emerald-500" />
+                    <span className="text-emerald-600 font-semibold">Accepting new projects across India</span>
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <span className="text-primary font-semibold">⚡</span>
-                    <span>We reply faster than your CI pipeline builds</span>
+                    <span className="text-primary font-bold">⚡</span>
+                    <span className="font-semibold text-foreground/80">We usually reply within a few hours — no chasing us for updates</span>
                   </div>
                 </motion.div>
               </motion.div>

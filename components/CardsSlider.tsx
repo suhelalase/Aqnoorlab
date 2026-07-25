@@ -33,7 +33,7 @@ const ENGINEERING_CARDS: CardData[] = [
     id: 1,
     title: "Apex Analytics Dashboard",
     description:
-      "Realtime data visualizer connecting marketing API channels with live graph rendering and Redis caching for sub-100ms query times.",
+      "A live dashboard that shows marketing performance in real time — no more waiting on weekly reports.",
     category: "Web Application",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
     tags: ["Next.js", "Redis", "Node.js"],
@@ -44,7 +44,7 @@ const ENGINEERING_CARDS: CardData[] = [
     id: 2,
     title: "Aura Fintech Mobile App",
     description:
-      "Fluid personal asset tracking application with end-to-end encryption, PostgreSQL sharding, and offline-first architecture.",
+      "A personal asset and expense tracker that helps users manage cash flow effortlessly with zero sync delays.",
     category: "Mobile Application",
     image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80",
     tags: ["React Native", "Spring Boot", "PostgreSQL"],
@@ -55,7 +55,7 @@ const ENGINEERING_CARDS: CardData[] = [
     id: 3,
     title: "Chronos Developer CLI",
     description:
-      "Electron-based desktop dashboard for Docker container health, local database states, and instant log streaming.",
+      "A desktop dashboard for monitoring server and database health — instant alerts whenever issues occur.",
     category: "Desktop Software",
     image: "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80",
     tags: ["Electron", "React", "TypeScript"],
@@ -64,9 +64,9 @@ const ENGINEERING_CARDS: CardData[] = [
   },
   {
     id: 4,
-    title: "NexusAI Chatbot Platform",
+    title: "NexusAI Support Assistant",
     description:
-      "LLM-powered customer support platform with context memory, vector search, and blazing-fast Cloudflare-hosted inference.",
+      "AI customer support chatbot that answers FAQs 24/7 — reducing support ticket response times by 60%.",
     category: "AI Solution",
     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
     tags: ["Python", "Cloudflare", "Vector DB"],
@@ -77,7 +77,7 @@ const ENGINEERING_CARDS: CardData[] = [
     id: 5,
     title: "PulseOps Cloud Monitor",
     description:
-      "AWS infrastructure monitoring suite with automatic incident alerting, cost analytics, and Kubernetes pod health visualization.",
+      "Automated server monitoring suite with cost optimization alerts — saved 30% on monthly hosting bills.",
     category: "DevOps",
     image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
     tags: ["AWS", "Kubernetes", "Grafana"],
@@ -104,7 +104,7 @@ function ProjectCard({ card }: { card: CardData }) {
       <div className="relative h-48 overflow-hidden">
         <img
           src={card.image}
-          alt={card.title}
+          alt={`${card.title} - ${card.category} by AqNoorLabs`}
           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
           draggable={false}
         />
@@ -268,43 +268,43 @@ export function CardsSlider() {
   return (
     <div id="projects" className="w-full py-20">
       {/* Section Header */}
-      <div className="max-w-6xl mx-auto px-6 md:px-8 mb-10 text-center">
+      <div className="max-w-6xl mx-auto px-6 md:px-8 mb-12 text-center">
         <Badge
           variant="outline"
-          className="mb-4 inline-flex items-center gap-2 rounded-full border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-medium uppercase tracking-wider text-primary"
+          className="mb-4 inline-flex items-center gap-2 rounded-full border-primary/20 bg-primary/5 px-4 py-2 text-xs md:text-sm font-semibold uppercase tracking-wider text-primary"
         >
           Showcase
         </Badge>
-        <h2 className="mb-3 text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+        <h2 className="mb-4 text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-foreground">
           Featured Projects
         </h2>
-        <p className="text-muted-foreground max-w-2xl mx-auto text-sm md:text-base mb-8">
-          A selection of premium software systems we&apos;ve engineered — from distributed backends to AI-powered frontends.
+        <p className="text-foreground/75 max-w-3xl mx-auto text-base sm:text-lg md:text-xl mb-9 leading-relaxed font-medium">
+          Real projects for real businesses — see what we&apos;ve built and what it did for them.
         </p>
 
         {/* Tab Switcher */}
-        <div className="inline-flex items-center gap-1 p-1 rounded-full bg-secondary/60 border border-border/50">
+        <div className="inline-flex items-center gap-1.5 p-1.5 rounded-full bg-secondary/80 border border-border/50 shadow-sm">
           <button
             onClick={() => setActiveTab("engineering")}
-            className={`flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer ${
+            className={`flex items-center gap-2 px-6 py-2.5 rounded-full text-base font-bold transition-all duration-300 cursor-pointer ${
               activeTab === "engineering"
                 ? "bg-primary text-primary-foreground shadow-md"
                 : "text-muted-foreground hover:text-foreground"
             }`}
           >
-            <Cpu className="w-3.5 h-3.5" />
-            Engineering
+            <Cpu className="w-4 h-4" />
+            Web &amp; Apps
           </button>
           <button
             onClick={() => setActiveTab("n8n")}
-            className={`flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer ${
+            className={`flex items-center gap-2 px-6 py-2.5 rounded-full text-base font-bold transition-all duration-300 cursor-pointer ${
               activeTab === "n8n"
                 ? "bg-primary text-primary-foreground shadow-md"
                 : "text-muted-foreground hover:text-foreground"
             }`}
           >
-            <Zap className="w-3.5 h-3.5" />
-            AI Automation (n8n)
+            <Zap className="w-4 h-4" />
+            AI Automation
           </button>
         </div>
       </div>
@@ -322,7 +322,7 @@ export function CardsSlider() {
           {firstThree.map((card) => (
             <motion.div
               key={card.id}
-              className="h-[430px]"
+              className="h-[460px]"
               whileHover={{ y: -6, transition: { duration: 0.25 } }}
             >
               <ProjectCard card={card} />
@@ -332,11 +332,11 @@ export function CardsSlider() {
 
         {/* Remaining in horizontal slider */}
         {rest.length > 0 && (
-          <div className="mt-6">
-            <p className="text-xs text-muted-foreground font-medium mb-3 flex items-center gap-2">
-              <span className="inline-block w-6 h-px bg-primary/40 rounded" />
-              Scroll to explore more
-              <span className="inline-block w-6 h-px bg-primary/40 rounded" />
+          <div className="mt-8">
+            <p className="text-xs md:text-sm text-muted-foreground font-semibold mb-3 flex items-center gap-2">
+              <span className="inline-block w-8 h-px bg-primary/40 rounded" />
+              Scroll to explore more projects
+              <span className="inline-block w-8 h-px bg-primary/40 rounded" />
             </p>
             <HorizontalSlider cards={rest} />
           </div>
@@ -351,35 +351,35 @@ export function CardsSlider() {
         transition={{ duration: 0.5, delay: 0.2 }}
         className="max-w-6xl mx-auto px-6 md:px-8 mt-16"
       >
-        <div className="relative rounded-3xl overflow-hidden border border-primary/20 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 p-8 md:p-10 shadow-xl shadow-primary/5">
+        <div className="relative rounded-3xl overflow-hidden border border-primary/25 bg-gradient-to-r from-primary/10 via-primary/15 to-primary/10 p-8 md:p-12 shadow-2xl shadow-primary/10">
           {/* Grid pattern */}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px]" />
           {/* Glow */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-transparent to-accent/15 pointer-events-none" />
 
-          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
             <div>
-              <p className="text-xs uppercase tracking-widest font-semibold text-primary mb-1">
-                Got a project in mind?
+              <p className="text-xs md:text-sm uppercase tracking-widest font-bold text-primary mb-2">
+                Have a project in mind?
               </p>
-              <h3 className="text-2xl md:text-3xl font-bold text-foreground tracking-tight">
-                Your idea deserves to{" "}
+              <h3 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground tracking-tight">
+                Let&apos;s turn it into{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/60">
-                  ship fast.
+                  something real.
                 </span>
               </h3>
-              <p className="text-sm text-muted-foreground mt-2 max-w-md">
-                We reply in hours, not days. Let&apos;s build something remarkable together.
+              <p className="text-base md:text-xl text-muted-foreground mt-3 max-w-xl font-medium leading-relaxed">
+                We usually reply within a few hours — no long waits, no chasing us for updates.
               </p>
             </div>
 
             <div className="shrink-0">
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold text-sm hover:opacity-90 hover:scale-105 transition-all duration-200 shadow-lg shadow-primary/25"
+                className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-primary text-primary-foreground font-bold text-base md:text-lg hover:opacity-90 hover:scale-105 transition-all duration-200 shadow-xl shadow-primary/30 cursor-pointer"
               >
-                <span>Contact Us Now</span>
-                <ChevronRight className="w-4 h-4" />
+                <span>Get a Free Quote</span>
+                <ChevronRight className="w-5 h-5" />
               </a>
             </div>
           </div>

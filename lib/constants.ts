@@ -144,72 +144,72 @@ export const WHY_US = [
 
 export const PROJECTS = [
   {
-    title: "Apex Analytics",
-    description: "Realtime data visualizer dashboard connecting marketing API channels.",
-    image: "/images/web_project.jpg",
-    tags: ["Next.js", "Tailwind CSS", "Node.js"],
+    title: "Fabrika D2C Storefront",
+    description: "Fast Next.js online store for a D2C fashion brand with UPI payments, WhatsApp order tracking, and custom checkout — boosted mobile sales by 45%.",
+    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80",
+    tags: ["Next.js", "Razorpay", "Tailwind CSS"],
     category: "Web Application",
   },
   {
-    title: "Aura Fintech",
-    description: "Fluid personal asset and cash flow tracking application.",
-    image: "/images/mobile_project.jpg",
-    tags: ["React Native", "Spring Boot", "PostgreSQL"],
+    title: "CarePulse Clinic Booking",
+    description: "Android & iOS app for multi-specialty clinics allowing instant doctor appointments, digital prescriptions, and automated WhatsApp reminders.",
+    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80",
+    tags: ["React Native", "Node.js", "PostgreSQL"],
     category: "Mobile Application",
   },
   {
-    title: "Chronos Developer CLI",
-    description: "Sleek window dashboard for docker and local database states.",
-    image: "/images/desktop_project.jpg",
-    tags: ["Electron", "React", "TypeScript"],
+    title: "VyaparFlow Desktop ERP",
+    description: "Offline-first Windows desktop software for distributors & retailers with instant GST invoice generation, barcode scanning, and stock alerts.",
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80",
+    tags: ["Electron", "React", "SQLite"],
     category: "Desktop Software",
   },
 ];
 
 export const N8N_PROJECTS = [
   {
-    title: "InvoiceBot Automation",
+    title: "WhatsApp AI Support & Lead Bot",
     description:
-      "End-to-end n8n workflow that extracts invoice data via AI, reconciles against ERP records, and auto-sends payment reminders — saving 20+ hours/week.",
-    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80",
-    tags: ["n8n", "OpenAI", "Webhooks"],
+      "Automated WhatsApp bot that handles product catalog inquiries, answers FAQs 24/7 in English & Hindi, and collects lead details directly into CRM — reduced support response time by 80%.",
+    image: "https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=800&q=80",
+    tags: ["n8n", "OpenAI API", "WhatsApp Business API"],
     category: "AI Automation",
   },
   {
-    title: "Lead Nurture Pipeline",
+    title: "IndiaMART & Meta Lead Pipeline",
     description:
-      "AI-powered n8n pipeline that scores inbound leads, enriches CRM data, and triggers personalized follow-up sequences across email and Slack.",
+      "Instant lead capture pipeline connecting IndiaMART, Facebook Ads, and Website forms directly to sales team WhatsApp within 30 seconds of lead creation.",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
-    tags: ["n8n", "HubSpot", "GPT-4"],
+    tags: ["n8n", "Meta Ads API", "IndiaMART API"],
     category: "AI Automation",
   },
   {
-    title: "Social Content Engine",
+    title: "GST Invoice & Payment Reminder Bot",
     description:
-      "Fully automated n8n workflow that generates, schedules, and publishes brand-consistent social content across LinkedIn, X, and Instagram using LLMs.",
-    image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&q=80",
-    tags: ["n8n", "Claude", "Buffer API"],
+      "n8n workflow that auto-generates GST tax invoices from sales data and triggers automated WhatsApp payment reminders before & on due dates — reduced overdue payments by 40%.",
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80",
+    tags: ["n8n", "WhatsApp API", "Google Sheets"],
     category: "AI Automation",
   },
 ];
 
 export const TESTIMONIALS = [
   {
-    quote: "They built a premium platform that fits our identity. Conversion rates increased by 40% in weeks.",
-    author: "Sarah Jenkins",
-    role: "CEO, Apex Systems",
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80",
+    quote: "AqNoorLabs built our D2C store on time and on budget. Mobile conversion jumped 40% in the first month. Incredible speed and communication!",
+    author: "Rohan Sharma",
+    role: "Founder, Fabrika Trends (Mumbai)",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80",
   },
   {
-    quote: "Elite engineering standard. They delivered clean code on time, with outstanding design aesthetic.",
-    author: "Marcus Aurelius",
-    role: "Head of Product, Aura Labs",
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80",
+    quote: "They delivered our clinic booking mobile app without any tech headaches. Patients love the instant WhatsApp appointment reminders.",
+    author: "Dr. Ananya Patel",
+    role: "Director, CarePulse Clinics (Pune)",
+    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80",
   },
   {
-    quote: "The custom AI agent saves us 20 hours a week of manual invoice entry. Highly recommended.",
-    author: "Emily Thompson",
-    role: "Director of Operations, Chronos Group",
-    avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80",
+    quote: "The WhatsApp lead bot they set up answers customer questions 24/7. We saved 20+ hours a week and never miss an incoming buyer lead.",
+    author: "Vikram Mehta",
+    role: "Head of Operations, Apex Logistics (Delhi NCR)",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80",
   },
 ];

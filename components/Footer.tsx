@@ -9,22 +9,25 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="flex flex-col space-y-4">
-            <a href="#home" className="flex items-center space-x-3 group">
-              <div className="relative w-10 h-10 rounded-xl bg-white border border-border overflow-hidden shadow-sm flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+            <a href="#home" className="flex items-center space-x-3.5 group">
+              <div className="relative w-14 h-14 rounded-2xl bg-white border border-border overflow-hidden shadow-md flex items-center justify-center transition-transform duration-300 group-hover:scale-105 p-1">
                 <Image
                   src="/logos/logo.png"
                   alt="AqNoorLabs Symbol"
-                  width={32}
-                  height={32}
+                  width={44}
+                  height={44}
                   className="object-contain"
                 />
               </div>
-              <span className="font-display font-bold text-xl text-foreground tracking-tight">
+              <span className="font-display font-bold text-2xl md:text-3xl text-foreground tracking-tight">
                 AqNoor<span className="text-brand">Labs</span>
               </span>
             </a>
-            <p className="text-sm text-foreground/55 font-sans max-w-xs leading-relaxed">
-              AqNoorLabs is a premium software development company, transforming ideas into scalable, production-ready systems.
+            <p className="text-base text-foreground/70 font-sans max-w-sm leading-relaxed">
+              AqNoorLabs is a software development company helping Indian businesses build websites, apps, and AI tools that actually work.
+            </p>
+            <p className="text-xs md:text-sm text-foreground/50 font-sans font-medium">
+              GST Registered • Milestone-Based Pricing
             </p>
           </div>
 
@@ -33,12 +36,12 @@ export default function Footer() {
             <h4 className="text-sm font-display font-bold text-foreground uppercase tracking-wider">
               Navigation
             </h4>
-            <ul className="space-y-2">
+            <ul className="space-y-2.5">
               {NAV_LINKS.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-sm text-foreground/55 hover:text-brand font-sans transition-colors duration-200"
+                    className="text-base text-foreground/65 hover:text-brand font-sans font-medium transition-colors duration-200"
                   >
                     {link.label}
                   </a>
@@ -52,23 +55,25 @@ export default function Footer() {
             <h4 className="text-sm font-display font-bold text-foreground uppercase tracking-wider">
               Contact Details
             </h4>
-            <div className="space-y-2 text-sm text-foreground/55 font-sans">
+            <div className="space-y-3.5 text-base text-foreground/65 font-sans">
               <p className="flex flex-col">
-                <span className="text-xs uppercase tracking-wider text-foreground/40 mb-0.5">Email</span>
+                <span className="text-xs uppercase tracking-wider text-foreground/45 font-semibold mb-0.5">Email</span>
                 <a
                   href="mailto:aqnoorlabs@gmail.com"
-                  className="text-brand hover:text-brand-deep transition-colors duration-200"
+                  className="text-brand hover:text-brand-deep font-semibold transition-colors duration-200"
                 >
                   aqnoorlabs@gmail.com
                 </a>
               </p>
               <p className="flex flex-col">
-                <span className="text-xs uppercase tracking-wider text-foreground/40 mb-0.5">Phone</span>
+                <span className="text-xs uppercase tracking-wider text-foreground/45 font-semibold mb-0.5">Phone &amp; WhatsApp</span>
                 <a
-                  href="tel:8767395353"
-                  className="text-brand hover:text-brand-deep transition-colors duration-200"
+                  href="https://wa.me/917387450332"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-brand hover:text-brand-deep transition-colors duration-200 font-semibold text-base md:text-lg"
                 >
-                  +91 8767395353
+                  +91 7387450332 (WhatsApp)
                 </a>
               </p>
             </div>

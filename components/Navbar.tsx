@@ -30,28 +30,28 @@ export default function Navbar() {
       >
         <div className="max-w-[1440px] mx-auto px-6 md:px-12 flex items-center justify-between">
           {/* Logo */}
-          <a href="#home" className="flex items-center space-x-3 group">
-            <div className="relative w-10 h-10 rounded-xl bg-white border border-border overflow-hidden shadow-sm flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+          <a href="#home" className="flex items-center space-x-3.5 group">
+            <div className="relative w-14 h-14 rounded-2xl bg-white border border-border overflow-hidden shadow-md flex items-center justify-center transition-transform duration-300 group-hover:scale-105 p-1">
               <Image
                 src="/logos/logo.png"
                 alt="AQNoorLabs Symbol"
-                width={32}
-                height={32}
+                width={44}
+                height={44}
                 className="object-contain"
               />
             </div>
-            <span className="font-display font-bold text-xl text-foreground tracking-tight">
+            <span className="font-display font-extrabold text-2xl md:text-3xl text-foreground tracking-tight">
               AqNoor<span className="text-brand">Labs</span>
             </span>
           </a>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-9">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="text-sm font-sans font-medium text-foreground/60 hover:text-brand transition-colors duration-200"
+                className="text-base md:text-lg font-sans font-semibold text-foreground/75 hover:text-brand transition-colors duration-200"
               >
                 {link.label}
               </a>
@@ -62,10 +62,10 @@ export default function Navbar() {
           <div className="hidden md:block">
             <Button
               href="#contact"
-              size="sm"
-              className="bg-brand text-white border-none shadow-[0_4px_14px_rgba(108,99,255,0.45)] hover:shadow-[0_6px_20px_rgba(108,99,255,0.6)] hover:scale-[1.03]"
+              size="md"
+              className="bg-brand text-white text-base font-bold border-none shadow-[0_4px_14px_rgba(108,99,255,0.45)] hover:shadow-[0_6px_20px_rgba(108,99,255,0.6)] hover:scale-[1.03] px-6 py-2.5"
             >
-              Book Free Consultation
+              Get a Free Quote
             </Button>
           </div>
 
@@ -118,7 +118,7 @@ export default function Navbar() {
                   onClick={() => setIsOpen(false)}
                   className="w-full bg-brand text-white border-none shadow-[0_4px_14px_rgba(108,99,255,0.45)] hover:shadow-[0_6px_20px_rgba(108,99,255,0.6)]"
                 >
-                  Book Free Consultation
+                  Get a Free Quote
                 </Button>
               </div>
             </motion.div>

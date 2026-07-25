@@ -9,27 +9,32 @@ const faqs = [
   {
     question: "How do I get started with AqNoorLabs?",
     answer:
-      "Simply reach out to us using our contact form or book a free consultation! We will analyze your system requirements, draft detailed architectural design options, and guide your launch strategy.",
+      "Fill out our contact form or book a free call. We'll understand what you need, share a clear plan with cost and timeline, and get started once you're comfortable.",
   },
   {
-    question: "Do you focus on system designs and scalability?",
+    question: "Do you work with businesses outside metro cities?",
     answer:
-      "Yes, scalability is at the core of what we build. We specialize in system design topics: microservices architectures, data caching layers (using Redis or Memcached), optimized relational/non-relational database queries, and secure cloud hosting infrastructure that automatically scales with your load.",
+      "Yes, absolutely. We work with founders, SMEs, D2C brands, and local businesses across India — whether you're in Bangalore, Mumbai, Delhi-NCR, or Tier-2 and Tier-3 cities.",
   },
   {
-    question: "What is your approach to caching and databases?",
+    question: "What are your payment terms?",
     answer:
-      "We design cached queries and response layers to reduce database latency by up to 90%. By choosing appropriate data storage configurations (PostgreSQL, MongoDB, etc.) and tuning indexes, we ensure your system behaves reliably even during heavy concurrent spikes.",
+      "We follow transparent, milestone-based pricing. Typically 30% advance to start, with remaining payments tied directly to clear project milestones so you only pay as work is delivered.",
   },
   {
-    question: "Do you support premium UI/UX design?",
+    question: "Will my app slow down or break as my business grows?",
     answer:
-      "Absolutely. A high-performance backend needs an equally outstanding interface. We craft beautiful, fluid, responsive user designs utilizing modern front-end technologies (Next.js, Framer Motion, and Tailwind CSS) to deliver micro-interactions that delight visitors.",
+      "No. We plan for scale from day one using optimized databases, fast hosting, and caching so your app handles growth smoothly without crashing or slowing down.",
   },
   {
-    question: "Which hosting platforms do you use?",
+    question: "What is your approach to design and user experience?",
     answer:
-      "Depending on your requirements, we host and manage deployments on AWS, Vercel, Docker containers, and Cloudflare CDN layers. We configure robust CI/CD deployment pipelines that build and test your codebase automatically.",
+      "We focus on creating fast, intuitive, and modern interfaces that your customers actually enjoy using, ensuring high conversion rates and effortless navigation across desktop and mobile.",
+  },
+  {
+    question: "Do you provide post-launch maintenance and support?",
+    answer:
+      "Yes. We offer ongoing maintenance, hosting setup, performance monitoring, and updates so your software continues running reliably long after launch.",
   },
 ];
 
@@ -60,15 +65,15 @@ export function FAQSection() {
               aria-hidden="true"
             />
           </motion.div>
-          <h2 className="mb-4 text-3xl font-bold sm:text-4xl md:text-5xl text-foreground">
+          <h2 className="mb-4 text-4xl font-bold sm:text-5xl md:text-6xl text-foreground">
             Frequently Asked Questions
           </h2>
-          <p className="text-sm text-muted-foreground sm:text-base md:text-lg">
-            Everything you need to know about our engineering expertise and methodology
+          <p className="text-base text-muted-foreground sm:text-lg md:text-xl font-medium">
+            Everything you need to know about working with us, pricing, and timelines
           </p>
         </motion.div>
 
-        <div className="space-y-4">
+        <div className="space-y-5">
           {faqs.map((faq, index) => {
             const questionId = `${baseId}-question-${index}`;
             const answerId = `${baseId}-answer-${index}`;
@@ -81,8 +86,8 @@ export function FAQSection() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Card className="overflow-hidden bg-card/60 backdrop-blur border-border/50">
-                  <CardHeader className="p-6">
+                <Card className="overflow-hidden bg-card/60 backdrop-blur border-border/50 shadow-md">
+                  <CardHeader className="p-6 md:p-8">
                     <motion.button
                       type="button"
                       onClick={() =>
@@ -94,15 +99,15 @@ export function FAQSection() {
                       aria-controls={answerId}
                       id={questionId}
                     >
-                      <span className="text-lg font-semibold pr-4">
+                      <h3 className="text-xl md:text-2xl font-bold pr-4">
                         {faq.question}
-                      </span>
+                      </h3>
                       <motion.div
                         animate={{ rotate: openIndex === index ? 180 : 0 }}
                         transition={{ duration: 0.3 }}
                         aria-hidden="true"
                       >
-                        <ChevronDown className="h-5 w-5 text-muted-foreground" />
+                        <ChevronDown className="h-6 w-6 text-muted-foreground" />
                       </motion.div>
                     </motion.button>
                   </CardHeader>
@@ -118,8 +123,8 @@ export function FAQSection() {
                         id={answerId}
                         aria-labelledby={questionId}
                       >
-                        <CardContent className="pt-0 px-6 pb-6">
-                          <p className="text-muted-foreground leading-relaxed">
+                        <CardContent className="pt-0 px-6 md:px-8 pb-6 md:pb-8">
+                          <p className="text-foreground/80 text-base md:text-lg leading-relaxed font-medium">
                             {faq.answer}
                           </p>
                         </CardContent>
