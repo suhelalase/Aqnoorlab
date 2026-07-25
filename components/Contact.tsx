@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, Mail, Phone, ShieldCheck, Cpu } from "lucide-react";
+import { Check, Mail, Phone, ShieldCheck, Cpu, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -80,68 +80,89 @@ export default function Contact() {
             <div>
               <Badge
                 variant="outline"
-                className="mb-4 inline-flex items-center gap-2 rounded-full border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary backdrop-blur"
+                className="mb-4 inline-flex items-center gap-2 rounded-full border-primary/20 bg-primary/5 px-4 py-2 text-xs md:text-sm font-semibold uppercase tracking-wider text-primary backdrop-blur"
               >
                 Get In Touch
               </Badge>
-              <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl mb-4">
-                Let's Architect.
+              <h2 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl mb-5">
+                Let&apos;s Build Your Project.
               </h2>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed font-normal">
-                At <span className="font-semibold text-foreground">AqNoorLabs</span>, we engineering premium software systems with a strict focus on:
+              <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed font-normal">
+                At <span className="font-semibold text-foreground">AqNoorLabs</span>, we focus on getting your project right the first time:
               </p>
 
-              <div className="mt-6 space-y-4">
-                <div className="flex gap-3 items-start">
-                  <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                    <Cpu className="h-4 w-4" />
+              <div className="mt-8 space-y-5">
+                <div className="flex gap-4 items-start">
+                  <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                    <Cpu className="h-5 w-5" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-foreground">System Design & Scale</h4>
-                    <p className="text-xs text-muted-foreground leading-normal mt-0.5">
-                      Distributed microservices and database query optimization built to scale seamlessly.
+                    <h3 className="text-base md:text-lg font-bold text-foreground">Built to Handle Growth</h3>
+                    <p className="text-sm md:text-base text-muted-foreground leading-relaxed mt-0.5">
+                      Your app won&apos;t break or slow down as your users grow — we plan for scale from day one.
                     </p>
                   </div>
                 </div>
 
-                <div className="flex gap-3 items-start">
-                  <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                    <ShieldCheck className="h-4 w-4" />
+                <div className="flex gap-4 items-start">
+                  <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                    <ShieldCheck className="h-5 w-5" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-foreground">Caching, Hosting & UI/UX</h4>
-                    <p className="text-xs text-muted-foreground leading-normal mt-0.5">
-                      Advanced Redis cache layers, AWS hosting integration, and pixel-perfect dynamic designs.
+                    <h3 className="text-base md:text-lg font-bold text-foreground">Fast, Reliable &amp; Good-Looking</h3>
+                    <p className="text-sm md:text-base text-muted-foreground leading-relaxed mt-0.5">
+                      Quick load times, dependable hosting, and a design your customers will actually enjoy using.
                     </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Quick Contact Details */}
-            <div className="space-y-2 border-t border-border/40 pt-6">
-              <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                <Mail className="h-3.5 w-3.5 text-primary" />
-                <a href="mailto:aqnoorlabs@gmail.com" className="hover:text-primary transition-colors">
-                  aqnoorlabs@gmail.com
+            {/* Quick Contact Details & Indian Trust Badges */}
+            <div className="space-y-4 border-t border-border/40 pt-6">
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href="https://wa.me/917387450332"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 hover:bg-emerald-500/20 text-xs md:text-sm font-semibold transition-colors"
+                >
+                  <MessageSquare className="h-4 w-4" />
+                  <span>Chat on WhatsApp</span>
                 </a>
+                <span className="text-xs md:text-sm text-muted-foreground font-medium bg-secondary/80 px-3 py-1.5 rounded-full border border-border/40">
+                  GST Invoices Provided
+                </span>
               </div>
-              <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                <Phone className="h-3.5 w-3.5 text-primary" />
-                <a href="tel:8767395353" className="hover:text-primary transition-colors">
-                  +91 8767395353
-                </a>
+
+              <div className="flex flex-col space-y-2 text-sm md:text-base text-muted-foreground pt-1">
+                <div className="flex items-center gap-2.5">
+                  <Mail className="h-4 w-4 text-primary" />
+                  <a href="mailto:aqnoorlabs@gmail.com" className="hover:text-primary font-medium transition-colors">
+                    aqnoorlabs@gmail.com
+                  </a>
+                </div>
+                <div className="flex items-center gap-2.5">
+                  <Phone className="h-4 w-4 text-primary" />
+                  <a href="tel:7387450332" className="hover:text-primary font-medium transition-colors">
+                    +91 7387450332
+                  </a>
+                </div>
               </div>
+
+              <p className="text-xs md:text-sm text-muted-foreground italic font-medium">
+                💬 We speak English &amp; Hindi (हिंदी में भी चर्चा कर सकते हैं)
+              </p>
             </div>
           </motion.div>
 
-          {/* Right Column: Form Container (Fits completely on page) */}
+          {/* Right Column: Form Container */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="md:col-span-7 bg-card/40 border border-border/40 rounded-3xl p-6 sm:p-8 backdrop-blur-xl shadow-xl flex flex-col justify-center min-h-[380px]"
+            className="md:col-span-7 bg-card/40 border border-border/40 rounded-3xl p-6 sm:p-10 backdrop-blur-xl shadow-xl flex flex-col justify-center min-h-[400px]"
           >
             <AnimatePresence mode="wait">
               {!isSuccess ? (
@@ -150,18 +171,18 @@ export default function Contact() {
                   initial={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   onSubmit={handleSubmit(onSubmit)}
-                  className="space-y-4"
+                  className="space-y-5"
                 >
                   {/* Name */}
-                  <div className="space-y-1.5">
-                    <Label htmlFor="fullName" className="text-xs font-semibold uppercase tracking-wider text-foreground">
+                  <div className="space-y-2">
+                    <Label htmlFor="fullName" className="text-xs md:text-sm font-bold uppercase tracking-wider text-foreground">
                       Full Name <span className="text-destructive">*</span>
                     </Label>
                     <Input
                       id="fullName"
-                      placeholder="John Doe"
+                      placeholder="e.g. Rahul Sharma"
                       {...register("fullName")}
-                      className={`rounded-xl border bg-background/50 focus:border-primary/50 text-foreground placeholder:text-muted-foreground/60 ${
+                      className={`h-12 text-base rounded-xl border bg-background/50 focus:border-primary/50 text-foreground placeholder:text-muted-foreground/60 ${
                         errors.fullName ? "border-destructive focus:border-destructive" : "border-border/40"
                       }`}
                     />
@@ -171,16 +192,16 @@ export default function Contact() {
                   </div>
 
                   {/* Email */}
-                  <div className="space-y-1.5">
-                    <Label htmlFor="email" className="text-xs font-semibold uppercase tracking-wider text-foreground">
+                  <div className="space-y-2">
+                    <Label htmlFor="email" className="text-xs md:text-sm font-bold uppercase tracking-wider text-foreground">
                       Email Address <span className="text-destructive">*</span>
                     </Label>
                     <Input
                       id="email"
                       type="email"
-                      placeholder="john@example.com"
+                      placeholder="rahul@company.com"
                       {...register("email")}
-                      className={`rounded-xl border bg-background/50 focus:border-primary/50 text-foreground placeholder:text-muted-foreground/60 ${
+                      className={`h-12 text-base rounded-xl border bg-background/50 focus:border-primary/50 text-foreground placeholder:text-muted-foreground/60 ${
                         errors.email ? "border-destructive focus:border-destructive" : "border-border/40"
                       }`}
                     />
@@ -190,16 +211,16 @@ export default function Contact() {
                   </div>
 
                   {/* Mobile Number */}
-                  <div className="space-y-1.5">
-                    <Label htmlFor="mobile" className="text-xs font-semibold uppercase tracking-wider text-foreground">
-                      Mobile Number <span className="text-destructive">*</span>
+                  <div className="space-y-2">
+                    <Label htmlFor="mobile" className="text-xs md:text-sm font-bold uppercase tracking-wider text-foreground">
+                      Mobile / WhatsApp Number <span className="text-destructive">*</span>
                     </Label>
                     <Input
                       id="mobile"
                       type="tel"
-                      placeholder="+91 98765 43210"
+                      placeholder="+91 73874 50332"
                       {...register("mobile")}
-                      className={`rounded-xl border bg-background/50 focus:border-primary/50 text-foreground placeholder:text-muted-foreground/60 ${
+                      className={`h-12 text-base rounded-xl border bg-background/50 focus:border-primary/50 text-foreground placeholder:text-muted-foreground/60 ${
                         errors.mobile ? "border-destructive focus:border-destructive" : "border-border/40"
                       }`}
                     />
@@ -209,14 +230,14 @@ export default function Contact() {
                   </div>
 
                   {/* Message */}
-                  <div className="space-y-1.5">
-                    <Label htmlFor="message" className="text-xs font-semibold uppercase tracking-wider text-foreground">
-                      Project Message <span className="text-muted-foreground font-normal normal-case">(optional)</span>
+                  <div className="space-y-2">
+                    <Label htmlFor="message" className="text-xs md:text-sm font-bold uppercase tracking-wider text-foreground">
+                      Project Details <span className="text-muted-foreground font-normal normal-case">(optional)</span>
                     </Label>
                     <textarea
                       id="message"
                       rows={3}
-                      placeholder="Share details about scaling load, database caching, or UI designs..."
+                      placeholder="Tell us what you want to build, target launch timeline, or budget..."
                       {...register("message")}
                       className={`flex w-full rounded-xl border bg-background/50 px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 resize-none ${
                         errors.message ? "border-destructive focus-visible:ring-destructive" : "border-border/40"
@@ -233,7 +254,7 @@ export default function Contact() {
                     disabled={isSubmitting}
                     className="w-full rounded-xl font-semibold cursor-pointer shadow-md mt-2"
                   >
-                    {isSubmitting ? "Sending Spec..." : "Send Message"}
+                    {isSubmitting ? "Submitting Request..." : "Get a Free Quote"}
                   </Button>
                 </motion.form>
               ) : (
@@ -273,10 +294,10 @@ export default function Contact() {
                   
                   <div className="space-y-2">
                     <h3 className="text-xl font-bold text-foreground">
-                      Message Sent Successfully!
+                      Request Received!
                     </h3>
                     <p className="text-xs sm:text-sm text-muted-foreground max-w-sm leading-relaxed">
-                      Thank you. Our systems architect has received your specifications and will respond in under 24 hours to discuss scalability and query setups.
+                      Thank you! We&apos;ll analyze your requirement and reply within a few hours with a clear plan, estimated cost, and timeline.
                     </p>
                   </div>
 
@@ -285,7 +306,7 @@ export default function Contact() {
                     variant="outline"
                     className="rounded-xl cursor-pointer"
                   >
-                    Send Another Message
+                    Send Another Request
                   </Button>
                 </motion.div>
               )}

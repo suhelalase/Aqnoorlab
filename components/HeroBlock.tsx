@@ -28,14 +28,15 @@ export function HeroBlock() {
             transition={{ delay: 0.15, type: "spring", stiffness: 180 }}
             className="mb-8 inline-block"
           >
-            <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full border-4 border-primary/20 bg-gradient-to-br from-primary/20 to-muted/40 p-2 shadow-xl shadow-primary/10">
-              <div className="relative h-full w-full overflow-hidden rounded-full bg-white flex items-center justify-center p-1">
+            <div className="mx-auto flex h-32 w-32 md:h-36 md:w-36 items-center justify-center rounded-full border-4 border-primary/25 bg-gradient-to-br from-primary/20 via-background to-muted/40 p-2.5 shadow-2xl shadow-primary/20 hover:scale-110 transition-transform duration-300 cursor-pointer">
+              <div className="relative h-full w-full overflow-hidden rounded-full bg-white flex items-center justify-center p-1 shadow-inner">
                 <Image
                   src="/logos/logo.png"
                   alt="AqNoorLabs Logo"
-                  width={64}
-                  height={64}
-                  className="object-contain"
+                  width={110}
+                  height={110}
+                  className="object-contain scale-115 transition-transform duration-300"
+                  priority
                 />
               </div>
             </div>
@@ -54,10 +55,20 @@ export function HeroBlock() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="mx-auto mb-10 max-w-2xl text-lg text-muted-foreground md:text-xl leading-relaxed"
+            className="mx-auto mb-8 max-w-2xl text-lg text-muted-foreground md:text-xl leading-relaxed font-medium"
           >
-            Engineering premium software systems with a focus on robust architecture, scalable microservices, intelligent caching, and exceptional UI/UX.
+            We build websites, apps &amp; AI systems that help your business grow — on time, on budget.
           </motion.p>
+
+          {/* Pricing signal & trust note */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.45, duration: 0.5 }}
+            className="mb-8 inline-flex items-center gap-2 rounded-full bg-primary/10 border border-primary/20 px-4 py-1.5 text-xs md:text-sm font-semibold text-primary"
+          >
+            <span>⚡ Plans starting from ₹25,000 • Milestone Payments • Guaranteed Timelines</span>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -66,14 +77,14 @@ export function HeroBlock() {
             className="flex flex-wrap justify-center gap-4"
           >
             <a href="#contact">
-              <Button size="lg" className="gap-2 rounded-full font-semibold px-8">
+              <Button size="lg" className="gap-2 rounded-full font-semibold px-8 cursor-pointer shadow-lg shadow-primary/20">
                 <Mail className="h-4 w-4" />
-                Get in Touch
+                Get a Free Quote
               </Button>
             </a>
             <a href="#projects">
-              <Button size="lg" variant="outline" className="gap-2 rounded-full font-semibold px-8">
-                View Projects
+              <Button size="lg" variant="outline" className="gap-2 rounded-full font-semibold px-8 cursor-pointer">
+                See Our Work
                 <ArrowDown className="h-4 w-4" />
               </Button>
             </a>

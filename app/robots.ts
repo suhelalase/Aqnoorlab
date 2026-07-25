@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://aqnoorlabs.com/sitemap.xml",
+    sitemap: "https://aqnoorlabs.online/sitemap.xml",
   };
 }

@@ -9,11 +9,11 @@ import CursorFollower from "@/components/CursorFollower";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "aqnoorlabs",
+  title: "aqnoorlabs — Software Development Agency for Indian Businesses",
   description:
-    "AqNoorLabs builds custom websites, web applications, mobile apps, desktop software, and AI automation systems. Work with a premium software development company trusted by startups and enterprises.",
+    "AqNoorLabs builds custom websites, web applications, mobile apps, desktop software, and AI systems that help Indian businesses grow — delivered on time, on budget.",
   alternates: {
-    canonical: "https://aqnoorlabs.com",
+    canonical: "https://aqnoorlabs.online",
   },
 };
 

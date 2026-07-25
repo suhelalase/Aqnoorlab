@@ -22,43 +22,21 @@ const plusJakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
-const SITE_URL = "https://aqnoorlabs.com";
+const SITE_URL = "https://aqnoorlabs.online";
 
 export const metadata: Metadata = {
   title: {
-    default: "aqnoorlabs",
+    default: "aqnoorlabs — Software Development Agency for Indian Businesses",
     template: "%s | aqnoorlabs",
   },
   description:
-    "AqNoorLabs is a premium software development company building custom websites, web apps, mobile apps, desktop software, and AI automation systems for startups and enterprises.",
-  keywords: [
-    "AqNoorLabs",
-    "software development company",
-    "custom website development",
-    "web application development",
-    "mobile app development",
-    "Android iOS app development",
-    "desktop software development",
-    "AI solutions",
-    "AI automation",
-    "business automation",
-    "Next.js development agency",
-    "UI UX design",
-    "React developer",
-    "Node.js backend",
-    "SaaS development",
-    "startup software development",
-    "enterprise software solutions",
-    "cloud infrastructure",
-    "API development",
-    "n8n automation",
-  ],
+    "AqNoorLabs is a software development company in India helping businesses build websites, mobile apps, desktop software, and AI automation tools that actually work — delivered on time, on budget.",
   authors: [{ name: "AqNoorLabs", url: SITE_URL }],
   creator: "AqNoorLabs",
   publisher: "AqNoorLabs",
   metadataBase: new URL(SITE_URL),
   alternates: {
-    canonical: "/",
+    canonical: SITE_URL,
   },
   formatDetection: {
     email: false,
@@ -67,26 +45,26 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "en_IN",
     url: SITE_URL,
-    title: "AqNoorLabs",
+    title: "AqNoorLabs — Custom Websites, Apps & AI Systems for Indian Businesses",
     description:
-      "Transforming business ideas into reliable, scalable software products. Custom web, mobile, desktop, and AI systems built for startups and enterprises.",
+      "Hire custom website, mobile app & AI automation developers in India. On-time delivery, milestone-based pricing, and guaranteed support.",
     siteName: "AqNoorLabs",
     images: [
       {
         url: "/logos/logo.png",
         width: 512,
         height: 512,
-        alt: "AqNoorLabs Logo",
+        alt: "AqNoorLabs Logo - Software Development Company in India",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AqNoorLabs",
+    title: "AqNoorLabs — Custom Websites, Apps & AI Systems for Indian Businesses",
     description:
-      "Transforming business ideas into reliable, scalable software products. Custom web, mobile, desktop, and AI systems built for startups and enterprises.",
+      "Hire custom website, mobile app & AI automation developers in India. On-time delivery, milestone-based pricing, and guaranteed support.",
     images: ["/logos/logo.png"],
   },
   robots: {
@@ -115,30 +93,93 @@ export const viewport: Viewport = {
   maximumScale: 5,
 };
 
-const jsonLd = {
+const jsonLdOrganization = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": "LocalBusiness",
   name: "AqNoorLabs",
-  url: "https://aqnoorlabs.com",
-  logo: "https://aqnoorlabs.com/logos/logo.png",
+  url: "https://aqnoorlabs.online",
+  logo: "https://aqnoorlabs.online/logos/logo.png",
+  image: "https://aqnoorlabs.online/logos/logo.png",
   description:
-    "AqNoorLabs is a premium software development company building custom websites, web apps, mobile apps, desktop software, and AI automation systems for startups and enterprises.",
-  contactPoint: {
-    "@type": "ContactPoint",
-    contactType: "customer support",
-    url: "https://aqnoorlabs.com/#contact",
+    "AqNoorLabs is a custom website development company, mobile app agency, and AI automation partner helping Indian businesses build software that actually works.",
+  telephone: "+91-7387450332",
+  email: "aqnoorlabs@gmail.com",
+  priceRange: "₹₹",
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "IN",
+    addressRegion: "Maharashtra",
   },
+  areaServed: [
+    {
+      "@type": "Country",
+      name: "India",
+    },
+  ],
   sameAs: [],
-  serviceType: [
+  knowsAbout: [
     "Website Development",
-    "Web Application Development",
     "Mobile App Development",
     "Desktop Software Development",
-    "AI Solutions",
-    "Business Automation",
-    "UI/UX Design",
-    "API Development",
-    "Cloud Infrastructure",
+    "AI Automation",
+    "n8n Automation",
+    "UI UX Design",
+    "Next.js Development",
+  ],
+};
+
+const jsonLdFaq = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "How do I get started with AqNoorLabs?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Fill out our contact form or book a free call. We'll understand what you need, share a clear plan with cost and timeline, and get started once you're comfortable.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do you work with businesses outside metro cities?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes, absolutely. We work with founders, SMEs, D2C brands, and local businesses across India — whether you're in Bangalore, Mumbai, Delhi-NCR, or Tier-2 and Tier-3 cities.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What are your payment terms?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "We follow transparent, milestone-based pricing. Typically 30% advance to start, with remaining payments tied directly to clear project milestones so you only pay as work is delivered.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Will my app slow down or break as my business grows?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "No. We plan for scale from day one using optimized databases, fast hosting, and caching so your app handles growth smoothly without crashing or slowing down.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is your approach to design and user experience?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "We focus on creating fast, intuitive, and modern interfaces that your customers actually enjoy using, ensuring high conversion rates and effortless navigation across desktop and mobile.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do you provide post-launch maintenance and support?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. We offer ongoing maintenance, hosting setup, performance monitoring, and updates so your software continues running reliably long after launch.",
+      },
+    },
   ],
 };
 
@@ -157,7 +198,12 @@ export default function RootLayout({
         <Script
           id="json-ld-organization"
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrganization) }}
+        />
+        <Script
+          id="json-ld-faq"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
         />
       </head>
       <body className="min-h-full flex flex-col selection:bg-brand/20 selection:text-brand" suppressHydrationWarning>
