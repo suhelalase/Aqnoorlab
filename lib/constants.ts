@@ -1,8 +1,7 @@
 export const NAV_LINKS = [
   { label: "Home", href: "#home" },
-  { label: "Services", href: "#services" },
-  { label: "Projects", href: "#projects" },
-  { label: "About", href: "#about" },
+  { label: "Showcase", href: "#projects" },
+  { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -164,6 +163,33 @@ export const PROJECTS = [
     image: "/images/desktop_project.jpg",
     tags: ["Electron", "React", "TypeScript"],
     category: "Desktop Software",
+  },
+];
+
+export const N8N_PROJECTS = [
+  {
+    title: "InvoiceBot Automation",
+    description:
+      "End-to-end n8n workflow that extracts invoice data via AI, reconciles against ERP records, and auto-sends payment reminders — saving 20+ hours/week.",
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80",
+    tags: ["n8n", "OpenAI", "Webhooks"],
+    category: "AI Automation",
+  },
+  {
+    title: "Lead Nurture Pipeline",
+    description:
+      "AI-powered n8n pipeline that scores inbound leads, enriches CRM data, and triggers personalized follow-up sequences across email and Slack.",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+    tags: ["n8n", "HubSpot", "GPT-4"],
+    category: "AI Automation",
+  },
+  {
+    title: "Social Content Engine",
+    description:
+      "Fully automated n8n workflow that generates, schedules, and publishes brand-consistent social content across LinkedIn, X, and Instagram using LLMs.",
+    image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&q=80",
+    tags: ["n8n", "Claude", "Buffer API"],
+    category: "AI Automation",
   },
 ];
 

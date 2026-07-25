@@ -85,8 +85,9 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${plusJakarta.variable} h-full scroll-smooth antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col selection:bg-brand/20 selection:text-brand">
+      <body className="min-h-full flex flex-col selection:bg-brand/20 selection:text-brand" suppressHydrationWarning>
         <SmoothScroll />
         {children}
       </body>

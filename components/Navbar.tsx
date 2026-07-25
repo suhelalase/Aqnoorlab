@@ -13,11 +13,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -28,14 +24,14 @@ export default function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "py-3 bg-background/80 backdrop-blur-md border-b border-border-custom"
+            ? "py-3 bg-background/80 backdrop-blur-md border-b border-border"
             : "py-5 bg-transparent"
         }`}
       >
         <div className="max-w-[1440px] mx-auto px-6 md:px-12 flex items-center justify-between">
           {/* Logo */}
           <a href="#home" className="flex items-center space-x-3 group">
-            <div className="relative w-10 h-10 rounded-xl bg-white border border-border-custom overflow-hidden shadow-sm flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+            <div className="relative w-10 h-10 rounded-xl bg-white border border-border overflow-hidden shadow-sm flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
               <Image
                 src="/logos/logo.png"
                 alt="AQNoorLabs Symbol"
@@ -55,17 +51,17 @@ export default function Navbar() {
               <a
                 key={link.label}
                 href={link.href}
-                className="text-sm font-sans font-medium text-muted hover:text-brand transition-colors duration-200"
+                className="text-sm font-sans font-medium text-foreground/60 hover:text-brand transition-colors duration-200"
               >
                 {link.label}
               </a>
             ))}
           </nav>
 
-          {/* Desktop Call to Action */}
+          {/* Desktop CTA */}
           <div className="hidden md:block">
             <Button
-              href="#contact-form"
+              href="#contact"
               size="sm"
               className="bg-brand text-white border-none shadow-[0_4px_14px_rgba(108,99,255,0.45)] hover:shadow-[0_6px_20px_rgba(108,99,255,0.6)] hover:scale-[1.03]"
             >
@@ -73,7 +69,7 @@ export default function Navbar() {
             </Button>
           </div>
 
-          {/* Mobile Menu Toggle */}
+          {/* Mobile Toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden p-2 text-foreground hover:text-brand transition-colors duration-200 focus:outline-none"
@@ -84,7 +80,7 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Mobile Sidebar Overlay */}
+      {/* Mobile Overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -94,13 +90,12 @@ export default function Navbar() {
             className="fixed inset-0 z-45 bg-foreground/20 backdrop-blur-sm md:hidden"
             onClick={() => setIsOpen(false)}
           >
-            {/* Drawer Container */}
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="absolute right-0 top-0 bottom-0 w-4/5 max-w-sm bg-surface shadow-2xl p-8 flex flex-col justify-between"
+              className="absolute right-0 top-0 bottom-0 w-4/5 max-w-sm bg-background shadow-2xl p-8 flex flex-col justify-between"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex flex-col space-y-8 mt-16">
@@ -109,7 +104,7 @@ export default function Navbar() {
                     key={link.label}
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="text-lg font-display font-semibold text-muted hover:text-brand transition-colors duration-200"
+                    className="text-lg font-display font-semibold text-foreground/70 hover:text-brand transition-colors duration-200"
                   >
                     {link.label}
                   </a>
@@ -118,7 +113,7 @@ export default function Navbar() {
 
               <div className="mt-8 flex flex-col space-y-4">
                 <Button
-                  href="#contact-form"
+                  href="#contact"
                   size="md"
                   onClick={() => setIsOpen(false)}
                   className="w-full bg-brand text-white border-none shadow-[0_4px_14px_rgba(108,99,255,0.45)] hover:shadow-[0_6px_20px_rgba(108,99,255,0.6)]"
