@@ -9,10 +9,10 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="flex flex-col space-y-4">
-            <a href="#home" className="flex items-center space-x-3.5 group">
+            <a href="/" className="flex items-center space-x-3.5 group">
               <div className="relative w-14 h-14 rounded-2xl bg-white border border-border overflow-hidden shadow-md flex items-center justify-center transition-transform duration-300 group-hover:scale-105 p-1">
                 <Image
-                  src="/logos/logo.png"
+                  src="/images/logo.png"
                   alt="AqNoorLabs Symbol"
                   width={44}
                   height={44}
@@ -84,8 +84,8 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row items-center justify-between pt-8 text-xs text-foreground/45 font-sans space-y-4 sm:space-y-0">
           <p>© 2026 AqNoorLabs. All rights reserved.</p>
           <div className="flex space-x-6">
-            <a href="#projects" className="hover:text-brand transition-colors">Privacy Policy</a>
-            <a href="#faq" className="hover:text-brand transition-colors">Terms of Service</a>
+            <a href="/#projects" className="hover:text-brand transition-colors">Privacy Policy</a>
+            <a href="/#faq" className="hover:text-brand transition-colors">Terms of Service</a>
           </div>
         </div>
       </div>
