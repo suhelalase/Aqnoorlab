@@ -84,8 +84,8 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row items-center justify-between pt-8 text-xs text-foreground/45 font-sans space-y-4 sm:space-y-0">
           <p>© 2026 AqNoorLabs. All rights reserved.</p>
           <div className="flex space-x-6">
-            <a href="/#projects" className="hover:text-brand transition-colors">Privacy Policy</a>
-            <a href="/#faq" className="hover:text-brand transition-colors">Terms of Service</a>
+            <a href="/privacy" className="hover:text-brand transition-colors">Privacy Policy</a>
+            <a href="/terms" className="hover:text-brand transition-colors">Terms of Service</a>
           </div>
         </div>
       </div>
