@@ -31,7 +31,7 @@ export function HeroBlock() {
             <div className="mx-auto flex h-32 w-32 md:h-36 md:w-36 items-center justify-center rounded-full border-4 border-primary/25 bg-gradient-to-br from-primary/20 via-background to-muted/40 p-2.5 shadow-2xl shadow-primary/20 hover:scale-110 transition-transform duration-300 cursor-pointer">
               <div className="relative h-full w-full overflow-hidden rounded-full bg-white flex items-center justify-center p-1 shadow-inner">
                 <Image
-                  src="/logos/logo.png"
+                  src="/images/logo.png"
                   alt="AqNoorLabs Logo"
                   width={110}
                   height={110}
@@ -46,7 +46,7 @@ export function HeroBlock() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="mb-6 text-5xl font-bold text-foreground md:text-7xl tracking-tight"
+            className="mb-6 text-4xl font-bold text-foreground md:text-6xl tracking-tight"
           >
             AqNoor<span className="text-primary">Labs</span>
           </motion.h1>
@@ -55,20 +55,10 @@ export function HeroBlock() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="mx-auto mb-8 max-w-2xl text-lg text-muted-foreground md:text-xl leading-relaxed font-medium"
+            className="mx-auto mb-8 max-w-2xl text-base text-muted-foreground md:text-lg leading-relaxed font-medium"
           >
             We build websites, apps &amp; AI systems that help your business grow — on time, on budget.
           </motion.p>
-
-          {/* Pricing signal & trust note */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.45, duration: 0.5 }}
-            className="mb-8 inline-flex items-center gap-2 rounded-full bg-primary/10 border border-primary/20 px-4 py-1.5 text-xs md:text-sm font-semibold text-primary"
-          >
-            <span>⚡ Plans starting from ₹25,000 • Milestone Payments • Guaranteed Timelines</span>
-          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -88,6 +78,21 @@ export function HeroBlock() {
                 <ArrowDown className="h-4 w-4" />
               </Button>
             </a>
+          </motion.div>
+
+          {/* Trust badges */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.7, duration: 0.6 }}
+            className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-sm text-muted-foreground font-medium"
+          >
+            <span className="flex items-center gap-2">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500 inline-block" />
+              <span className="text-emerald-600 font-semibold">Accepting new projects across India</span>
+            </span>
+            <span className="hidden sm:inline-block text-muted-foreground/40">•</span>
+            <span className="font-medium text-muted-foreground">We usually reply within a few hours — no chasing us for updates</span>
           </motion.div>
         </motion.div>
       </div>

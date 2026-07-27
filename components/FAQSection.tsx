@@ -65,10 +65,10 @@ export function FAQSection() {
               aria-hidden="true"
             />
           </motion.div>
-          <h2 className="mb-4 text-4xl font-bold sm:text-5xl md:text-6xl text-foreground">
+          <h2 className="mb-4 text-3xl font-bold sm:text-4xl md:text-5xl text-foreground">
             Frequently Asked Questions
           </h2>
-          <p className="text-base text-muted-foreground sm:text-lg md:text-xl font-medium">
+          <p className="text-sm text-muted-foreground sm:text-base md:text-lg font-medium">
             Everything you need to know about working with us, pricing, and timelines
           </p>
         </motion.div>
@@ -99,7 +99,7 @@ export function FAQSection() {
                       aria-controls={answerId}
                       id={questionId}
                     >
-                      <h3 className="text-xl md:text-2xl font-bold pr-4">
+                      <h3 className="text-lg md:text-xl font-bold pr-4">
                         {faq.question}
                       </h3>
                       <motion.div
@@ -124,7 +124,7 @@ export function FAQSection() {
                         aria-labelledby={questionId}
                       >
                         <CardContent className="pt-0 px-6 md:px-8 pb-6 md:pb-8">
-                          <p className="text-foreground/80 text-base md:text-lg leading-relaxed font-medium">
+                          <p className="text-foreground/80 text-sm md:text-base leading-relaxed font-medium">
                             {faq.answer}
                           </p>
                         </CardContent>

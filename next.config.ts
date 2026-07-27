@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Suppress ESLint during builds — run `npm run lint` separately
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   images: {
     remotePatterns: [
       {
@@ -8,6 +12,14 @@ const nextConfig: NextConfig = {
         hostname: "images.unsplash.com",
       },
     ],
+    // Enable modern image formats for better performance
+    formats: ["image/avif", "image/webp"],
+  },
+  // Compress responses for faster delivery
+  compress: true,
+  // Optimize imports from large packages — reduces first load JS
+  experimental: {
+    optimizePackageImports: ["lucide-react", "framer-motion"],
   },
 };
 

@@ -1,8 +1,10 @@
 export const NAV_LINKS = [
-  { label: "Home", href: "#home" },
-  { label: "Showcase", href: "#projects" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "Showcase", href: "/#projects" },
+  { label: "Team", href: "/team" },
+  { label: "Blog", href: "/blog" },
+  { label: "FAQ", href: "/#faq" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const FEATURE_CARDS = [
