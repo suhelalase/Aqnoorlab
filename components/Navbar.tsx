@@ -88,7 +88,7 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-45 bg-foreground/20 backdrop-blur-sm md:hidden"
+            className="fixed inset-0 z-[60] bg-foreground/20 backdrop-blur-sm md:hidden"
             onClick={() => setIsOpen(false)}
           >
             <motion.div
@@ -96,20 +96,47 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="absolute right-0 top-0 bottom-0 w-4/5 max-w-sm bg-background shadow-2xl p-8 flex flex-col justify-between"
+              className="absolute right-0 top-0 bottom-0 w-4/5 max-w-sm bg-background shadow-2xl p-6 flex flex-col justify-between"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex flex-col space-y-8 mt-16">
-                {NAV_LINKS.map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.href}
+              <div>
+                {/* Mobile Drawer Header */}
+                <div className="flex items-center justify-between pb-6 border-b border-border/50 mb-8">
+                  <div className="flex items-center space-x-3.5">
+                    <div className="relative w-10 h-10 rounded-xl bg-white border border-border overflow-hidden shadow-sm flex items-center justify-center p-1">
+                      <Image
+                        src="/images/logo.png"
+                        alt="AQNoorLabs Symbol"
+                        width={30}
+                        height={30}
+                        className="object-contain"
+                      />
+                    </div>
+                    <span className="font-display font-extrabold text-xl text-foreground tracking-tight">
+                      AqNoor<span className="text-brand">Labs</span>
+                    </span>
+                  </div>
+                  <button
                     onClick={() => setIsOpen(false)}
-                    className="text-lg font-display font-semibold text-foreground/70 hover:text-brand transition-colors duration-200"
+                    className="p-2 text-foreground hover:text-brand transition-colors duration-200 focus:outline-none"
+                    aria-label="Close menu"
                   >
-                    {link.label}
-                  </a>
-                ))}
+                    <LucideIcon name="X" className="w-6 h-6" />
+                  </button>
+                </div>
+
+                <div className="flex flex-col space-y-6">
+                  {NAV_LINKS.map((link) => (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className="text-base font-sans font-semibold text-foreground/80 hover:text-brand transition-colors duration-200"
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
               </div>
 
               <div className="mt-8 flex flex-col space-y-4">

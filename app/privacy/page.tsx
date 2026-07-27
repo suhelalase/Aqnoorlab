@@ -17,7 +17,7 @@ export default function PrivacyPage() {
       <ClientCursorFollower />
       <Navbar />
       <main className="flex-1 w-full bg-background pt-32 pb-24">
-        <div className="max-w-6xl mx-auto px-6">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
           {/* Header Banner */}
           <div className="text-center mb-16 relative">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-brand/5 blur-3xl rounded-full -z-10" />
@@ -55,7 +55,7 @@ export default function PrivacyPage() {
 
             {/* Document Content */}
             <div className="lg:col-span-8 space-y-12">
-              <div className="glass-panel rounded-3xl p-8 md:p-12 shadow-xl border border-border/40 font-sans text-foreground/80 leading-relaxed space-y-10">
+              <div className="glass-panel rounded-2xl md:rounded-3xl p-4 sm:p-8 md:p-12 shadow-xl border border-border/40 font-sans text-foreground/80 leading-relaxed space-y-10">
                 
                 {/* Introduction */}
                 <section className="space-y-4">
