@@ -78,7 +78,7 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
@@ -88,7 +88,7 @@ body {
     radial-gradient(at 100% 100%, rgba(108, 99, 255, 0.08) 0px, transparent 50%);
   color: var(--foreground);
   font-family: var(--font-sans);
-  overflow-x: hidden;
+  overflow-x: clip;
   width: 100%;
   margin: 0;
   padding: 0;
