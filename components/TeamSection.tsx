@@ -77,17 +77,17 @@ export default function TeamSection() {
 
       {/* Team Cards */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 mb-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="flex overflow-x-auto gap-6 pb-6 md:pb-0 md:grid md:grid-cols-2 md:gap-8 snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           {TEAM.map((member, index) => (
             <motion.div
               key={member.id}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.15 }}
-              className="group"
+              className="group w-[85vw] max-w-[340px] sm:max-w-none sm:w-[420px] md:w-auto flex-shrink-0 snap-center flex"
             >
               {/* Card Container */}
-              <div className="relative h-full overflow-hidden rounded-3xl border border-border bg-card shadow-sm hover:shadow-md hover:border-brand/40 transition-all duration-300 flex flex-col p-6 md:p-8">
+              <div className="relative w-full overflow-hidden rounded-3xl border border-border bg-card shadow-sm hover:shadow-md hover:border-brand/40 transition-all duration-300 flex flex-col p-6 md:p-8">
                 {/* Subtle light background card glow */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-brand/3 blur-3xl rounded-full -z-10 transition-opacity duration-300 group-hover:bg-brand/8" />
                 

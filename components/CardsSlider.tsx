@@ -130,14 +130,11 @@ function FeaturedCard({ card, large = false }: { card: CardData; large?: boolean
       {/* Content at bottom */}
       <div className="absolute bottom-0 left-0 right-0 z-10 p-5">
         {card.highlight && (
-          <motion.span
-            initial={{ opacity: 0, y: 4 }}
-            animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 4 }}
-            transition={{ duration: 0.2 }}
-            className="inline-flex items-center gap-1 mb-2 rounded-full bg-primary/90 px-2.5 py-0.5 text-[10px] font-bold text-white uppercase tracking-wider"
+          <span
+            className="inline-flex items-center gap-1 mb-2 rounded-full bg-primary/95 px-2.5 py-0.5 text-[10px] font-bold text-white uppercase tracking-wider transition-all duration-300 transform md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0"
           >
             ✦ {card.highlight}
-          </motion.span>
+          </span>
         )}
         <h3 className="text-base font-bold text-white leading-tight mb-1.5 group-hover:text-primary-foreground transition-colors">
           {card.title}
@@ -161,15 +158,12 @@ function FeaturedCard({ card, large = false }: { card: CardData; large?: boolean
               </span>
             )}
           </div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: hovered ? 1 : 0, scale: hovered ? 1 : 0.8 }}
-            transition={{ duration: 0.2 }}
-            className="flex items-center gap-1 text-xs font-bold text-white bg-primary rounded-full px-3 py-1.5"
+          <div
+            className="flex items-center gap-1 text-xs font-bold text-white bg-primary rounded-full px-3 py-1.5 transition-all duration-300 transform md:opacity-0 md:scale-90 md:group-hover:opacity-100 md:group-hover:scale-100"
           >
             <ExternalLink className="w-3 h-3" />
             View
-          </motion.div>
+          </div>
         </div>
       </div>
     </motion.div>

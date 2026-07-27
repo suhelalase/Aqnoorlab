@@ -134,7 +134,7 @@ function FeaturedPostCard({ post }: { post: BlogPost }) {
         </div>
 
         {/* Content */}
-        <div className="p-7 md:p-9 flex flex-col justify-center">
+        <div className="p-5 sm:p-7 md:p-9 flex flex-col justify-center">
           <div className="flex items-center gap-2 mb-3">
             <span className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${CATEGORY_COLORS[post.category] || "bg-primary/10 text-primary border-primary/20"}`}>
               {post.category}
@@ -283,12 +283,12 @@ export default function BlogSection() {
 
       {/* Category Filter */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 mb-8">
-        <div className="flex flex-wrap gap-2">
+        <div className="flex overflow-x-auto gap-2 pb-3 md:pb-0 md:flex-wrap snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           {CATEGORIES.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 border cursor-pointer ${
+              className={`px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 border cursor-pointer flex-shrink-0 snap-center ${
                 activeCategory === cat
                   ? "bg-primary text-primary-foreground border-primary shadow-md"
                   : "bg-background border-border text-muted-foreground hover:border-primary/40 hover:text-foreground"
