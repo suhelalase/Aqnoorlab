@@ -51,7 +51,7 @@ export default function TeamSection() {
   return (
     <section className="py-12 md:py-20">
       {/* Hero Header */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 text-center mb-16">
+      <div className="max-w-[1280px] w-full md:w-[90%] mx-auto px-5 md:px-0 text-center mb-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -76,7 +76,7 @@ export default function TeamSection() {
       </div>
 
       {/* Team Cards */}
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 mb-20">
+      <div className="max-w-[1280px] w-full md:w-[90%] mx-auto px-5 md:px-0 mb-20">
         <div className="flex overflow-x-auto gap-6 pb-6 md:pb-0 md:grid md:grid-cols-2 md:gap-8 snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           {TEAM.map((member, index) => (
             <motion.div
@@ -175,7 +175,7 @@ export default function TeamSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 mb-20"
+        className="max-w-[1280px] w-full md:w-[90%] mx-auto px-5 md:px-0 mb-20"
       >
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {STATS.map((stat, i) => (
@@ -201,7 +201,7 @@ export default function TeamSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8"
+        className="max-w-[1280px] w-full md:w-[90%] mx-auto px-5 md:px-0"
       >
         <div className="relative rounded-3xl overflow-hidden border border-border bg-card p-8 md:p-12 text-center shadow-sm">
           {/* Faint card glow */}

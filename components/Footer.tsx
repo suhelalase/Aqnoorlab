@@ -3,12 +3,12 @@ import { NAV_LINKS } from "@/lib/constants";
 
 export default function Footer() {
   return (
-    <footer className="bg-background/40 border-t border-border pt-16 pb-12">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pb-12 border-b border-border/60">
+    <footer className="bg-background/40 border-t border-border p-8 md:py-16 md:px-12">
+      <div className="max-w-[1440px] mx-auto px-0 md:px-6 lg:px-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 pb-12 border-b border-border/60">
 
           {/* Brand */}
-          <div className="flex flex-col space-y-4">
+          <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-4">
             <a href="/" className="flex items-center space-x-3.5 group">
               <div className="relative w-14 h-14 rounded-2xl bg-white border border-border overflow-hidden shadow-md flex items-center justify-center transition-transform duration-300 group-hover:scale-105 p-1">
                 <Image
@@ -32,11 +32,11 @@ export default function Footer() {
           </div>
 
           {/* Navigation */}
-          <div className="flex flex-col space-y-4">
+          <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-4">
             <h4 className="text-sm font-display font-bold text-foreground uppercase tracking-wider">
               Navigation
             </h4>
-            <ul className="space-y-2.5">
+            <ul className="space-y-2.5 flex flex-col items-center md:items-start">
               {NAV_LINKS.map((link) => (
                 <li key={link.label}>
                   <a
@@ -51,12 +51,12 @@ export default function Footer() {
           </div>
 
           {/* Contact */}
-          <div className="flex flex-col space-y-4">
+          <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-4">
             <h4 className="text-sm font-display font-bold text-foreground uppercase tracking-wider">
               Contact Details
             </h4>
-            <div className="space-y-3.5 text-base text-foreground/65 font-sans">
-              <p className="flex flex-col">
+            <div className="space-y-3.5 text-base text-foreground/65 font-sans flex flex-col items-center md:items-start">
+              <p className="flex flex-col items-center md:items-start">
                 <span className="text-xs uppercase tracking-wider text-foreground/45 font-semibold mb-0.5">Email</span>
                 <a
                   href="mailto:aqnoorlabs@gmail.com"
@@ -65,7 +65,7 @@ export default function Footer() {
                   aqnoorlabs@gmail.com
                 </a>
               </p>
-              <p className="flex flex-col">
+              <p className="flex flex-col items-center md:items-start">
                 <span className="text-xs uppercase tracking-wider text-foreground/45 font-semibold mb-0.5">Phone &amp; WhatsApp</span>
                 <a
                   href="https://wa.me/917387450332"
@@ -81,7 +81,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom row */}
-        <div className="flex flex-col sm:flex-row items-center justify-between pt-8 text-xs text-foreground/45 font-sans space-y-4 sm:space-y-0">
+        <div className="flex flex-col md:flex-row items-center justify-between pt-8 text-xs text-foreground/45 font-sans space-y-4 md:space-y-0 text-center md:text-left">
           <p>© 2026 AqNoorLabs. All rights reserved.</p>
           <div className="flex space-x-6">
             <a href="/privacy" className="hover:text-brand transition-colors">Privacy Policy</a>

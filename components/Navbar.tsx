@@ -19,40 +19,52 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Prevent body scrolling when the mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? "py-3 bg-background/80 backdrop-blur-md border-b border-border"
-            : "py-5 bg-transparent"
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 flex items-center ${
+          scrolled || isOpen
+            ? "h-16 bg-background/80 backdrop-blur-md border-b border-border/45"
+            : "h-16 md:h-[96px] bg-background/80 backdrop-blur-md border-b border-border/45 md:bg-transparent md:backdrop-blur-none md:border-b-0"
         }`}
       >
-        <div className="max-w-[1440px] mx-auto px-6 md:px-12 flex items-center justify-between">
+        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 flex items-center justify-between">
           {/* Logo */}
-          <a href="/" className="flex items-center space-x-3.5 group">
-            <div className="relative w-14 h-14 rounded-2xl bg-white border border-border overflow-hidden shadow-md flex items-center justify-center transition-transform duration-300 group-hover:scale-105 p-1">
+          <a href="/" className="flex items-center space-x-2 md:space-x-3.5 group">
+            <div className="relative w-11 h-11 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-white border border-border overflow-hidden shadow-md flex items-center justify-center transition-transform duration-300 group-hover:scale-105 p-1">
               <Image
                 src="/images/logo.png"
                 alt="AQNoorLabs Symbol"
                 width={44}
                 height={44}
-                className="object-contain"
+                className="object-contain w-8 h-8 md:w-11 md:h-11"
                 priority
               />
             </div>
-            <span className="font-display font-extrabold text-2xl md:text-3xl text-foreground tracking-tight">
+            <span className="font-display font-extrabold text-xl md:text-3xl text-foreground tracking-tight">
               AqNoor<span className="text-brand">Labs</span>
             </span>
           </a>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center space-x-9">
+          <nav className="hidden md:flex items-center space-x-5 lg:space-x-9">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="text-base md:text-lg font-sans font-semibold text-foreground/75 hover:text-brand transition-colors duration-200"
+                className="text-sm lg:text-lg font-sans font-semibold text-foreground/75 hover:text-brand transition-colors duration-200"
               >
                 {link.label}
               </a>
@@ -64,7 +76,7 @@ export default function Navbar() {
             <Button
               href="/contact"
               size="md"
-              className="bg-brand text-white text-base font-bold border-none shadow-[0_4px_14px_rgba(108,99,255,0.45)] hover:shadow-[0_6px_20px_rgba(108,99,255,0.6)] hover:scale-[1.03] px-6 py-2.5"
+              className="bg-brand text-white text-xs lg:text-base font-bold border-none shadow-[0_4px_14px_rgba(108,99,255,0.45)] hover:shadow-[0_6px_20px_rgba(108,99,255,0.6)] hover:scale-[1.03] px-4 py-2 lg:px-6 lg:py-2.5"
             >
               Get a Free Quote
             </Button>
@@ -88,7 +100,7 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] bg-foreground/20 backdrop-blur-sm md:hidden"
+            className="fixed inset-0 z-[60] bg-foreground/20 backdrop-blur-md md:hidden"
             onClick={() => setIsOpen(false)}
           >
             <motion.div
@@ -144,7 +156,7 @@ export default function Navbar() {
                   href="/contact"
                   size="md"
                   onClick={() => setIsOpen(false)}
-                  className="w-full bg-brand text-white border-none shadow-[0_4px_14px_rgba(108,99,255,0.45)] hover:shadow-[0_6px_20px_rgba(108,99,255,0.6)]"
+                  className="w-full bg-brand text-white border-none shadow-[0_4px_14px_rgba(108,99,255,0.45)] hover:shadow-[0_6px_20px_rgba(108,99,255,0.6)] py-3.5 text-base font-bold"
                 >
                   Get a Free Quote
                 </Button>
