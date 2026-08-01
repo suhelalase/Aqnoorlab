@@ -34,7 +34,7 @@ Success Status returned & UI cleared (ContactForm.tsx)
 
 Create a `.env.local` file in the root of the project (this file is ignored by Git in `.gitignore`):
 
-```env
+```env    
 AIRTABLE_TOKEN=your_airtable_personal_access_token_here
 AIRTABLE_BASE_ID=your_airtable_base_id_here
 AIRTABLE_TABLE_NAME=your_airtable_table_name_here
