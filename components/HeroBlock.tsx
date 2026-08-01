@@ -7,15 +7,15 @@ import { Button } from "@/components/ui/button";
 
 export function HeroBlock() {
   return (
-    <section id="home" className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-background">
+    <section id="home" className="relative flex min-h-fit md:min-h-screen w-full items-center justify-center overflow-hidden bg-background pt-28 pb-16 md:pt-0 md:pb-0">
       {/* Animated background grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+      <div className="hero-grid-bg" />
 
       {/* Ambient glow blobs */}
       <div className="absolute top-1/3 left-1/4 w-72 h-72 rounded-full bg-primary/10 blur-[100px] pointer-events-none" />
       <div className="absolute bottom-1/3 right-1/4 w-64 h-64 rounded-full bg-primary/8 blur-[80px] pointer-events-none" />
 
-      <div className="relative z-10 mx-auto max-w-4xl px-6 text-center md:px-12">
+      <div className="relative z-10 w-full md:w-[90%] max-w-4xl mx-auto px-5 md:px-0 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -55,7 +55,7 @@ export function HeroBlock() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="mx-auto mb-8 max-w-2xl text-base text-muted-foreground md:text-lg leading-relaxed font-medium"
+            className="mx-auto mb-8 max-w-2xl text-lg text-muted-foreground md:text-lg lg:text-xl leading-relaxed font-medium"
           >
             We build websites, apps &amp; AI systems that help your business grow — on time, on budget.
           </motion.p>
@@ -64,18 +64,25 @@ export function HeroBlock() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
-            className="flex flex-wrap justify-center gap-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full"
           >
-            <a href="#contact">
-              <Button size="lg" className="gap-2 rounded-full font-semibold px-8 cursor-pointer shadow-lg shadow-primary/20">
-                <Mail className="h-4 w-4" />
+            <a href="#contact" className="w-full sm:w-auto flex justify-center">
+              <Button
+                size="lg"
+                className="w-full sm:w-auto max-w-[320px] h-[52px] sm:h-11 gap-2 rounded-full font-semibold px-8 cursor-pointer shadow-lg shadow-primary/20 flex items-center justify-center"
+              >
+                <Mail className="h-4 w-4 shrink-0" />
                 Get a Free Quote
               </Button>
             </a>
-            <a href="#projects">
-              <Button size="lg" variant="outline" className="gap-2 rounded-full font-semibold px-8 cursor-pointer">
+            <a href="#projects" className="w-full sm:w-auto flex justify-center">
+              <Button
+                size="lg"
+                variant="outline"
+                className="w-full sm:w-auto max-w-[320px] h-[52px] sm:h-11 gap-2 rounded-full font-semibold px-8 cursor-pointer flex items-center justify-center"
+              >
                 See Our Work
-                <ArrowDown className="h-4 w-4" />
+                <ArrowDown className="h-4 w-4 shrink-0" />
               </Button>
             </a>
           </motion.div>

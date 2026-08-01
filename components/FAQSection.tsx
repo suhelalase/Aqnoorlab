@@ -43,8 +43,8 @@ export function FAQSection() {
   const baseId = useId();
 
   return (
-    <div id="faq" className="w-full px-4 py-16">
-      <div className="mx-auto max-w-4xl">
+    <div id="faq" className="w-full px-5 py-16 md:px-0">
+      <div className="mx-auto w-full md:w-[90%] max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

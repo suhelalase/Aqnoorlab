@@ -8,7 +8,7 @@ import { ArrowRight, MessageSquare } from "lucide-react";
 export function CTABlock() {
   return (
     <section className="py-12 md:py-20">
-      <div className="mx-auto max-w-5xl px-4 sm:px-6 md:px-8">
+      <div className="max-w-[1280px] w-full md:w-[90%] mx-auto px-5 md:px-0">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}

@@ -187,7 +187,7 @@ export function ContactForm() {
                 id="name"
                 placeholder="e.g. Rahul Sharma"
                 {...register("name")}
-                className={`h-11 sm:h-12 text-sm sm:text-base rounded-xl border bg-background/50 focus:border-primary/50 text-foreground placeholder:text-muted-foreground/60 ${
+                className={`h-[52px] md:h-12 text-sm sm:text-base rounded-xl border bg-background/50 focus:border-primary/50 text-foreground placeholder:text-muted-foreground/60 ${
                   errors.name ? "border-destructive focus:border-destructive" : "border-border/40"
                 }`}
               />
@@ -206,7 +206,7 @@ export function ContactForm() {
                 type="email"
                 placeholder="rahul@company.com"
                 {...register("email")}
-                className={`h-11 sm:h-12 text-sm sm:text-base rounded-xl border bg-background/50 focus:border-primary/50 text-foreground placeholder:text-muted-foreground/60 ${
+                className={`h-[52px] md:h-12 text-sm sm:text-base rounded-xl border bg-background/50 focus:border-primary/50 text-foreground placeholder:text-muted-foreground/60 ${
                   errors.email ? "border-destructive focus:border-destructive" : "border-border/40"
                 }`}
               />
@@ -225,7 +225,7 @@ export function ContactForm() {
                 type="tel"
                 placeholder="+91 73874 50332"
                 {...register("phone")}
-                className={`h-11 sm:h-12 text-sm sm:text-base rounded-xl border bg-background/50 focus:border-primary/50 text-foreground placeholder:text-muted-foreground/60 ${
+                className={`h-[52px] md:h-12 text-sm sm:text-base rounded-xl border bg-background/50 focus:border-primary/50 text-foreground placeholder:text-muted-foreground/60 ${
                   errors.phone ? "border-destructive focus:border-destructive" : "border-border/40"
                 }`}
               />
@@ -244,7 +244,7 @@ export function ContactForm() {
                 rows={4}
                 placeholder="Tell us what you want to build, target launch timeline, or budget..."
                 {...register("projectDetails")}
-                className={`flex w-full rounded-xl border bg-background/50 px-3 py-2 text-sm sm:text-base text-foreground placeholder:text-muted-foreground/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 resize-none min-h-[90px] sm:min-h-[120px] ${
+                className={`flex w-full rounded-xl border bg-background/50 px-3 py-2.5 text-sm sm:text-base text-foreground placeholder:text-muted-foreground/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 resize-none h-[120px] ${
                   errors.projectDetails ? "border-destructive focus-visible:ring-destructive" : "border-border/40"
                 }`}
               />
@@ -257,7 +257,7 @@ export function ContactForm() {
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full h-11 sm:h-12 rounded-xl font-semibold cursor-pointer shadow-md mt-2 flex items-center justify-center gap-2 text-sm sm:text-base"
+              className="w-full h-[52px] md:h-12 rounded-xl font-semibold cursor-pointer shadow-md mt-2 flex items-center justify-center gap-2 text-sm sm:text-base"
             >
               {isSubmitting ? (
                 <>

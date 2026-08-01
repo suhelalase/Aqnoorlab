@@ -250,7 +250,7 @@ export default function BlogSection() {
   return (
     <section className="py-10 md:py-16">
       {/* Header */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 mb-12 text-center">
+      <div className="max-w-[1280px] w-full md:w-[90%] mx-auto px-5 md:px-0 mb-12 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -276,13 +276,13 @@ export default function BlogSection() {
 
       {/* Featured Post */}
       {featured && (
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 mb-10">
+        <div className="max-w-[1280px] w-full md:w-[90%] mx-auto px-5 md:px-0 mb-10">
           <FeaturedPostCard post={featured} />
         </div>
       )}
 
       {/* Category Filter */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 mb-8">
+      <div className="max-w-[1280px] w-full md:w-[90%] mx-auto px-5 md:px-0 mb-8">
         <div className="flex overflow-x-auto gap-2 pb-3 md:pb-0 md:flex-wrap snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           {CATEGORIES.map((cat) => (
             <button
@@ -301,7 +301,7 @@ export default function BlogSection() {
       </div>
 
       {/* Posts Grid */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
+      <div className="max-w-[1280px] w-full md:w-[90%] mx-auto px-5 md:px-0">
         {filtered.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {filtered.map((post, i) => (
@@ -321,7 +321,7 @@ export default function BlogSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 mt-16"
+        className="max-w-[1280px] w-full md:w-[90%] mx-auto px-5 md:px-0 mt-16"
       >
         <div className="relative rounded-3xl overflow-hidden border border-primary/20 bg-gradient-to-br from-primary/8 via-background to-accent/8 p-8 md:p-12 text-center">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px]" />
