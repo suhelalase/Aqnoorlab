@@ -195,6 +195,13 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N5LB6Z9D');</script>
+<!-- End Google Tag Manager -->
         <Script
           id="json-ld-organization"
           type="application/ld+json"
@@ -209,6 +216,10 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col selection:bg-brand/20 selection:text-brand" suppressHydrationWarning>
         <SmoothScroll />
         {children}
+        <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N5LB6Z9D"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
       </body>
     </html>
   );
