@@ -109,7 +109,7 @@ const jsonLdOrganization = {
   description:
     "AqNoorLabs is a custom website development company, mobile app agency, and AI automation partner helping Indian businesses build software that actually works.",
   telephone: "+91-7387450332",
-  email: "aqnoorlabs@gmail.com",
+  email: "hi@aqnoorlabs.online",
   priceRange: "₹₹",
   address: {
     "@type": "PostalAddress",
@@ -199,8 +199,10 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        {/* Google Tag Manager */}
+        <link rel="help" href="/llms.txt" type="text/markdown" />
+        <link rel="index" href="/sitemap.xml" type="application/xml" />
 
+        {/* Google Tag Manager */}
         <Script id="google-tag-manager" strategy="afterInteractive">
           {`
             (function(w,d,s,l,i){

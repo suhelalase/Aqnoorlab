@@ -82,17 +82,32 @@ export default function Contact() {
               </div>
 
               <div className="flex flex-col space-y-3.5 text-sm sm:text-base text-muted-foreground pt-2">
-                <div className="flex items-center gap-3">
-                  <Mail className="h-5 w-5 text-primary shrink-0" />
-                  <a href="mailto:aqnoorlabs@gmail.com" className="hover:text-primary font-semibold transition-colors break-all">
-                    aqnoorlabs@gmail.com
-                  </a>
+                <div className="flex items-start gap-3">
+                  <Mail className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                  <div className="flex flex-col">
+                    <span className="text-[10px] text-muted-foreground uppercase tracking-wider font-bold mb-0.5">General Inquiries</span>
+                    <a href="mailto:hi@aqnoorlabs.online" className="hover:text-primary font-semibold transition-colors break-all">
+                      hi@aqnoorlabs.online
+                    </a>
+                  </div>
                 </div>
-                <div className="flex items-center gap-3">
-                  <Phone className="h-5 w-5 text-primary shrink-0" />
-                  <a href="tel:+917387450332" className="hover:text-primary font-semibold transition-colors">
-                    +91 7387450332
-                  </a>
+                <div className="flex items-start gap-3">
+                  <Mail className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                  <div className="flex flex-col">
+                    <span className="text-[10px] text-muted-foreground uppercase tracking-wider font-bold mb-0.5">Support</span>
+                    <a href="mailto:support@aqnoorlabs.online" className="hover:text-primary font-semibold transition-colors break-all">
+                      support@aqnoorlabs.online
+                    </a>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Phone className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                  <div className="flex flex-col">
+                    <span className="text-[10px] text-muted-foreground uppercase tracking-wider font-bold mb-0.5">Phone &amp; WhatsApp</span>
+                    <a href="tel:+917387450332" className="hover:text-primary font-semibold transition-colors">
+                      +91 7387450332
+                    </a>
+                  </div>
                 </div>
               </div>
 

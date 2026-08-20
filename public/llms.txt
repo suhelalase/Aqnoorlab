@@ -1,0 +1,42 @@
+# AqNoorLabs
+
+AqNoorLabs is a custom software development agency specializing in building websites, web applications, mobile apps, desktop software, and AI automation solutions for businesses, particularly D2C brands, hospitality, and retail merchants in India.
+
+## Key Services
+
+- **Website Development**: Modern, high-performance, and SEO-friendly marketing websites.
+- **Web Applications**: Scalable SaaS platforms and custom web portals.
+- **Mobile Applications**: Android and iOS apps with smooth native user experiences.
+- **Desktop Software**: Offline-first, fast desktop applications.
+- **AI & Automation**: n8n workflows, WhatsApp business APIs, and AI chatbot integrations.
+
+## Main Projects
+
+- **MyMedicare** (Pharmacy POS & Inventory Platform): A cloud-based pharmacy billing, inventory, and management system.
+  - URL: https://mymedicare.aqnoorlabs.online/
+  - Category: Pharmacy POS / Web Application
+- **Biznexis** (All-in-One E-commerce & Seller Utility): A client-side optimized utility platform for Shopify, Amazon, and Meesho merchants to automate invoice parsing, barcode sheets, GST/DTC margin calculations, site performance audits, resume analysis, and SEO ad copies.
+  - URL: https://biznexis.aqnoorlabs.online/
+  - Category: Web Application / E-commerce Utility
+- **Hotel Diamond** (Hotel POS & QR Table Booking): A counter billing, table booking, and restaurant management POS system featuring QR code scanning and an AI chatbot.
+  - URL: https://hoteldiamond.aqnoorlabs.online/
+  - Category: Web Application / Hospitality POS
+- **Aura Fintech Mobile App**: A personal expense tracker with zero-sync delays.
+- **Chronos Developer CLI**: Server and database health monitoring dashboard.
+- **NexusAI Support Assistant**: 24/7 customer support chatbot reducing response times.
+- **PulseOps Cloud Monitor**: DevOps server monitoring and cost optimization tool.
+
+## Contact Details
+
+- **General Inquiries**: hi@aqnoorlabs.online
+- **Support**: support@aqnoorlabs.online
+- **WhatsApp/Phone**: +91 7387450332
+- **Website**: https://aqnoorlabs.online
+
+## Technology Stack
+
+- **Frontend**: Next.js, React, Tailwind CSS, Framer Motion
+- **Backend**: Node.js, Spring Boot, Express
+- **Databases**: PostgreSQL, MongoDB, SQLite
+- **DevOps**: Docker, AWS, Cloudflare, Vercel, GitHub
+- **Automation**: n8n, OpenAI API, WhatsApp Business API
