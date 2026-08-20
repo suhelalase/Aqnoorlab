@@ -1,0 +1,9 @@
+# Agent.txt - AI Crawler Directives
+# Instructions for AI agents, scraper bots, and LLM web crawlers.
+
+User-agent: *
+Allow: /
+
+# Resources for AI Agents:
+# - Full site summary in Markdown: https://aqnoorlabs.online/llms.txt
+# - Sitemap: https://aqnoorlabs.online/sitemap.xml

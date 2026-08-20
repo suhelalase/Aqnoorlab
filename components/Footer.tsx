@@ -57,12 +57,21 @@ export default function Footer() {
             </h4>
             <div className="space-y-3.5 text-base text-foreground/65 font-sans flex flex-col items-center md:items-start">
               <p className="flex flex-col items-center md:items-start">
-                <span className="text-xs uppercase tracking-wider text-foreground/45 font-semibold mb-0.5">Email</span>
+                <span className="text-xs uppercase tracking-wider text-foreground/45 font-semibold mb-0.5">General Inquiries</span>
                 <a
-                  href="mailto:aqnoorlabs@gmail.com"
+                  href="mailto:hi@aqnoorlabs.online"
                   className="text-brand hover:text-brand-deep font-semibold transition-colors duration-200"
                 >
-                  aqnoorlabs@gmail.com
+                  hi@aqnoorlabs.online
+                </a>
+              </p>
+              <p className="flex flex-col items-center md:items-start">
+                <span className="text-xs uppercase tracking-wider text-foreground/45 font-semibold mb-0.5">Support</span>
+                <a
+                  href="mailto:support@aqnoorlabs.online"
+                  className="text-brand hover:text-brand-deep font-semibold transition-colors duration-200"
+                >
+                  support@aqnoorlabs.online
                 </a>
               </p>
               <p className="flex flex-col items-center md:items-start">

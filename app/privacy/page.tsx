@@ -206,7 +206,8 @@ export default function PrivacyPage() {
                   </p>
                   <div className="bg-muted/40 border border-border/50 rounded-2xl p-6 space-y-2 mt-4 font-sans text-sm">
                     <p><strong>Designation:</strong> Data Grievance Officer, AqNoorLabs</p>
-                    <p><strong>Email Address:</strong> <a href="mailto:aqnoorlabs@gmail.com" className="text-brand hover:underline font-semibold">aqnoorlabs@gmail.com</a></p>
+                    <p><strong>Email Address:</strong> <a href="mailto:hi@aqnoorlabs.online" className="text-brand hover:underline font-semibold">hi@aqnoorlabs.online</a></p>
+                    <p><strong>Support Email:</strong> <a href="mailto:support@aqnoorlabs.online" className="text-brand hover:underline font-semibold">support@aqnoorlabs.online</a></p>
                     <p><strong>Official Phone &amp; WhatsApp:</strong> <a href="https://wa.me/917387450332" className="text-brand hover:underline font-semibold">+91 7387450332</a></p>
                     <p><strong>Address:</strong> Maharashtra, India</p>
                   </div>

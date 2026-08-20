@@ -15,6 +15,7 @@ interface CardData {
   tags: string[];
   year: string;
   highlight?: string;
+  link?: string;
 }
 
 type Tab = "engineering" | "n8n";
@@ -22,17 +23,42 @@ type Tab = "engineering" | "n8n";
 const ENGINEERING_CARDS: CardData[] = [
   {
     id: 1,
-    title: "Apex Analytics Dashboard",
+    title: "MyMedicare",
     description:
-      "A live dashboard that shows marketing performance in real time — no more waiting on weekly reports.",
+      "A futuristic cloud-based Pharmacy POS & inventory system with automated GST billing, real-time stock tracking, and expiry alerts.",
     category: "Web Application",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-    tags: ["Next.js", "Redis", "Node.js"],
-    year: "2024",
-    highlight: "Real-time data",
+    image: "/images/mymedicare.png",
+    tags: ["Next.js", "PostgreSQL", "Node.js"],
+    year: "2025",
+    highlight: "Pharmacy POS & Billing",
+    link: "https://mymedicare.aqnoorlabs.online/",
   },
   {
     id: 2,
+    title: "Biznexis",
+    description:
+      "All-in-one business tool: client-side optimized e-commerce utility automating invoice parsing, barcode sheets, and multi-layer GST/DTC margins.",
+    category: "Web Application",
+    image: "/images/biznexis.png",
+    tags: ["Next.js", "Tailwind CSS", "WebAssembly"],
+    year: "2025",
+    highlight: "Seller Automation",
+    link: "https://biznexis.aqnoorlabs.online/",
+  },
+  {
+    id: 3,
+    title: "Hotel Diamond",
+    description:
+      "Counter billing and QR-code table booking POS system with integrated AI chatbot and fully manageable control panel.",
+    category: "Web Application",
+    image: "/images/hoteldiamond.png",
+    tags: ["Next.js", "Node.js", "AI Chatbot"],
+    year: "2025",
+    highlight: "Hospitality POS",
+    link: "https://hoteldiamond.aqnoorlabs.online/",
+  },
+  {
+    id: 4,
     title: "Aura Fintech Mobile App",
     description:
       "A personal asset and expense tracker that helps users manage cash flow effortlessly with zero sync delays.",
@@ -43,7 +69,7 @@ const ENGINEERING_CARDS: CardData[] = [
     highlight: "Zero sync delays",
   },
   {
-    id: 3,
+    id: 5,
     title: "Chronos Developer CLI",
     description:
       "A desktop dashboard for monitoring server and database health — instant alerts whenever issues occur.",
@@ -54,7 +80,7 @@ const ENGINEERING_CARDS: CardData[] = [
     highlight: "Instant alerts",
   },
   {
-    id: 4,
+    id: 6,
     title: "NexusAI Support Assistant",
     description:
       "AI customer support chatbot that answers FAQs 24/7 — reducing support ticket response times by 60%.",
@@ -65,7 +91,7 @@ const ENGINEERING_CARDS: CardData[] = [
     highlight: "60% faster support",
   },
   {
-    id: 5,
+    id: 7,
     title: "PulseOps Cloud Monitor",
     description:
       "Automated server monitoring suite with cost optimization alerts — saved 30% on monthly hosting bills.",
@@ -90,8 +116,15 @@ const N8N_CARDS: CardData[] = N8N_PROJECTS.map((p, i) => ({
 function FeaturedCard({ card, large = false }: { card: CardData; large?: boolean }) {
   const [hovered, setHovered] = useState(false);
 
+  const handleClick = () => {
+    if (card.link) {
+      window.open(card.link, "_blank", "noopener,noreferrer");
+    }
+  };
+
   return (
     <motion.div
+      onClick={handleClick}
       className={`group relative overflow-hidden rounded-2xl border border-border/60 bg-card cursor-pointer ${
         large ? "h-[380px]" : "h-[300px]"
       }`}
