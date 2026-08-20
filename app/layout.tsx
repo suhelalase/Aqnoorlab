@@ -26,8 +26,8 @@ const SITE_URL = "https://aqnoorlabs.online";
 
 export const metadata: Metadata = {
   title: {
-    default: "aqnoorlabs — Software Development Agency for Indian Businesses",
-    template: "%s | aqnoorlabs",
+    default: "AqNoorLabs — Software Development Agency for Indian Businesses",
+    template: "%s | AqNoorLabs",
   },
   description:
     "AqNoorLabs is a software development company in India helping businesses build websites, mobile apps, desktop software, and AI automation tools that actually work — delivered on time, on budget.",
@@ -35,38 +35,45 @@ export const metadata: Metadata = {
   creator: "AqNoorLabs",
   publisher: "AqNoorLabs",
   metadataBase: new URL(SITE_URL),
+
   alternates: {
     canonical: SITE_URL,
   },
+
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
+
   openGraph: {
     type: "website",
     locale: "en_IN",
     url: SITE_URL,
-    title: "AqNoorLabs — Custom Websites, Apps & AI Systems for Indian Businesses",
+    title:
+      "AqNoorLabs — Custom Websites, Apps & AI Systems for Indian Businesses",
     description:
-      "Hire custom website, mobile app & AI automation developers in India. On-time delivery, milestone-based pricing, and guaranteed support.",
+      "Hire custom website, mobile app & AI automation developers in India. On-time delivery, milestone-based pricing, and reliable support.",
     siteName: "AqNoorLabs",
     images: [
       {
         url: "/logos/logo.png",
         width: 512,
         height: 512,
-        alt: "AqNoorLabs Logo - Software Development Company in India",
+        alt: "AqNoorLabs Logo",
       },
     ],
   },
+
   twitter: {
     card: "summary_large_image",
-    title: "AqNoorLabs — Custom Websites, Apps & AI Systems for Indian Businesses",
+    title:
+      "AqNoorLabs — Custom Websites, Apps & AI Systems for Indian Businesses",
     description:
-      "Hire custom website, mobile app & AI automation developers in India. On-time delivery, milestone-based pricing, and guaranteed support.",
+      "Hire custom website, mobile app & AI automation developers in India. On-time delivery, milestone-based pricing, and reliable support.",
     images: ["/logos/logo.png"],
   },
+
   robots: {
     index: true,
     follow: true,
@@ -77,10 +84,9 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+
   icons: {
-    icon: [
-      { url: "/logos/logo.png", type: "image/png" },
-    ],
+    icon: [{ url: "/logos/logo.png", type: "image/png" }],
     apple: "/logos/logo.png",
     shortcut: "/logos/logo.png",
   },
@@ -97,9 +103,9 @@ const jsonLdOrganization = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   name: "AqNoorLabs",
-  url: "https://aqnoorlabs.online",
-  logo: "https://aqnoorlabs.online/logos/logo.png",
-  image: "https://aqnoorlabs.online/logos/logo.png",
+  url: SITE_URL,
+  logo: `${SITE_URL}/logos/logo.png`,
+  image: `${SITE_URL}/logos/logo.png`,
   description:
     "AqNoorLabs is a custom website development company, mobile app agency, and AI automation partner helping Indian businesses build software that actually works.",
   telephone: "+91-7387450332",
@@ -110,12 +116,10 @@ const jsonLdOrganization = {
     addressCountry: "IN",
     addressRegion: "Maharashtra",
   },
-  areaServed: [
-    {
-      "@type": "Country",
-      name: "India",
-    },
-  ],
+  areaServed: {
+    "@type": "Country",
+    name: "India",
+  },
   sameAs: [],
   knowsAbout: [
     "Website Development",
@@ -145,7 +149,7 @@ const jsonLdFaq = {
       name: "Do you work with businesses outside metro cities?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes, absolutely. We work with founders, SMEs, D2C brands, and local businesses across India — whether you're in Bangalore, Mumbai, Delhi-NCR, or Tier-2 and Tier-3 cities.",
+        text: "Yes. We work with founders, SMEs, D2C brands, and local businesses across India, including Tier-2 and Tier-3 cities.",
       },
     },
     {
@@ -153,7 +157,7 @@ const jsonLdFaq = {
       name: "What are your payment terms?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We follow transparent, milestone-based pricing. Typically 30% advance to start, with remaining payments tied directly to clear project milestones so you only pay as work is delivered.",
+        text: "We follow transparent, milestone-based pricing. Typically 30% advance to start, with remaining payments tied to clear project milestones.",
       },
     },
     {
@@ -161,7 +165,7 @@ const jsonLdFaq = {
       name: "Will my app slow down or break as my business grows?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "No. We plan for scale from day one using optimized databases, fast hosting, and caching so your app handles growth smoothly without crashing or slowing down.",
+        text: "We plan for scale from day one using optimized databases, appropriate hosting, caching, and scalable architecture.",
       },
     },
     {
@@ -169,7 +173,7 @@ const jsonLdFaq = {
       name: "What is your approach to design and user experience?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We focus on creating fast, intuitive, and modern interfaces that your customers actually enjoy using, ensuring high conversion rates and effortless navigation across desktop and mobile.",
+        text: "We focus on fast, intuitive, modern interfaces with clear navigation and responsive experiences across desktop and mobile.",
       },
     },
     {
@@ -177,7 +181,7 @@ const jsonLdFaq = {
       name: "Do you provide post-launch maintenance and support?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. We offer ongoing maintenance, hosting setup, performance monitoring, and updates so your software continues running reliably long after launch.",
+        text: "Yes. We offer ongoing maintenance, hosting setup, performance monitoring, and software updates.",
       },
     },
   ],
@@ -217,17 +221,41 @@ export default function RootLayout({
         <Script
           id="json-ld-organization"
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrganization) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLdOrganization),
+          }}
         />
+
         <Script
           id="json-ld-faq"
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLdFaq),
+          }}
         />
       </head>
-      <body className="min-h-full flex flex-col selection:bg-brand/20 selection:text-brand" suppressHydrationWarning>
+
+      <body
+        className="min-h-full flex flex-col selection:bg-brand/20 selection:text-brand"
+        suppressHydrationWarning
+      >
         <SmoothScroll />
+
         {children}
+
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-N5LB6Z9D"
+            height="0"
+            width="0"
+            style={{
+              display: "none",
+              visibility: "hidden",
+            }}
+          />
+        </noscript>
+        {/* End Google Tag Manager (noscript) */}
       </body>
     </html>
   );

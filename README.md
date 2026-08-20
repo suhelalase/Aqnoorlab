@@ -8,11 +8,11 @@ This project is a Next.js (App Router) web application. This document details th
 Website Contact Form (Client Side)
           │
           ▼ [POST /api/contact] (Includes Honeypot + Timestamp)
-Validate & Sanitize Input (lib/validation.ts)
+Validate & Sanitize Input (lib/validation.ts) 
           │
           ▼ [Rate Limit Check (1 req / 30s per IP)] (lib/rateLimit.ts)
 Airtable Helper (lib/airtable.ts) (using process.env.AIRTABLE_*)
-          │
+          │ 
           ▼ [fetch() with 8s Timeout]
 Airtable REST API (Create Record)
           │
@@ -34,7 +34,7 @@ Success Status returned & UI cleared (ContactForm.tsx)
 
 Create a `.env.local` file in the root of the project (this file is ignored by Git in `.gitignore`):
 
-```env
+```env    
 AIRTABLE_TOKEN=your_airtable_personal_access_token_here
 AIRTABLE_BASE_ID=your_airtable_base_id_here
 AIRTABLE_TABLE_NAME=your_airtable_table_name_here
