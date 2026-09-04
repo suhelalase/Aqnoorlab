@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import TeamSection from "@/components/TeamSection";
-import ClientCursorFollower from "@/components/ClientCursorFollower";
-
 export const metadata: Metadata = {
   title: "Our Team — AqNoorLabs",
   description:
@@ -16,7 +14,6 @@ export const metadata: Metadata = {
 export default function TeamPage() {
   return (
     <>
-      <ClientCursorFollower />
       <Navbar />
       <main className="flex-1 w-full bg-background pt-24">
         <TeamSection />
