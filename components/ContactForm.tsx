@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -9,6 +9,8 @@ import { Loader2, CheckCircle2, XCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+
+import { TurnstileWidget, TurnstileWidgetRef } from "@/components/TurnstileWidget";
 
 const phoneRegex = /^\+?[0-9\s\-().]{7,20}$/;
 
@@ -49,6 +51,21 @@ export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [toasts, setToasts] = useState<Toast[]>([]);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const turnstileRef = useRef<TurnstileWidgetRef>(null);
+
+  const handleTurnstileVerify = useCallback((token: string) => {
+    setTurnstileToken(token);
+  }, []);
+
+  const handleTurnstileExpire = useCallback(() => {
+    setTurnstileToken(null);
+  }, []);
+
+  const handleTurnstileError = useCallback(() => {
+    setTurnstileToken(null);
+    addToast("error", "Verification failed. Try again.");
+  }, []);
 
   // Capture page mount time to detect instant automated bot submissions
   useEffect(() => {
@@ -72,6 +89,7 @@ export function ContactForm() {
     handleSubmit,
     formState: { errors },
     reset,
+    watch,
   } = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
@@ -83,13 +101,90 @@ export function ContactForm() {
     },
   });
 
+  const formValues = watch();
+  const formDataRef = useRef<ContactFormValues>(formValues);
+  const hasSubmittedRef = useRef(false);
+  const lastSentDataRef = useRef<string>("");
+
+  useEffect(() => {
+    formDataRef.current = formValues;
+  }, [formValues]);
+
+  // Lead recovery: capture entered data if user closes tab or navigates away before submitting
+  useEffect(() => {
+    const sendAbandonedData = () => {
+      if (hasSubmittedRef.current) return;
+      const current = formDataRef.current;
+      if (!current) return;
+
+      const phoneDigits = (current.phone || "").replace(/\D/g, "");
+      const hasEmail = (current.email || "").includes("@") && (current.email || "").length >= 5;
+      const hasPhone = phoneDigits.length >= 5;
+
+      // Only capture if at least email or phone number was typed in
+      if (!hasEmail && !hasPhone) return;
+
+      const payloadString = JSON.stringify({
+        name: current.name,
+        email: current.email,
+        phone: current.phone,
+        projectDetails: current.projectDetails,
+        honeypot: current.honeypot,
+      });
+
+      if (lastSentDataRef.current === payloadString) return;
+      lastSentDataRef.current = payloadString;
+
+      const endpoint = "/api/contact/abandoned";
+      if (typeof navigator !== "undefined" && navigator.sendBeacon) {
+        const blob = new Blob([payloadString], { type: "application/json" });
+        navigator.sendBeacon(endpoint, blob);
+      } else {
+        fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: payloadString,
+          keepalive: true,
+        }).catch(() => {});
+      }
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "hidden") {
+        sendAbandonedData();
+      }
+    };
+
+    const handlePageHide = () => {
+      sendAbandonedData();
+    };
+
+    window.addEventListener("pagehide", handlePageHide);
+    window.addEventListener("beforeunload", handlePageHide);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      window.removeEventListener("pagehide", handlePageHide);
+      window.removeEventListener("beforeunload", handlePageHide);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, []);
+
   const onSubmit = async (data: ContactFormValues) => {
+    const hasSiteKey = Boolean(process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY);
+
+    if (hasSiteKey && !turnstileToken) {
+      addToast("error", "Complete the security check.");
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
       const payload = {
         ...data,
         timestamp: mountedTime,
+        turnstileToken,
       };
 
       const response = await fetch("/api/contact", {
@@ -103,18 +198,23 @@ export function ContactForm() {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.message || "Failed to submit request.");
+        throw new Error(result.message || "Verification failed. Try again.");
       }
 
       // Success sequence
+      hasSubmittedRef.current = true;
       setIsSuccess(true);
       addToast("success", "Thank you! We'll contact you shortly.");
       reset();
+      turnstileRef.current?.reset();
+      setTurnstileToken(null);
       
       // Update mount time for any subsequent submits
       setMountedTime(Date.now());
     } catch (err: any) {
-      addToast("error", err.message || "An unexpected error occurred. Please try again.");
+      turnstileRef.current?.reset();
+      setTurnstileToken(null);
+      addToast("error", err.message || "Verification failed. Try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -253,17 +353,33 @@ export function ContactForm() {
               )}
             </div>
 
+            {/* Cloudflare Turnstile CAPTCHA (Managed mode) */}
+            <div className="py-1 flex justify-center w-full">
+              <TurnstileWidget
+                ref={turnstileRef}
+                onVerify={handleTurnstileVerify}
+                onExpire={handleTurnstileExpire}
+                onError={handleTurnstileError}
+              />
+            </div>
+
             {/* Submit Button */}
             <Button
               type="submit"
-              disabled={isSubmitting}
-              className="w-full h-[52px] md:h-12 rounded-xl font-semibold cursor-pointer shadow-md mt-2 flex items-center justify-center gap-2 text-sm sm:text-base"
+              disabled={isSubmitting || (Boolean(process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY) && !turnstileToken)}
+              className={`w-full h-[52px] md:h-12 rounded-xl font-semibold shadow-md mt-2 flex items-center justify-center gap-2 text-sm sm:text-base transition-all duration-200 ${
+                isSubmitting || (Boolean(process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY) && !turnstileToken)
+                  ? "opacity-60 cursor-not-allowed"
+                  : "cursor-pointer hover:opacity-95 active:scale-[0.99]"
+              }`}
             >
               {isSubmitting ? (
                 <>
                   <Loader2 className="h-4 w-4 sm:h-5 sm:w-5 animate-spin" />
                   <span>Submitting Request...</span>
                 </>
+              ) : Boolean(process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY) && !turnstileToken ? (
+                "Complete Security Check to Submit"
               ) : (
                 "Get a Free Quote"
               )}

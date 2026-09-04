@@ -27,8 +27,6 @@ const Footer = dynamic(() => import("@/components/Footer"), {
   ssr: true,
 });
 
-import ClientCursorFollower from "@/components/ClientCursorFollower";
-
 export const metadata: Metadata = {
   title: "aqnoorlabs — Software Development Agency for Indian Businesses",
   description:
@@ -41,7 +39,6 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <ClientCursorFollower />
       <Navbar />
       <main className="flex-1 w-full bg-background">
         <HeroBlock />

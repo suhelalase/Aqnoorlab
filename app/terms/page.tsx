@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import ClientCursorFollower from "@/components/ClientCursorFollower";
-
 export const metadata: Metadata = {
   title: "Terms and Conditions | AqNoorLabs",
   description: "Terms and Conditions of Service for AqNoorLabs. Read about our freelance and agency contracting, payment milestones, invoicing, IP transfer, and compliance under Indian laws.",
@@ -14,7 +12,6 @@ export const metadata: Metadata = {
 export default function TermsPage() {
   return (
     <>
-      <ClientCursorFollower />
       <Navbar />
       <main className="flex-1 w-full bg-background pt-32 pb-24">
         <div className="max-w-[1280px] w-full md:w-[90%] mx-auto px-5 md:px-0">
