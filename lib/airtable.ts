@@ -60,9 +60,9 @@ export async function createAirtableRecord(
 
     const result: AirtableCreateResponse = await response.json();
     return result;
-  } catch (error: any) {
+  } catch (error: unknown) {
     clearTimeout(timeoutId);
-    if (error.name === "AbortError") {
+    if (error instanceof Error && error.name === "AbortError") {
       throw new Error("Connection to Airtable timed out.");
     }
     throw error;

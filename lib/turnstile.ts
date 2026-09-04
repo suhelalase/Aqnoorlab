@@ -76,8 +76,9 @@ export async function verifyTurnstileToken(
     return {
       success: true,
     };
-  } catch (error: any) {
-    console.error("[Turnstile Exception]", error?.message || error);
+  } catch (error: unknown) {
+    const msg = error instanceof Error ? error.message : String(error);
+    console.error("[Turnstile Exception]", msg);
     return {
       success: false,
       message: "Verification failed. Try again.",

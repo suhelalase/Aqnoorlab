@@ -10,7 +10,7 @@ declare global {
         options: {
           sitekey: string;
           callback?: (token: string) => void;
-          "error-callback"?: (error?: any) => void;
+          "error-callback"?: (error?: unknown) => void;
           "expired-callback"?: () => void;
           theme?: "light" | "dark" | "auto";
           size?: "normal" | "compact" | "flexible";
@@ -135,7 +135,7 @@ export const TurnstileWidget = forwardRef<TurnstileWidgetRef, TurnstileWidgetPro
           widgetIdRef.current = null;
         }
       };
-    }, [siteKey]);
+    }, [siteKey, explicitTheme]);
 
     if (!siteKey) {
       return null;

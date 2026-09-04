@@ -8,11 +8,11 @@ import { sanitizeInput, stripCRLF } from "@/lib/validation";
  */
 export async function POST(request: NextRequest) {
   try {
-    let rawBody: any;
+    let rawBody: Record<string, unknown> = {};
     const contentType = request.headers.get("content-type") || "";
 
     if (contentType.includes("application/json")) {
-      rawBody = await request.json();
+      rawBody = (await request.json()) as Record<string, unknown>;
     } else {
       const text = await request.text();
       try {
@@ -30,10 +30,10 @@ export async function POST(request: NextRequest) {
     }
 
     // Sanitize values
-    const cleanName = stripCRLF(sanitizeInput(name || ""));
-    const cleanEmail = stripCRLF(sanitizeInput(email || ""));
-    const cleanPhone = stripCRLF(sanitizeInput(phone || ""));
-    const cleanDetails = sanitizeInput(projectDetails || "");
+    const cleanName = stripCRLF(sanitizeInput(typeof name === "string" ? name : ""));
+    const cleanEmail = stripCRLF(sanitizeInput(typeof email === "string" ? email : ""));
+    const cleanPhone = stripCRLF(sanitizeInput(typeof phone === "string" ? phone : ""));
+    const cleanDetails = sanitizeInput(typeof projectDetails === "string" ? projectDetails : "");
 
     // Only process if user provided at least a phone or email
     const hasPhone = cleanPhone.replace(/\D/g, "").length >= 5;
@@ -59,8 +59,9 @@ export async function POST(request: NextRequest) {
     console.info(`[Lead Recovery] Captured abandoned form submission for: ${cleanEmail || cleanPhone || cleanName}`);
 
     return NextResponse.json({ success: true }, { status: 200 });
-  } catch (error: any) {
-    console.error("[Lead Recovery Error]", error?.message || error);
+  } catch (error: unknown) {
+    const msg = error instanceof Error ? error.message : "Internal server error";
+    console.error("[Lead Recovery Error]", msg);
     return NextResponse.json({ message: "Internal server error" }, { status: 500 });
   }
 }

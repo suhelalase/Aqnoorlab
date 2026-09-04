@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { NAV_LINKS } from "@/lib/constants";
 
 export default function Footer() {
@@ -9,7 +10,7 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-4">
-            <a href="/" className="flex items-center space-x-3.5 group">
+            <Link href="/" className="flex items-center space-x-3.5 group">
               <div className="relative w-14 h-14 rounded-2xl bg-white border border-border overflow-hidden shadow-md flex items-center justify-center transition-transform duration-300 group-hover:scale-105 p-1">
                 <Image
                   src="/images/logo.png"
@@ -22,7 +23,7 @@ export default function Footer() {
               <span className="font-display font-bold text-2xl md:text-3xl text-foreground tracking-tight">
                 AqNoor<span className="text-brand">Labs</span>
               </span>
-            </a>
+            </Link>
             <p className="text-base text-foreground/70 font-sans max-w-sm leading-relaxed">
               AqNoorLabs is a software development company helping Indian businesses build websites, apps, and AI tools that actually work.
             </p>
@@ -93,8 +94,8 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between pt-8 text-xs text-foreground/45 font-sans space-y-4 md:space-y-0 text-center md:text-left">
           <p>© 2026 AqNoorLabs. All rights reserved.</p>
           <div className="flex space-x-6">
-            <a href="/privacy" className="hover:text-brand transition-colors">Privacy Policy</a>
-            <a href="/terms" className="hover:text-brand transition-colors">Terms of Service</a>
+            <Link href="/privacy" className="hover:text-brand transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-brand transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>

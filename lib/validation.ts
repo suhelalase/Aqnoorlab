@@ -34,7 +34,7 @@ export interface ValidationError {
   message: string;
 }
 
-export function validateContactRequest(data: any): {
+export function validateContactRequest(data: Record<string, unknown>): {
   isValid: boolean;
   errors: ValidationError[];
   validatedData?: ContactSubmitRequest;
@@ -57,10 +57,10 @@ export function validateContactRequest(data: any): {
   }
 
   // Trim and Sanitize inputs
-  const name = stripCRLF(sanitizeInput(data.name));
-  const email = stripCRLF(sanitizeInput(data.email));
-  const phone = stripCRLF(sanitizeInput(data.phone));
-  const projectDetails = sanitizeInput(data.projectDetails); // Multiline is allowed for details, but HTML tags are escaped.
+  const name = stripCRLF(sanitizeInput(String(data.name || "")));
+  const email = stripCRLF(sanitizeInput(String(data.email || "")));
+  const phone = stripCRLF(sanitizeInput(String(data.phone || "")));
+  const projectDetails = sanitizeInput(String(data.projectDetails || ""));
 
   // Validation Boundaries
   if (name.length < 2 || name.length > 80) {

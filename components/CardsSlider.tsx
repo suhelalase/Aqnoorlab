@@ -2,8 +2,8 @@
 
 import { Badge } from "@/components/ui/badge";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, ExternalLink, Zap, Cpu, ArrowUpRight } from "lucide-react";
 import { useState } from "react";
+import { ExternalLink, Zap, Cpu, ArrowUpRight } from "lucide-react";
 import { N8N_PROJECTS } from "@/lib/constants";
 
 interface CardData {
@@ -114,8 +114,6 @@ const N8N_CARDS: CardData[] = N8N_PROJECTS.map((p, i) => ({
 }));
 
 function FeaturedCard({ card, large = false }: { card: CardData; large?: boolean }) {
-  const [hovered, setHovered] = useState(false);
-
   const handleClick = () => {
     if (card.link) {
       window.open(card.link, "_blank", "noopener,noreferrer");
@@ -130,8 +128,6 @@ function FeaturedCard({ card, large = false }: { card: CardData; large?: boolean
       }`}
       whileHover={{ y: -4 }}
       transition={{ duration: 0.25, ease: "easeOut" }}
-      onHoverStart={() => setHovered(true)}
-      onHoverEnd={() => setHovered(false)}
     >
       {/* Background image */}
       <div className="absolute inset-0">

@@ -16,9 +16,9 @@ export async function POST(request: NextRequest) {
 
   try {
     // 1. Parse request payload safely
-    let body: any;
+    let body: Record<string, unknown> = {};
     try {
-      body = await request.json();
+      body = (await request.json()) as Record<string, unknown>;
     } catch {
       console.warn(`[${serverTimestamp}] [ReqID: ${requestId}] status=failed reason="invalid_json"`);
       return NextResponse.json(
@@ -33,7 +33,8 @@ export async function POST(request: NextRequest) {
     const forwardedFor = request.headers.get("x-forwarded-for");
     const clientIp = forwardedFor ? forwardedFor.split(",")[0].trim() : request.headers.get("x-real-ip");
 
-    const turnstileResult = await verifyTurnstileToken(turnstileToken, clientIp);
+    const tokenString = typeof turnstileToken === "string" ? turnstileToken : undefined;
+    const turnstileResult = await verifyTurnstileToken(tokenString, clientIp);
     if (!turnstileResult.success) {
       console.warn(
         `[${serverTimestamp}] [ReqID: ${requestId}] status=failed reason="turnstile_verification_failed" errors=${JSON.stringify(
@@ -113,12 +114,11 @@ export async function POST(request: NextRequest) {
       },
       { status: 200 }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : "Unknown error";
     // Secure logging: ensure no variables/tokens/user data leak in log messages
     console.error(
-      `[${serverTimestamp}] [ReqID: ${requestId}] status=failed reason="internal_server_error" message="${
-        error?.message || "Unknown error"
-      }"`
+      `[${serverTimestamp}] [ReqID: ${requestId}] status=failed reason="internal_server_error" message="${errorMsg}"`
     );
 
     // Conceal actual database/Airtable API errors from the client

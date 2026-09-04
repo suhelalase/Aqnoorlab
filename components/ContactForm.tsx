@@ -54,6 +54,23 @@ export function ContactForm() {
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const turnstileRef = useRef<TurnstileWidgetRef>(null);
 
+  // Capture page mount time to detect instant automated bot submissions
+  useEffect(() => {
+    setMountedTime(Date.now());
+  }, []);
+
+  const addToast = useCallback((type: "success" | "error", message: string) => {
+    const id = Math.random().toString(36).substring(2, 9);
+    setToasts((prev) => [...prev, { id, type, message }]);
+    setTimeout(() => {
+      setToasts((prev) => prev.filter((t) => t.id !== id));
+    }, 4000);
+  }, []);
+
+  const removeToast = (id: string) => {
+    setToasts((prev) => prev.filter((t) => t.id !== id));
+  };
+
   const handleTurnstileVerify = useCallback((token: string) => {
     setTurnstileToken(token);
   }, []);
@@ -65,24 +82,7 @@ export function ContactForm() {
   const handleTurnstileError = useCallback(() => {
     setTurnstileToken(null);
     addToast("error", "Verification failed. Try again.");
-  }, []);
-
-  // Capture page mount time to detect instant automated bot submissions
-  useEffect(() => {
-    setMountedTime(Date.now());
-  }, []);
-
-  const addToast = (type: "success" | "error", message: string) => {
-    const id = Math.random().toString(36).substring(2, 9);
-    setToasts((prev) => [...prev, { id, type, message }]);
-    setTimeout(() => {
-      removeToast(id);
-    }, 4000);
-  };
-
-  const removeToast = (id: string) => {
-    setToasts((prev) => prev.filter((t) => t.id !== id));
-  };
+  }, [addToast]);
 
   const {
     register,
@@ -211,10 +211,11 @@ export function ContactForm() {
       
       // Update mount time for any subsequent submits
       setMountedTime(Date.now());
-    } catch (err: any) {
+    } catch (err: unknown) {
       turnstileRef.current?.reset();
       setTurnstileToken(null);
-      addToast("error", err.message || "Verification failed. Try again.");
+      const errMsg = err instanceof Error ? err.message : "Verification failed. Try again.";
+      addToast("error", errMsg);
     } finally {
       setIsSubmitting(false);
     }
@@ -402,7 +403,7 @@ export function ContactForm() {
                 Request Sent Successfully!
               </h3>
               <p className="text-xs sm:text-sm text-muted-foreground max-w-sm leading-relaxed font-medium">
-                Thank you! We have successfully connected. We'll analyze your requirements and reply within a few hours.
+                Thank you! We have successfully connected. We&apos;ll analyze your requirements and reply within a few hours.
               </p>
             </div>
 
