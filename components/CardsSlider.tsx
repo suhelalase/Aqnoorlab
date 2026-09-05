@@ -116,7 +116,15 @@ const N8N_CARDS: CardData[] = N8N_PROJECTS.map((p, i) => ({
   year: "2025",
 }));
 
-function FeaturedCard({ card, large = false }: { card: CardData; large?: boolean }) {
+function FeaturedCard({
+  card,
+  large = false,
+  onOpenLms,
+}: {
+  card: CardData;
+  large?: boolean;
+  onOpenLms?: () => void;
+}) {
   const handleClick = () => {
     if (card.isLmsPreview) {
       if (onOpenLms) onOpenLms();
