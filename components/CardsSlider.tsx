@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { ExternalLink, Zap, Cpu, ArrowUpRight } from "lucide-react";
 import { N8N_PROJECTS } from "@/lib/constants";
+import { RocketLmsShowcase } from "@/components/RocketLmsShowcase";
 
 interface CardData {
   id: number;
@@ -16,6 +17,7 @@ interface CardData {
   year: string;
   highlight?: string;
   link?: string;
+  isLmsPreview?: boolean;
 }
 
 type Tab = "engineering" | "n8n";
@@ -23,6 +25,18 @@ type Tab = "engineering" | "n8n";
 const ENGINEERING_CARDS: CardData[] = [
   {
     id: 1,
+    title: "Rocket LMS Platform",
+    description:
+      "All-in-one Learning Management System with course creation, live video classes, instructor payouts, and automated certificates.",
+    category: "Web Application",
+    image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&q=80",
+    tags: ["Next.js", "Tailwind CSS", "LMS"],
+    year: "2025",
+    highlight: "Interactive Desktop Preview",
+    isLmsPreview: true,
+  },
+  {
+    id: 2,
     title: "MyMedicare",
     description:
       "A futuristic cloud-based Pharmacy POS & inventory system with automated GST billing, real-time stock tracking, and expiry alerts.",
@@ -34,7 +48,7 @@ const ENGINEERING_CARDS: CardData[] = [
     link: "https://mymedicare.aqnoorlabs.online/",
   },
   {
-    id: 2,
+    id: 3,
     title: "Biznexis",
     description:
       "All-in-one business tool: client-side optimized e-commerce utility automating invoice parsing, barcode sheets, and multi-layer GST/DTC margins.",
@@ -46,7 +60,7 @@ const ENGINEERING_CARDS: CardData[] = [
     link: "https://biznexis.aqnoorlabs.online/",
   },
   {
-    id: 3,
+    id: 4,
     title: "Hotel Diamond",
     description:
       "Counter billing and QR-code table booking POS system with integrated AI chatbot and fully manageable control panel.",
@@ -58,7 +72,7 @@ const ENGINEERING_CARDS: CardData[] = [
     link: "https://hoteldiamond.aqnoorlabs.online/",
   },
   {
-    id: 4,
+    id: 5,
     title: "Aura Fintech Mobile App",
     description:
       "A personal asset and expense tracker that helps users manage cash flow effortlessly with zero sync delays.",
@@ -69,7 +83,7 @@ const ENGINEERING_CARDS: CardData[] = [
     highlight: "Zero sync delays",
   },
   {
-    id: 5,
+    id: 6,
     title: "Chronos Developer CLI",
     description:
       "A desktop dashboard for monitoring server and database health — instant alerts whenever issues occur.",
@@ -80,7 +94,7 @@ const ENGINEERING_CARDS: CardData[] = [
     highlight: "Instant alerts",
   },
   {
-    id: 6,
+    id: 7,
     title: "NexusAI Support Assistant",
     description:
       "AI customer support chatbot that answers FAQs 24/7 — reducing support ticket response times by 60%.",
@@ -89,17 +103,6 @@ const ENGINEERING_CARDS: CardData[] = [
     tags: ["Python", "Cloudflare", "Vector DB"],
     year: "2025",
     highlight: "60% faster support",
-  },
-  {
-    id: 7,
-    title: "PulseOps Cloud Monitor",
-    description:
-      "Automated server monitoring suite with cost optimization alerts — saved 30% on monthly hosting bills.",
-    category: "DevOps",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
-    tags: ["AWS", "Kubernetes", "Grafana"],
-    year: "2025",
-    highlight: "30% cost savings",
   },
 ];
 
@@ -115,7 +118,9 @@ const N8N_CARDS: CardData[] = N8N_PROJECTS.map((p, i) => ({
 
 function FeaturedCard({ card, large = false }: { card: CardData; large?: boolean }) {
   const handleClick = () => {
-    if (card.link) {
+    if (card.isLmsPreview) {
+      if (onOpenLms) onOpenLms();
+    } else if (card.link) {
       window.open(card.link, "_blank", "noopener,noreferrer");
     }
   };
@@ -159,9 +164,7 @@ function FeaturedCard({ card, large = false }: { card: CardData; large?: boolean
       {/* Content at bottom */}
       <div className="absolute bottom-0 left-0 right-0 z-10 p-5">
         {card.highlight && (
-          <span
-            className="inline-flex items-center gap-1 mb-2 rounded-full bg-primary/95 px-2.5 py-0.5 text-[10px] font-bold text-white uppercase tracking-wider transition-all duration-300 transform md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0"
-          >
+          <span className="inline-flex items-center gap-1 mb-2 rounded-full bg-primary/95 px-2.5 py-0.5 text-[10px] font-bold text-white uppercase tracking-wider transition-all duration-300 transform md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0">
             ✦ {card.highlight}
           </span>
         )}
@@ -187,11 +190,18 @@ function FeaturedCard({ card, large = false }: { card: CardData; large?: boolean
               </span>
             )}
           </div>
-          <div
-            className="flex items-center gap-1 text-xs font-bold text-white bg-primary rounded-full px-3 py-1.5 transition-all duration-300 transform md:opacity-0 md:scale-90 md:group-hover:opacity-100 md:group-hover:scale-100"
-          >
-            <ExternalLink className="w-3 h-3" />
-            View
+          <div className="flex items-center gap-1 text-xs font-bold text-white bg-primary rounded-full px-3 py-1.5 transition-all duration-300 transform md:opacity-0 md:scale-90 md:group-hover:opacity-100 md:group-hover:scale-100">
+            {card.isLmsPreview ? (
+              <>
+                <Monitor className="w-3 h-3" />
+                Preview UI
+              </>
+            ) : (
+              <>
+                <ExternalLink className="w-3 h-3" />
+                View
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -201,6 +211,7 @@ function FeaturedCard({ card, large = false }: { card: CardData; large?: boolean
 
 export function CardsSlider() {
   const [activeTab, setActiveTab] = useState<Tab>("engineering");
+  const [isLmsModalOpen, setIsLmsModalOpen] = useState(false);
 
   const cards = activeTab === "engineering" ? ENGINEERING_CARDS : N8N_CARDS;
 
@@ -265,18 +276,65 @@ export function CardsSlider() {
             {/* Featured large card - spans 2 cols on lg */}
             {featured && (
               <div className="sm:col-span-2 lg:col-span-2">
-                <FeaturedCard card={featured} large />
+                <FeaturedCard
+                  card={featured}
+                  large
+                  onOpenLms={() => setIsLmsModalOpen(true)}
+                />
               </div>
             )}
 
             {/* Rest of cards */}
             {rest.map((card) => (
               <div key={card.id}>
-                <FeaturedCard card={card} />
+                <FeaturedCard
+                  card={card}
+                  onOpenLms={() => setIsLmsModalOpen(true)}
+                />
               </div>
             ))}
           </div>
         </motion.div>
+      </AnimatePresence>
+
+      {/* Desktop Laptop Screen Preview Backdrop Modal */}
+      <AnimatePresence>
+        {isLmsModalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md p-4 sm:p-6 overflow-y-auto"
+            onClick={() => setIsLmsModalOpen(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative w-full max-w-5xl my-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Top Modal Header */}
+              <div className="flex items-center justify-between px-4 py-2 mb-2 text-white">
+                <div className="flex items-center gap-2 text-sm font-semibold text-white/90">
+                  <Monitor className="w-4 h-4 text-primary" />
+                  <span>Rocket LMS Platform Preview</span>
+                </div>
+                <button
+                  onClick={() => setIsLmsModalOpen(false)}
+                  className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+                >
+                  <X className="w-4 h-4" />
+                  Close
+                </button>
+              </div>
+
+              {/* Desktop Laptop Mockup Screen Component */}
+              <RocketLmsShowcase onClose={() => setIsLmsModalOpen(false)} />
+            </motion.div>
+          </motion.div>
+        )}
       </AnimatePresence>
 
       {/* Short CTA Banner */}

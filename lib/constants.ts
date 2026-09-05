@@ -146,6 +146,13 @@ export const WHY_US = [
 
 export const PROJECTS = [
   {
+    title: "Rocket LMS Platform",
+    description: "Complete Learning Management System with course builder, live classes, video player, instructor payout system, and automated certificates.",
+    image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&q=80",
+    tags: ["PHP", "Laravel", "MySQL", "Tailwind CSS"],
+    category: "LMS Web Platform",
+  },
+  {
     title: "Fabrika D2C Storefront",
     description: "Fast Next.js online store for a D2C fashion brand with UPI payments, WhatsApp order tracking, and custom checkout — boosted mobile sales by 45%.",
     image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80",
