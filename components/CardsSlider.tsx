@@ -2,8 +2,8 @@
 
 import { Badge } from "@/components/ui/badge";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Zap, Cpu, ArrowUpRight, X, Monitor } from "lucide-react";
 import { useState } from "react";
+import { ExternalLink, Zap, Cpu, ArrowUpRight } from "lucide-react";
 import { N8N_PROJECTS } from "@/lib/constants";
 import { RocketLmsShowcase } from "@/components/RocketLmsShowcase";
 
@@ -116,17 +116,7 @@ const N8N_CARDS: CardData[] = N8N_PROJECTS.map((p, i) => ({
   year: "2025",
 }));
 
-function FeaturedCard({
-  card,
-  large = false,
-  onOpenLms,
-}: {
-  card: CardData;
-  large?: boolean;
-  onOpenLms?: () => void;
-}) {
-  const [, setHovered] = useState(false);
-
+function FeaturedCard({ card, large = false }: { card: CardData; large?: boolean }) {
   const handleClick = () => {
     if (card.isLmsPreview) {
       if (onOpenLms) onOpenLms();
@@ -143,8 +133,6 @@ function FeaturedCard({
       }`}
       whileHover={{ y: -4 }}
       transition={{ duration: 0.25, ease: "easeOut" }}
-      onHoverStart={() => setHovered(true)}
-      onHoverEnd={() => setHovered(false)}
     >
       {/* Background image */}
       <div className="absolute inset-0">

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, Phone, ShieldCheck, Cpu, MessageSquare } from "lucide-react";
+import { Mail, Phone, ShieldCheck, Cpu, MessageSquare, ArrowUpRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { ContactForm } from "@/components/ContactForm";
 
@@ -64,22 +64,42 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Quick Contact Details & Indian Trust Badges */}
-            <div className="space-y-6 border-t border-border/40 pt-6 mt-6 md:mt-0">
-              <div className="flex flex-wrap items-center gap-3">
-                <a
-                  href="https://wa.me/917387450332"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 hover:bg-emerald-500/20 text-xs sm:text-sm font-semibold transition-colors"
-                >
-                  <MessageSquare className="h-4 w-4" />
-                  <span>Chat on WhatsApp</span>
-                </a>
-                <span className="text-xs sm:text-sm text-muted-foreground font-medium bg-secondary/80 px-3 py-2 rounded-full border border-border/40">
-                  GST Invoices Provided
-                </span>
-              </div>
+            {/* Quick Contact Details & WhatsApp Callout */}
+            <div className="space-y-5 border-t border-border/40 pt-6 mt-6 md:mt-0">
+              {/* Enhanced WhatsApp Button */}
+              <a
+                href="https://wa.me/917387450332?text=Hi%20AqNoorLabs%2C%20I%20would%20like%20to%20discuss%20a%20project."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-gradient-to-r from-emerald-500/10 via-emerald-500/5 to-transparent border border-emerald-500/25 hover:border-emerald-500/50 transition-all duration-300 shadow-sm hover:shadow-lg hover:shadow-emerald-500/10 hover:scale-[1.01] active:scale-[0.99] cursor-pointer"
+              >
+                <div className="flex items-center gap-3.5">
+                  <div className="relative flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-xl bg-emerald-500 text-white shadow-md shadow-emerald-500/30 group-hover:scale-105 transition-transform duration-300">
+                    <MessageSquare className="h-5 w-5 fill-white/20" />
+                    <span className="absolute -top-1 -right-1 flex h-3 w-3">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-400 border-2 border-background"></span>
+                    </span>
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm sm:text-base font-bold text-foreground group-hover:text-emerald-500 transition-colors">
+                        Chat on WhatsApp
+                      </span>
+                      <span className="text-[10px] uppercase font-extrabold tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+                        Online
+                      </span>
+                    </div>
+                    <p className="text-xs text-muted-foreground font-medium">
+                      Fast response • Direct developer contact
+                    </p>
+                  </div>
+                </div>
+
+                <div className="hidden sm:flex items-center justify-center h-8 w-8 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300">
+                  <ArrowUpRight className="h-4 w-4" />
+                </div>
+              </a>
 
               <div className="flex flex-col space-y-3.5 text-sm sm:text-base text-muted-foreground pt-2">
                 <div className="flex items-start gap-3">
@@ -110,10 +130,6 @@ export default function Contact() {
                   </div>
                 </div>
               </div>
-
-              <p className="text-xs sm:text-sm text-muted-foreground italic font-medium pt-1">
-                💬 We speak English &amp; Hindi (हिंदी में भी चर्चा कर सकते हैं)
-              </p>
             </div>
           </motion.div>
 

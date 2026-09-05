@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { NAV_LINKS } from "@/lib/constants";
 import Button from "./Button";
@@ -42,7 +43,7 @@ export default function Navbar() {
       >
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 flex items-center justify-between">
           {/* Logo */}
-          <a href="/" className="flex items-center space-x-2 md:space-x-3.5 group">
+          <Link href="/" className="flex items-center space-x-2 md:space-x-3.5 group">
             <div className="relative w-11 h-11 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-white border border-border overflow-hidden shadow-md flex items-center justify-center transition-transform duration-300 group-hover:scale-105 p-1">
               <Image
                 src="/images/logo.png"
@@ -56,7 +57,7 @@ export default function Navbar() {
             <span className="font-display font-extrabold text-xl md:text-3xl text-foreground tracking-tight">
               AqNoor<span className="text-brand">Labs</span>
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation Links */}
           <nav className="hidden md:flex items-center space-x-5 lg:space-x-9">

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { rateLimit } from "@/lib/rateLimit";
 import { validateContactRequest } from "@/lib/validation";
 import { createAirtableRecord } from "@/lib/airtable";
+import { verifyTurnstileToken } from "@/lib/turnstile";
 
 /**
  * Generates a non-sensitive unique ID for request correlation.
@@ -15,31 +15,10 @@ export async function POST(request: NextRequest) {
   const serverTimestamp = new Date().toISOString();
 
   try {
-    // 1. Check Rate Limit
-    const limitResult = rateLimit(request);
-    if (limitResult.isLimited) {
-      // Secure logging: only metadata, request ID, and success/failure indicator
-      console.warn(
-        `[${serverTimestamp}] [ReqID: ${requestId}] status=failed reason="rate_limited" retry_after=${limitResult.retryAfter}s`
-      );
-      
-      return NextResponse.json(
-        {
-          message: "Too many requests. Please wait 30 seconds before submitting again.",
-        },
-        {
-          status: 429,
-          headers: {
-            "Retry-After": String(limitResult.retryAfter),
-          },
-        }
-      );
-    }
-
-    // 2. Parse request payload safely
-    let body: any;
+    // 1. Parse request payload safely
+    let body: Record<string, unknown> = {};
     try {
-      body = await request.json();
+      body = (await request.json()) as Record<string, unknown>;
     } catch {
       console.warn(`[${serverTimestamp}] [ReqID: ${requestId}] status=failed reason="invalid_json"`);
       return NextResponse.json(
@@ -48,7 +27,27 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { name, email, phone, projectDetails, honeypot, timestamp } = body;
+    const { name, email, phone, projectDetails, honeypot, timestamp, turnstileToken } = body;
+
+    // 2. Cloudflare Turnstile Verification (Server-Side)
+    const forwardedFor = request.headers.get("x-forwarded-for");
+    const clientIp = forwardedFor ? forwardedFor.split(",")[0].trim() : request.headers.get("x-real-ip");
+
+    const tokenString = typeof turnstileToken === "string" ? turnstileToken : undefined;
+    const turnstileResult = await verifyTurnstileToken(tokenString, clientIp);
+    if (!turnstileResult.success) {
+      console.warn(
+        `[${serverTimestamp}] [ReqID: ${requestId}] status=failed reason="turnstile_verification_failed" errors=${JSON.stringify(
+          turnstileResult.errorCodes || []
+        )}`
+      );
+      return NextResponse.json(
+        {
+          message: turnstileResult.message || "Verification failed. Try again.",
+        },
+        { status: 400 }
+      );
+    }
 
     // 3. Spam Protection: Honeypot Check (bots automatically fill all visible/invisible inputs)
     if (honeypot && String(honeypot).trim() !== "") {
@@ -115,12 +114,11 @@ export async function POST(request: NextRequest) {
       },
       { status: 200 }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : "Unknown error";
     // Secure logging: ensure no variables/tokens/user data leak in log messages
     console.error(
-      `[${serverTimestamp}] [ReqID: ${requestId}] status=failed reason="internal_server_error" message="${
-        error?.message || "Unknown error"
-      }"`
+      `[${serverTimestamp}] [ReqID: ${requestId}] status=failed reason="internal_server_error" message="${errorMsg}"`
     );
 
     // Conceal actual database/Airtable API errors from the client

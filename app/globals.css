@@ -94,15 +94,6 @@ body {
   padding: 0;
 }
 
-/* Hide default cursor on desktop so canvas cursor takes over */
-@media (pointer: fine) {
-  html, body, * {
-    cursor: none !important;
-  }
-  a, button, [role="button"], input, select, textarea, label {
-    cursor: none !important;
-  }
-}
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {

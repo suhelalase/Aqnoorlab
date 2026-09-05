@@ -26,11 +26,12 @@ export async function createAirtableRecord(
           Email: data.email,
           Number: data.phone,
           "Project Details": data.projectDetails,
-          Status: "New" as const,
+          Status: data.status || "New",
           Date: todayStr,
         },
       },
     ],
+    typecast: true,
   };
 
   const url = `https://api.airtable.com/v0/${baseId}/${encodeURIComponent(tableName)}`;
@@ -52,15 +53,16 @@ export async function createAirtableRecord(
     clearTimeout(timeoutId);
 
     if (!response.ok) {
-      // Do not return raw response details to avoid leakage of schema
-      throw new Error(`Airtable API responded with status ${response.status}`);
+      const errorBody = await response.text().catch(() => "");
+      console.error(`[Airtable API Error] Status: ${response.status}`, errorBody);
+      throw new Error(`Airtable API responded with status ${response.status} - ${errorBody}`);
     }
 
     const result: AirtableCreateResponse = await response.json();
     return result;
-  } catch (error: any) {
+  } catch (error: unknown) {
     clearTimeout(timeoutId);
-    if (error.name === "AbortError") {
+    if (error instanceof Error && error.name === "AbortError") {
       throw new Error("Connection to Airtable timed out.");
     }
     throw error;

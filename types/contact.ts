@@ -3,8 +3,10 @@ export interface ContactSubmitRequest {
   email: string;
   phone: string;
   projectDetails: string;
+  status?: string; // e.g. "New" or "Abandoned"
   honeypot?: string; // Honeypot field to trap spam bots
   timestamp?: string; // Base64 or plain timestamp to verify request speed
+  turnstileToken?: string; // Cloudflare Turnstile token verified on server
 }
 
 export interface AirtableRecordFields {
@@ -12,7 +14,7 @@ export interface AirtableRecordFields {
   Email: string;
   Number: string;
   "Project Details": string;
-  Status: "New";
+  Status: string;
   Date: string; // YYYY-MM-DD
 }
 

@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import ClientCursorFollower from "@/components/ClientCursorFollower";
-
 export const metadata: Metadata = {
   title: "Contact Us | AqNoorLabs",
   description: "Get in touch with AqNoorLabs. We build custom websites, web applications, mobile apps, and workflow automation solutions for Indian businesses.",
@@ -15,7 +13,6 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <ClientCursorFollower />
       <Navbar />
       <main className="flex-1 w-full bg-background pt-24">
         {/* Contact Form Section */}

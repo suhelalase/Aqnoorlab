@@ -57,9 +57,9 @@ export default function Button({
         href={href}
         className={buttonClasses}
         whileTap={{ scale: 0.98 }}
-        onClick={onClick as any}
+        onClick={onClick as React.MouseEventHandler<HTMLAnchorElement>}
         style={{ cursor: "pointer" }}
-        {...(props as any)}
+        {...props}
       >
         {children}
       </motion.a>
@@ -72,8 +72,8 @@ export default function Button({
       disabled={disabled}
       className={buttonClasses}
       whileTap={{ scale: 0.98 }}
-      onClick={onClick}
-      {...(props as any)}
+      onClick={onClick as React.MouseEventHandler<HTMLButtonElement>}
+      {...props}
     >
       {children}
     </motion.button>
