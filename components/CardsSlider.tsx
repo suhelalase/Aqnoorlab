@@ -3,7 +3,7 @@
 import { Badge } from "@/components/ui/badge";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { ExternalLink, Zap, Cpu, ArrowUpRight } from "lucide-react";
+import { ExternalLink, Zap, Cpu, ArrowUpRight, X, Monitor } from "lucide-react";
 import { N8N_PROJECTS } from "@/lib/constants";
 import { RocketLmsShowcase } from "@/components/RocketLmsShowcase";
 
