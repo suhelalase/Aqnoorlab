@@ -21,6 +21,26 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ["lucide-react", "framer-motion"],
   },
+  // Allow the static rocket-lms.html preview to load external CSS/JS/fonts
+  async headers() {
+    return [
+      {
+        source: "/rocket-lms.html",
+        headers: [
+          {
+            key: "Content-Security-Policy",
+            value:
+              "default-src * 'unsafe-inline' 'unsafe-eval' data: blob:; img-src * data: blob:; font-src *; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline';",
+          },
+          {
+            key: "X-Frame-Options",
+            value: "SAMEORIGIN",
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;
+
