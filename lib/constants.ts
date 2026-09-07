@@ -1,7 +1,6 @@
 export const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/#services" },
-  { label: "Rocket LMS", href: "/#projects" },
   { label: "Showcase", href: "/#projects" },
   { label: "Team", href: "/team" },
   { label: "Blog", href: "/blog" },

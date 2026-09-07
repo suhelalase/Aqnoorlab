@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Terms and Conditions | AqNoorLabs",
   description:
-    "Terms and Conditions of Service for AqNoorLabs. Read about our freelance and agency contracting, payment milestones, invoicing, IP transfer, and compliance under Indian laws.",
+    "Terms and Conditions for Abuswaliha Bashir Shaikh (AqNoorLabs). Read our terms of use, payment policies, user responsibilities, and governing law.",
   alternates: {
     canonical: "https://aqnoorlabs.online/terms-and-conditions",
   },
@@ -28,7 +28,7 @@ export default function TermsAndConditionsPage() {
               Terms &amp; Conditions
             </h1>
             <p className="text-sm md:text-base text-muted-foreground font-sans max-w-xl mx-auto">
-              Last updated: July 27, 2026. Please read these terms carefully before starting a project with us.
+              Last updated on 07-09-2026 23:57:17. Please review these terms carefully before accessing our website or availing our services.
             </p>
           </div>
 
@@ -54,6 +54,45 @@ export default function TermsAndConditionsPage() {
             </Link>
           </div>
 
+          {/* Highlights Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div className="glass-panel p-6 rounded-2xl border border-border/60 shadow-sm">
+              <div className="w-10 h-10 rounded-xl bg-brand/10 flex items-center justify-center text-brand font-bold text-lg mb-3">
+                ⚖️
+              </div>
+              <h3 className="font-display font-bold text-foreground text-lg mb-1">
+                Binding Agreement
+              </h3>
+              <p className="text-sm text-foreground/70 font-sans leading-relaxed">
+                A legally enforceable agreement between Abuswaliha Bashir Shaikh and you governing website usage and services.
+              </p>
+            </div>
+
+            <div className="glass-panel p-6 rounded-2xl border border-border/60 shadow-sm">
+              <div className="w-10 h-10 rounded-xl bg-brand/10 flex items-center justify-center text-brand font-bold text-lg mb-3">
+                🛡️
+              </div>
+              <h3 className="font-display font-bold text-foreground text-lg mb-1">
+                Refund Protection
+              </h3>
+              <p className="text-sm text-foreground/70 font-sans leading-relaxed">
+                Entitlement to claim a refund if services cannot be provided within our specified policy timelines.
+              </p>
+            </div>
+
+            <div className="glass-panel p-6 rounded-2xl border border-border/60 shadow-sm">
+              <div className="w-10 h-10 rounded-xl bg-brand/10 flex items-center justify-center text-brand font-bold text-lg mb-3">
+                📍
+              </div>
+              <h3 className="font-display font-bold text-foreground text-lg mb-1">
+                Indian Jurisdiction
+              </h3>
+              <p className="text-sm text-foreground/70 font-sans leading-relaxed">
+                Governed under Indian laws with exclusive dispute jurisdiction in courts of Sangli, Maharashtra.
+              </p>
+            </div>
+          </div>
+
           {/* Grid Layout: Sidebar & Content */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
             {/* Sidebar Table of Contents */}
@@ -62,15 +101,43 @@ export default function TermsAndConditionsPage() {
                 <h3 className="text-base font-display font-bold text-foreground mb-4 pb-2 border-b border-border/50">
                   Quick Navigation
                 </h3>
-                <nav className="space-y-3">
-                  <a href="#services" className="block text-sm text-foreground/70 hover:text-brand font-medium transition-colors">1. Scope of Services</a>
-                  <a href="#contracts" className="block text-sm text-foreground/70 hover:text-brand font-medium transition-colors">2. Proposals &amp; Contracts</a>
-                  <a href="#payments" className="block text-sm text-foreground/70 hover:text-brand font-medium transition-colors">3. Invoicing &amp; Payment Milestones</a>
-                  <a href="#tax-compliance" className="block text-sm text-foreground/70 hover:text-brand font-medium transition-colors">4. Indian Tax Compliance (GST &amp; TDS)</a>
-                  <a href="#intellectual-property" className="block text-sm text-foreground/70 hover:text-brand font-medium transition-colors">5. Intellectual Property (IP) Rights</a>
-                  <a href="#dependencies" className="block text-sm text-foreground/70 hover:text-brand font-medium transition-colors">6. Client Responsibilities &amp; Delays</a>
-                  <a href="#termination" className="block text-sm text-foreground/70 hover:text-brand font-medium transition-colors">7. Termination &amp; Cancellation</a>
-                  <a href="#governing-law" className="block text-sm text-foreground/70 hover:text-brand font-medium transition-colors">8. Governing Law &amp; Jurisdiction</a>
+                <nav className="space-y-2.5 text-sm">
+                  <a href="#agreement" className="block text-foreground/70 hover:text-brand font-medium transition-colors">
+                    1. Binding Agreement &amp; Acceptance
+                  </a>
+                  <a href="#registration" className="block text-foreground/70 hover:text-brand font-medium transition-colors">
+                    2. Registration &amp; Account Information
+                  </a>
+                  <a href="#disclaimer" className="block text-foreground/70 hover:text-brand font-medium transition-colors">
+                    3. Accuracy of Materials &amp; Disclaimer
+                  </a>
+                  <a href="#risk" className="block text-foreground/70 hover:text-brand font-medium transition-colors">
+                    4. Use at Own Risk &amp; Assessment
+                  </a>
+                  <a href="#ip" className="block text-foreground/70 hover:text-brand font-medium transition-colors">
+                    5. Proprietary Content &amp; IP Rights
+                  </a>
+                  <a href="#charges" className="block text-foreground/70 hover:text-brand font-medium transition-colors">
+                    6. Charges &amp; Lawful Use
+                  </a>
+                  <a href="#third-party" className="block text-foreground/70 hover:text-brand font-medium transition-colors">
+                    7. Third-Party Links &amp; Websites
+                  </a>
+                  <a href="#contracts" className="block text-foreground/70 hover:text-brand font-medium transition-colors">
+                    8. Legally Enforceable Transactions
+                  </a>
+                  <a href="#refunds" className="block text-foreground/70 hover:text-brand font-medium transition-colors">
+                    9. Refund Entitlements &amp; Timelines
+                  </a>
+                  <a href="#force-majeure" className="block text-foreground/70 hover:text-brand font-medium transition-colors">
+                    10. Force Majeure
+                  </a>
+                  <a href="#jurisdiction" className="block text-foreground/70 hover:text-brand font-medium transition-colors">
+                    11. Governing Law &amp; Jurisdiction
+                  </a>
+                  <a href="#contact" className="block text-foreground/70 hover:text-brand font-medium transition-colors">
+                    12. Contact &amp; Communications
+                  </a>
                 </nav>
               </div>
             </div>
@@ -79,181 +146,155 @@ export default function TermsAndConditionsPage() {
             <div className="lg:col-span-8 space-y-12">
               <div className="glass-panel rounded-2xl md:rounded-3xl p-4 sm:p-8 md:p-12 shadow-xl border border-border/40 font-sans text-foreground/80 leading-relaxed space-y-10">
                 
-                {/* Introduction */}
-                <section className="space-y-4">
-                  <h2 className="text-xl md:text-2xl font-display font-bold text-foreground">
-                    Introduction
-                  </h2>
-                  <p>
-                    Welcome to <strong>AqNoorLabs</strong> (&ldquo;Company&rdquo;, &ldquo;we&rdquo;, &ldquo;our&rdquo;, or &ldquo;us&rdquo;). By hiring us for software development, website creation, mobile app design, AI automation, or consulting services, you (&ldquo;Client&rdquo;, &ldquo;you&rdquo;, or &ldquo;your&rdquo;) agree to be bound by the following Terms and Conditions.
-                  </p>
-                  <p>
-                    These terms govern all freelancing projects, contractual engagements, invoices, and deliverables provided by AqNoorLabs, and form a legally binding agreement under the <strong>Indian Contract Act, 1872</strong>.
-                  </p>
-                </section>
-
                 {/* Section 1 */}
-                <section id="services" className="space-y-4 pt-6 border-t border-border/40">
+                <section id="agreement" className="space-y-4">
                   <h2 className="text-xl md:text-2xl font-display font-bold text-foreground">
-                    1. Scope of Services
+                    1. Binding Agreement &amp; Acceptance
                   </h2>
                   <p>
-                    AqNoorLabs provides custom software engineering, website development, application programming interface (API) integrations, database designs, AI automation systems, and maintenance support.
+                    These Terms and Conditions, along with privacy policy or other terms (&ldquo;Terms&rdquo;) constitute a binding agreement by and between <strong>Abuswaliha Bashir Shaikh</strong>, (&ldquo;Website Owner&rdquo; or &ldquo;we&rdquo; or &ldquo;us&rdquo; or &ldquo;our&rdquo;) and you (&ldquo;you&rdquo; or &ldquo;your&rdquo;) and relate to your use of our website, goods (as applicable) or services (as applicable) (collectively, &ldquo;Services&rdquo;).
                   </p>
                   <p>
-                    The specific scope, requirements, and deliverables for each project will be outlined in a separate <strong>Project Proposal, Statement of Work (SOW), or Freelance Agreement</strong>. Any work requested outside of this predefined scope will be treated as a change request and billed separately at our hourly rate or as a separate milestone.
+                    By using our website and availing the Services, you agree that you have read and accepted these Terms (including the Privacy Policy). We reserve the right to modify these Terms at any time and without assigning any reason. It is your responsibility to periodically review these Terms to stay informed of updates.
+                  </p>
+                  <p className="font-semibold text-foreground">
+                    The use of this website or availing of our Services is subject to the following terms of use:
                   </p>
                 </section>
 
                 {/* Section 2 */}
-                <section id="contracts" className="space-y-4 pt-6 border-t border-border/40">
+                <section id="registration" className="space-y-4 pt-6 border-t border-border/40">
                   <h2 className="text-xl md:text-2xl font-display font-bold text-foreground">
-                    2. Proposals &amp; Contracts
+                    2. Registration &amp; Account Information
                   </h2>
-                  <ul className="list-disc pl-5 space-y-2">
-                    <li>
-                      <strong>Execution:</strong> A project officially commences only after both parties have signed a written contract or mutually agreed on a Statement of Work via email or digital signature, and the advance payment is received.
-                    </li>
-                    <li>
-                      <strong>Validity:</strong> Project quotes and proposals issued by AqNoorLabs are valid for 15 calendar days from the date of issuance, after which they are subject to review or revision.
-                    </li>
-                  </ul>
+                  <p>
+                    To access and use the Services, you agree to provide true, accurate and complete information to us during and after registration, and you shall be responsible for all acts done through the use of your registered account.
+                  </p>
                 </section>
 
                 {/* Section 3 */}
-                <section id="payments" className="space-y-4 pt-6 border-t border-border/40">
+                <section id="disclaimer" className="space-y-4 pt-6 border-t border-border/40">
                   <h2 className="text-xl md:text-2xl font-display font-bold text-foreground">
-                    3. Invoicing &amp; Payment Milestones
+                    3. Accuracy of Materials &amp; Disclaimer of Warranty
                   </h2>
                   <p>
-                    To ensure transparency and protect both parties, we operate strictly on a <strong>milestone-based payment structure</strong>:
+                    Neither we nor any third parties provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials offered on this website or through the Services, for any specific purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law.
                   </p>
-                  <div className="overflow-x-auto my-4 rounded-xl border border-border/50">
-                    <table className="min-w-full divide-y divide-border/50 text-sm">
-                      <thead className="bg-muted/50 font-display font-bold text-foreground">
-                        <tr>
-                          <th className="px-4 py-3 text-left">Milestone Phase</th>
-                          <th className="px-4 py-3 text-left">Invoice Percentage</th>
-                          <th className="px-4 py-3 text-left">Release Condition</th>
-                        </tr>
-                      </thead>
-                      <tbody className="divide-y divide-border/40">
-                        <tr>
-                          <td className="px-4 py-3 font-semibold text-foreground">1. Kickoff Advance</td>
-                          <td className="px-4 py-3">30% of total budget</td>
-                          <td className="px-4 py-3">Due upfront before any coding/development begins.</td>
-                        </tr>
-                        <tr>
-                          <td className="px-4 py-3 font-semibold text-foreground">2. Development / Mid-way</td>
-                          <td className="px-4 py-3">40% of total budget</td>
-                          <td className="px-4 py-3">Due upon demo of prototype or core features.</td>
-                        </tr>
-                        <tr>
-                          <td className="px-4 py-3 font-semibold text-foreground">3. Final Delivery &amp; Handover</td>
-                          <td className="px-4 py-3">30% of total budget</td>
-                          <td className="px-4 py-3">Due prior to production deployment and source code transfer.</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <ul className="list-disc pl-5 space-y-2">
-                    <li>
-                      <strong>Advance Payments:</strong> The 30% kickoff advance is strictly non-refundable once development or research has commenced.
-                    </li>
-                    <li>
-                      <strong>Invoice Due Date:</strong> Invoices raised upon completion of a milestone must be settled within <strong>7 business days</strong>.
-                    </li>
-                    <li>
-                      <strong>Late Fee:</strong> Delayed payments beyond 10 days will attract a late fee of 1.5% per month on the outstanding amount.
-                    </li>
-                    <li>
-                      <strong>Work Suspension:</strong> AqNoorLabs reserves the right to suspend development, lock preview staging links, or pause servers if milestone payments are delayed.
-                    </li>
-                  </ul>
                 </section>
 
                 {/* Section 4 */}
-                <section id="tax-compliance" className="space-y-4 pt-6 border-t border-border/40">
+                <section id="risk" className="space-y-4 pt-6 border-t border-border/40">
                   <h2 className="text-xl md:text-2xl font-display font-bold text-foreground">
-                    4. Indian Tax Compliance (GST &amp; TDS)
+                    4. Use at Own Risk &amp; Independent Assessment
                   </h2>
                   <p>
-                    As an Indian software agency, we comply with the rules set by the Ministry of Finance:
+                    Your use of our Services and the website is solely at your own risk and discretion. You are required to independently assess and ensure that the Services meet your requirements.
                   </p>
-                  <ul className="list-disc pl-5 space-y-2">
-                    <li>
-                      <strong>GST (Goods and Services Tax):</strong> Our invoices will explicitly list the applicable GST rate (typically 18% for Software Development/IT services SAC code 998314) where applicable. Clients registered under GSTIN can claim Input Tax Credit (ITC) as per official rules.
-                    </li>
-                    <li>
-                      <strong>Tax Deducted at Source (TDS):</strong> For corporate clients in India deducting TDS under Section 194J (Professional/Technical Services) or Section 194C (Contractors) of the Income Tax Act, 1961, the TDS certificate (Form 16A) must be provided in a timely manner. The client is obligated to pay the net amount after deducting TDS, and deposit the deducted TDS with the Income Tax Department.
-                    </li>
-                  </ul>
                 </section>
 
                 {/* Section 5 */}
-                <section id="intellectual-property" className="space-y-4 pt-6 border-t border-border/40">
+                <section id="ip" className="space-y-4 pt-6 border-t border-border/40">
                   <h2 className="text-xl md:text-2xl font-display font-bold text-foreground">
-                    5. Intellectual Property (IP) Rights
+                    5. Proprietary Content &amp; Intellectual Property
                   </h2>
-                  <ul className="list-disc pl-5 space-y-2">
-                    <li>
-                      <strong>IP Transfer:</strong> All ownership, copyright, intellectual property rights, and source code of the custom software developed will be transferred to you **ONLY after full clearance of all invoices** related to the project. Until final payment is made, all proprietary rights remain with AqNoorLabs.
-                    </li>
-                    <li>
-                      <strong>Open Source Components:</strong> Libraries, frameworks, or templates utilized in the project (e.g. React, Next.js, Tailwind CSS) are governed by their respective open-source licenses (MIT, Apache, etc.).
-                    </li>
-                    <li>
-                      <strong>Portfolio Rights:</strong> Unless otherwise negotiated in writing via a strict Non-Disclosure Agreement (NDA), AqNoorLabs reserves the right to display screenshots, case studies, and links of the completed project in our public portfolio and marketing channels.
-                    </li>
-                  </ul>
+                  <p>
+                    The contents of the Website and the Services are proprietary to Us and you will not have any authority to claim any intellectual property rights, title, or interest in its contents.
+                  </p>
+                  <p>
+                    You acknowledge that unauthorized use of the Website or the Services may lead to action against you as per these Terms or applicable laws.
+                  </p>
                 </section>
 
                 {/* Section 6 */}
-                <section id="dependencies" className="space-y-4 pt-6 border-t border-border/40">
+                <section id="charges" className="space-y-4 pt-6 border-t border-border/40">
                   <h2 className="text-xl md:text-2xl font-display font-bold text-foreground">
-                    6. Client Responsibilities &amp; Delays
+                    6. Charges &amp; Lawful Use
                   </h2>
-                  <p>
-                    Successful delivery requires timely cooperation. The Client agrees to:
-                  </p>
-                  <ul className="list-disc pl-5 space-y-2">
+                  <ul className="list-disc pl-5 space-y-3">
                     <li>
-                      Provide all necessary text assets, brand logos, high-resolution media, access credentials (hosting, domains, API tokens), and feedback within 3 business days of request.
+                      <strong>Service Charges:</strong> You agree to pay us the charges associated with availing the Services.
                     </li>
                     <li>
-                      Pay third-party service fees (such as cloud hosting, Vercel/AWS fees, domain purchases, API subscription plans) directly.
-                    </li>
-                    <li>
-                      Acknowledge that any delay in asset delivery or feedback will automatically extend the project timeline.
+                      <strong>Lawful Use:</strong> You agree not to use the website and/or Services for any purpose that is unlawful, illegal or forbidden by these Terms, or Indian or local laws that might apply to you.
                     </li>
                   </ul>
                 </section>
 
                 {/* Section 7 */}
-                <section id="termination" className="space-y-4 pt-6 border-t border-border/40">
+                <section id="third-party" className="space-y-4 pt-6 border-t border-border/40">
                   <h2 className="text-xl md:text-2xl font-display font-bold text-foreground">
-                    7. Termination &amp; Cancellation
+                    7. Third-Party Websites &amp; Links
                   </h2>
                   <p>
-                    Either party may terminate the project by giving a **7-day written notice** if the other party breaches any material term of this agreement.
-                  </p>
-                  <p>
-                    Upon termination, the Client will immediately be invoiced for all work hours or milestones completed up to the date of termination, and any unpaid balance must be cleared within 5 business days. Once settled, completed materials up to that stage will be shared with the Client.
+                    You agree and acknowledge that website and the Services may contain links to other third party websites. On accessing these links, you will be governed by the terms of use, privacy policy and such other policies of such third party websites.
                   </p>
                 </section>
 
                 {/* Section 8 */}
-                <section id="governing-law" className="space-y-4 pt-6 border-t border-border/40">
+                <section id="contracts" className="space-y-4 pt-6 border-t border-border/40">
                   <h2 className="text-xl md:text-2xl font-display font-bold text-foreground">
-                    8. Governing Law &amp; Jurisdiction
+                    8. Legally Enforceable Contract on Transaction
                   </h2>
                   <p>
-                    These terms are governed by and construed in accordance with the laws of the Republic of India.
-                  </p>
-                  <p>
-                    Any dispute, controversy, or claim arising out of or relating to these terms, including their validity, breach, or termination, shall be resolved through mutual consultation first. If unresolved, disputes shall be subject to the exclusive jurisdiction of the courts of <strong>Sangli, Maharashtra, India</strong>.
+                    You understand that upon initiating a transaction for availing the Services you are entering into a legally binding and enforceable contract with us for the Services.
                   </p>
                 </section>
+
+                {/* Section 9 */}
+                <section id="refunds" className="space-y-4 pt-6 border-t border-border/40">
+                  <h2 className="text-xl md:text-2xl font-display font-bold text-foreground">
+                    9. Refund Entitlement &amp; Timelines
+                  </h2>
+                  <div className="bg-muted/40 border border-border/60 rounded-2xl p-6 space-y-3">
+                    <p className="font-semibold text-foreground text-base">
+                      Refund Claim Policy:
+                    </p>
+                    <p>
+                      You shall be entitled to claim a refund of the payment made by you in case we are not able to provide the Service. The timelines for such return and refund will be according to the specific Service you have availed or within the time period provided in our policies (as applicable). In case you do not raise a refund claim within the stipulated time, then this would make you ineligible for a refund.
+                    </p>
+                  </div>
+                </section>
+
+                {/* Section 10 */}
+                <section id="force-majeure" className="space-y-4 pt-6 border-t border-border/40">
+                  <h2 className="text-xl md:text-2xl font-display font-bold text-foreground">
+                    10. Force Majeure
+                  </h2>
+                  <p>
+                    Notwithstanding anything contained in these Terms, the parties shall not be liable for any failure to perform an obligation under these Terms if performance is prevented or delayed by a force majeure event.
+                  </p>
+                </section>
+
+                {/* Section 11 */}
+                <section id="jurisdiction" className="space-y-4 pt-6 border-t border-border/40">
+                  <h2 className="text-xl md:text-2xl font-display font-bold text-foreground">
+                    11. Governing Law &amp; Jurisdiction
+                  </h2>
+                  <p>
+                    These Terms and any dispute or claim relating to it, or its enforceability, shall be governed by and construed in accordance with the laws of India.
+                  </p>
+                  <p>
+                    All disputes arising out of or in connection with these Terms shall be subject to the exclusive jurisdiction of the courts in <strong>Sangli, Maharashtra</strong>.
+                  </p>
+                </section>
+
+                {/* Section 12 */}
+                <section id="contact" className="space-y-4 pt-6 border-t border-border/40">
+                  <h2 className="text-xl md:text-2xl font-display font-bold text-foreground">
+                    12. Contact Information &amp; Communications
+                  </h2>
+                  <p>
+                    All concerns or communications relating to these Terms must be communicated to us using the contact information provided on this website:
+                  </p>
+                  <div className="bg-muted/40 border border-border/50 rounded-2xl p-6 space-y-2 font-sans text-sm mt-4">
+                    <p><strong>Website Owner:</strong> Abuswaliha Bashir Shaikh (AqNoorLabs)</p>
+                    <p><strong>Customer Support Email:</strong> <a href="mailto:support@aqnoorlabs.online" className="text-brand hover:underline font-semibold">support@aqnoorlabs.online</a></p>
+                    <p><strong>General Inquiries:</strong> <a href="mailto:hi@aqnoorlabs.online" className="text-brand hover:underline font-semibold">hi@aqnoorlabs.online</a></p>
+                    <p><strong>Phone &amp; WhatsApp:</strong> <a href="https://wa.me/917387450332" className="text-brand hover:underline font-semibold">+91 7387450332</a></p>
+                    <p><strong>Jurisdiction &amp; Office:</strong> Sangli, Maharashtra, India</p>
+                  </div>
+                </section>
+
               </div>
             </div>
           </div>
