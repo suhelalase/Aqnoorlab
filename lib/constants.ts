@@ -1,5 +1,7 @@
 export const NAV_LINKS = [
   { label: "Home", href: "/" },
+  { label: "Services", href: "/#services" },
+  { label: "Rocket LMS", href: "/#projects" },
   { label: "Showcase", href: "/#projects" },
   { label: "Team", href: "/team" },
   { label: "Blog", href: "/blog" },
@@ -7,7 +9,19 @@ export const NAV_LINKS = [
   { label: "Contact", href: "/contact" },
 ];
 
+export const LEGAL_LINKS = [
+  { label: "Terms of Service", href: "/terms" },
+  { label: "Privacy Policy", href: "/privacy" },
+  { label: "Cancellation & Refund", href: "/refund" },
+];
+
 export const FEATURE_CARDS = [
+  {
+    title: "Rocket LMS Platform",
+    description: "All-in-one LMS with course builder, live HD classes, and automated certificates.",
+    icon: "GraduationCap",
+    tag: "LMS",
+  },
   {
     title: "Website Development",
     description: "Responsive, SEO optimized websites built using modern frameworks.",
@@ -148,8 +162,8 @@ export const PROJECTS = [
   {
     title: "Rocket LMS Platform",
     description: "Complete Learning Management System with course builder, live classes, video player, instructor payout system, and automated certificates.",
-    image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&q=80",
-    tags: ["PHP", "Laravel", "MySQL", "Tailwind CSS"],
+    image: "/images/rocket-lms.png",
+    tags: ["Next.js", "Tailwind CSS", "MySQL", "LMS"],
     category: "LMS Web Platform",
   },
   {

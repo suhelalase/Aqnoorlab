@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 export const metadata: Metadata = {
@@ -16,7 +17,7 @@ export default function TermsPage() {
       <main className="flex-1 w-full bg-background pt-32 pb-24">
         <div className="max-w-[1280px] w-full md:w-[90%] mx-auto px-5 md:px-0">
           {/* Header Banner */}
-          <div className="text-center mb-16 relative">
+          <div className="text-center mb-10 relative">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-brand/5 blur-3xl rounded-full -z-10" />
             <span className="text-xs uppercase tracking-widest text-brand font-bold bg-brand/10 px-3.5 py-1.5 rounded-full inline-block mb-4">
               Legal Agreement
@@ -27,6 +28,28 @@ export default function TermsPage() {
             <p className="text-sm md:text-base text-muted-foreground font-sans max-w-xl mx-auto">
               Last updated: July 27, 2026. Please read these terms carefully before starting a project with us.
             </p>
+          </div>
+
+          {/* Quick Legal Switcher Buttons */}
+          <div className="flex flex-wrap justify-center items-center gap-2 md:gap-3 mb-14">
+            <Link
+              href="/terms"
+              className="px-5 py-2.5 rounded-xl text-xs md:text-sm font-sans font-semibold uppercase tracking-wider transition-all duration-200 bg-brand text-white border border-brand shadow-md"
+            >
+              Terms of Service
+            </Link>
+            <Link
+              href="/privacy"
+              className="px-5 py-2.5 rounded-xl text-xs md:text-sm font-sans font-semibold uppercase tracking-wider transition-all duration-200 border border-border/60 bg-muted/30 text-foreground/75 hover:bg-brand hover:text-white hover:border-brand shadow-sm"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href="/refund"
+              className="px-5 py-2.5 rounded-xl text-xs md:text-sm font-sans font-semibold uppercase tracking-wider transition-all duration-200 border border-border/60 bg-muted/30 text-foreground/75 hover:bg-brand hover:text-white hover:border-brand shadow-sm"
+            >
+              Cancellation &amp; Refund
+            </Link>
           </div>
 
           {/* Grid Layout: Sidebar & Content */}

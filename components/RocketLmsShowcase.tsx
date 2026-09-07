@@ -1,13 +1,31 @@
 "use client";
 
 import { useState } from "react";
-import { Maximize2, Minimize2, X } from "lucide-react";
+import Image from "next/image";
+import { Maximize2, Minimize2, X, ExternalLink, Sparkles, Lock } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
-interface RocketLmsShowcaseProps {
+export interface ProjectShowcaseProps {
   onClose?: () => void;
+  title?: string;
+  badge?: string;
+  description?: string;
+  imageSrc?: string;
+  liveUrl?: string;
+  displayUrl?: string;
+  buttonText?: string;
 }
 
-export function RocketLmsShowcase({ onClose }: RocketLmsShowcaseProps) {
+export function RocketLmsShowcase({
+  onClose,
+  title = "Rocket LMS Platform & Mobile Experience",
+  badge = "Live Production LMS",
+  description = "Course builder, HD live classes with chat, automated certificates, and instructor commission payouts.",
+  imageSrc = "/images/rocket-lms.png",
+  liveUrl = "https://lms.rocket-soft.org/",
+  displayUrl = "https://lms.rocket-soft.org/",
+  buttonText = "Open Live LMS Demo",
+}: ProjectShowcaseProps) {
   const [isFullScreen, setIsFullScreen] = useState(false);
 
   return (
@@ -52,11 +70,35 @@ export function RocketLmsShowcase({ onClose }: RocketLmsShowcaseProps) {
               />
             </div>
 
-            {/* Minimalist address bar pill */}
-            <div className="w-48 sm:w-64 h-2.5 bg-[#0d0f17] rounded-full border border-white/10 opacity-70" />
+            {/* Clickable Browser Address Bar */}
+            {liveUrl && (
+              <a
+                href={liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 px-3 py-1 bg-[#0d0f17] hover:bg-[#151926] rounded-full border border-white/10 text-[11px] text-white/80 font-mono max-w-[260px] sm:max-w-xs truncate transition-colors group cursor-pointer"
+                title="Open Live Site in New Tab"
+              >
+                <Lock className="w-3 h-3 text-emerald-400 shrink-0" />
+                <span className="truncate">{displayUrl}</span>
+                <ExternalLink className="w-3 h-3 text-white/50 group-hover:text-white transition-colors shrink-0 ml-1" />
+              </a>
+            )}
 
             {/* Window Action Buttons (Full Screen & Close) */}
             <div className="flex items-center gap-2">
+              {liveUrl && (
+                <a
+                  href={liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hidden sm:inline-flex items-center gap-1.5 text-xs px-3 py-1 rounded-full bg-primary hover:bg-primary/90 text-white font-medium transition-colors shadow-sm"
+                >
+                  <span>Live Demo</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              )}
+
               <button
                 onClick={() => setIsFullScreen(!isFullScreen)}
                 className="flex items-center gap-1 text-xs px-2.5 py-1 rounded-full bg-white/10 hover:bg-white/20 text-white/90 transition-colors cursor-pointer"
@@ -89,18 +131,57 @@ export function RocketLmsShowcase({ onClose }: RocketLmsShowcaseProps) {
 
           {/* Screen Content Viewport */}
           <div
-            className={`relative w-full bg-white rounded-b-lg overflow-hidden shadow-inner transition-all duration-300 ${
-              isFullScreen ? "h-[calc(100vh-140px)]" : "h-[520px] sm:h-[600px] md:h-[680px]"
+            className={`relative w-full bg-[#0d0f17] rounded-b-lg overflow-hidden shadow-inner transition-all duration-300 group ${
+              isFullScreen ? "h-[calc(100vh-140px)]" : "h-[400px] sm:h-[500px] md:h-[620px]"
             }`}
           >
-            {/* iframe loads rocket-lms.html */}
-            <iframe
-              src="/rocket-lms.html"
-              title="Rocket LMS Desktop Preview"
-              className="w-full h-full border-0 select-none"
-              loading="eager"
-              style={{ display: "block" }}
-            />
+            {/* High Quality Platform Preview Image */}
+            <div className="relative w-full h-full overflow-hidden bg-slate-900">
+              <Image
+                src={imageSrc}
+                alt={title}
+                fill
+                className="object-cover object-center"
+                priority
+              />
+
+              {/* Floating Action Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex flex-col justify-end p-5 sm:p-8 opacity-95 group-hover:opacity-100 transition-opacity">
+                <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 max-w-4xl">
+                  <div>
+                    {badge && (
+                      <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary/80 backdrop-blur-md text-white text-xs font-semibold mb-2">
+                        <Sparkles className="w-3 h-3" />
+                        <span>{badge}</span>
+                      </div>
+                    )}
+                    <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                      {title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-white/80 mt-1 max-w-xl">
+                      {description}
+                    </p>
+                  </div>
+
+                  {liveUrl && (
+                    <a
+                      href={liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="shrink-0"
+                    >
+                      <Button
+                        size="default"
+                        className="rounded-full gap-2 px-5 font-semibold bg-white text-slate-900 hover:bg-white/90 shadow-lg cursor-pointer"
+                      >
+                        <span>{buttonText}</span>
+                        <ExternalLink className="h-4 w-4" />
+                      </Button>
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -117,3 +198,6 @@ export function RocketLmsShowcase({ onClose }: RocketLmsShowcaseProps) {
     </div>
   );
 }
+
+export const ProjectShowcase = RocketLmsShowcase;
+export default RocketLmsShowcase;

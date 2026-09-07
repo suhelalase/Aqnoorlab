@@ -18,6 +18,15 @@ interface CardData {
   highlight?: string;
   link?: string;
   isLmsPreview?: boolean;
+  previewData?: {
+    title: string;
+    badge: string;
+    description: string;
+    imageSrc: string;
+    liveUrl?: string;
+    displayUrl?: string;
+    buttonText?: string;
+  };
 }
 
 type Tab = "engineering" | "n8n";
@@ -29,11 +38,21 @@ const ENGINEERING_CARDS: CardData[] = [
     description:
       "All-in-one Learning Management System with course creation, live video classes, instructor payouts, and automated certificates.",
     category: "Web Application",
-    image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&q=80",
+    image: "/images/rocket-lms.png",
     tags: ["Next.js", "Tailwind CSS", "LMS"],
     year: "2025",
     highlight: "Interactive Desktop Preview",
     isLmsPreview: true,
+    previewData: {
+      title: "Rocket LMS Platform & Mobile Experience",
+      badge: "Live Production LMS",
+      description:
+        "Course builder, HD live classes with chat, automated certificates, and instructor commission payouts.",
+      imageSrc: "/images/rocket-lms.png",
+      liveUrl: "https://lms.rocket-soft.org/",
+      displayUrl: "https://lms.rocket-soft.org/",
+      buttonText: "Open Live LMS Demo",
+    },
   },
   {
     id: 2,
@@ -45,7 +64,18 @@ const ENGINEERING_CARDS: CardData[] = [
     tags: ["Next.js", "PostgreSQL", "Node.js"],
     year: "2025",
     highlight: "Pharmacy POS & Billing",
+    isLmsPreview: true,
     link: "https://mymedicare.aqnoorlabs.online/",
+    previewData: {
+      title: "MyMedicare — Pharmacy POS & Inventory ERP",
+      badge: "Live Pharmacy POS",
+      description:
+        "Real-time analytics dashboard, automated GST billing, multi-layer expiry alerts, barcode stock tracking, and multi-user access.",
+      imageSrc: "/images/mymedicare.png",
+      liveUrl: "https://mymedicare.aqnoorlabs.online/",
+      displayUrl: "https://mymedicare.aqnoorlabs.online/",
+      buttonText: "Open Live Pharmacy POS",
+    },
   },
   {
     id: 3,
@@ -58,6 +88,17 @@ const ENGINEERING_CARDS: CardData[] = [
     year: "2025",
     highlight: "Seller Automation",
     link: "https://biznexis.aqnoorlabs.online/",
+    isLmsPreview: true,
+    previewData: {
+      title: "Biznexis — Seller Automation & Invoice Engine",
+      badge: "E-Commerce Utility",
+      description:
+        "Client-side optimized e-commerce utility automating invoice parsing, barcode sheets, and multi-layer GST/DTC margins.",
+      imageSrc: "/images/biznexis.png",
+      liveUrl: "https://biznexis.aqnoorlabs.online/",
+      displayUrl: "https://biznexis.aqnoorlabs.online/",
+      buttonText: "Open Biznexis App",
+    },
   },
   {
     id: 4,
@@ -70,6 +111,17 @@ const ENGINEERING_CARDS: CardData[] = [
     year: "2025",
     highlight: "Hospitality POS",
     link: "https://hoteldiamond.aqnoorlabs.online/",
+    isLmsPreview: true,
+    previewData: {
+      title: "Hotel Diamond — Hospitality POS & QR Dining",
+      badge: "Hospitality POS",
+      description:
+        "Counter billing and QR-code table booking POS system with integrated AI chatbot and fully manageable control panel.",
+      imageSrc: "/images/hoteldiamond.png",
+      liveUrl: "https://hoteldiamond.aqnoorlabs.online/",
+      displayUrl: "https://hoteldiamond.aqnoorlabs.online/",
+      buttonText: "Open Hotel Diamond POS",
+    },
   },
   {
     id: 5,
@@ -119,15 +171,15 @@ const N8N_CARDS: CardData[] = N8N_PROJECTS.map((p, i) => ({
 function FeaturedCard({
   card,
   large = false,
-  onOpenLms,
+  onOpenPreview,
 }: {
   card: CardData;
   large?: boolean;
-  onOpenLms?: () => void;
+  onOpenPreview?: (card: CardData) => void;
 }) {
   const handleClick = () => {
-    if (card.isLmsPreview) {
-      if (onOpenLms) onOpenLms();
+    if (card.isLmsPreview || card.previewData) {
+      if (onOpenPreview) onOpenPreview(card);
     } else if (card.link) {
       window.open(card.link, "_blank", "noopener,noreferrer");
     }
@@ -179,10 +231,12 @@ function FeaturedCard({
         <h3 className="text-base font-bold text-white leading-tight mb-1.5 group-hover:text-primary-foreground transition-colors">
           {card.title}
         </h3>
-        <p className="text-xs text-white/70 leading-relaxed line-clamp-2 mb-3">
+        <p className="text-xs text-white/70 line-clamp-2 leading-relaxed mb-3">
           {card.description}
         </p>
-        <div className="flex items-center justify-between">
+
+        {/* Tags & Action */}
+        <div className="flex items-center justify-between pt-1">
           <div className="flex flex-wrap gap-1.5">
             {card.tags.slice(0, 2).map((tag) => (
               <span
@@ -199,7 +253,7 @@ function FeaturedCard({
             )}
           </div>
           <div className="flex items-center gap-1 text-xs font-bold text-white bg-primary rounded-full px-3 py-1.5 transition-all duration-300 transform md:opacity-0 md:scale-90 md:group-hover:opacity-100 md:group-hover:scale-100">
-            {card.isLmsPreview ? (
+            {card.isLmsPreview || card.previewData ? (
               <>
                 <Monitor className="w-3 h-3" />
                 Preview UI
@@ -219,7 +273,7 @@ function FeaturedCard({
 
 export function CardsSlider() {
   const [activeTab, setActiveTab] = useState<Tab>("engineering");
-  const [isLmsModalOpen, setIsLmsModalOpen] = useState(false);
+  const [selectedPreviewCard, setSelectedPreviewCard] = useState<CardData | null>(null);
 
   const cards = activeTab === "engineering" ? ENGINEERING_CARDS : N8N_CARDS;
 
@@ -287,7 +341,7 @@ export function CardsSlider() {
                 <FeaturedCard
                   card={featured}
                   large
-                  onOpenLms={() => setIsLmsModalOpen(true)}
+                  onOpenPreview={(c) => setSelectedPreviewCard(c)}
                 />
               </div>
             )}
@@ -297,7 +351,7 @@ export function CardsSlider() {
               <div key={card.id}>
                 <FeaturedCard
                   card={card}
-                  onOpenLms={() => setIsLmsModalOpen(true)}
+                  onOpenPreview={(c) => setSelectedPreviewCard(c)}
                 />
               </div>
             ))}
@@ -307,13 +361,13 @@ export function CardsSlider() {
 
       {/* Desktop Laptop Screen Preview Backdrop Modal */}
       <AnimatePresence>
-        {isLmsModalOpen && (
+        {selectedPreviewCard && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md p-4 sm:p-6 overflow-y-auto"
-            onClick={() => setIsLmsModalOpen(false)}
+            onClick={() => setSelectedPreviewCard(null)}
           >
             <motion.div
               initial={{ scale: 0.95, opacity: 0, y: 20 }}
@@ -327,10 +381,10 @@ export function CardsSlider() {
               <div className="flex items-center justify-between px-4 py-2 mb-2 text-white">
                 <div className="flex items-center gap-2 text-sm font-semibold text-white/90">
                   <Monitor className="w-4 h-4 text-primary" />
-                  <span>Rocket LMS Platform Preview</span>
+                  <span>{selectedPreviewCard.title} Platform Preview</span>
                 </div>
                 <button
-                  onClick={() => setIsLmsModalOpen(false)}
+                  onClick={() => setSelectedPreviewCard(null)}
                   className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
                 >
                   <X className="w-4 h-4" />
@@ -339,7 +393,16 @@ export function CardsSlider() {
               </div>
 
               {/* Desktop Laptop Mockup Screen Component */}
-              <RocketLmsShowcase onClose={() => setIsLmsModalOpen(false)} />
+              <RocketLmsShowcase
+                onClose={() => setSelectedPreviewCard(null)}
+                title={selectedPreviewCard.previewData?.title || selectedPreviewCard.title}
+                badge={selectedPreviewCard.previewData?.badge}
+                description={selectedPreviewCard.previewData?.description || selectedPreviewCard.description}
+                imageSrc={selectedPreviewCard.previewData?.imageSrc || selectedPreviewCard.image}
+                liveUrl={selectedPreviewCard.previewData?.liveUrl || selectedPreviewCard.link}
+                displayUrl={selectedPreviewCard.previewData?.displayUrl || selectedPreviewCard.link}
+                buttonText={selectedPreviewCard.previewData?.buttonText || "Open Live Demo"}
+              />
             </motion.div>
           </motion.div>
         )}

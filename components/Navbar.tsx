@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { NAV_LINKS } from "@/lib/constants";
+import { NAV_LINKS, LEGAL_LINKS } from "@/lib/constants";
 import Button from "./Button";
 import LucideIcon from "./LucideIcon";
 
@@ -60,16 +60,43 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center space-x-5 lg:space-x-9">
+          <nav className="hidden md:flex items-center space-x-4 lg:space-x-7">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="text-sm lg:text-lg font-sans font-semibold text-foreground/75 hover:text-brand transition-colors duration-200"
+                className="text-sm lg:text-base font-sans font-semibold text-foreground/75 hover:text-brand transition-colors duration-200"
               >
                 {link.label}
               </a>
             ))}
+
+            {/* Policies Dropdown Menu */}
+            <div className="relative group py-2">
+              <button
+                type="button"
+                className="flex items-center space-x-1 text-sm lg:text-base font-sans font-semibold text-foreground/75 group-hover:text-brand transition-colors duration-200 focus:outline-none"
+              >
+                <span>Policies</span>
+                <LucideIcon
+                  name="ChevronDown"
+                  className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180 text-foreground/60 group-hover:text-brand"
+                />
+              </button>
+              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 pointer-events-none group-hover:pointer-events-auto">
+                <div className="w-56 bg-background/95 backdrop-blur-xl rounded-2xl p-2 shadow-2xl border border-border/80 flex flex-col space-y-1">
+                  {LEGAL_LINKS.map((link) => (
+                    <Link
+                      key={link.label}
+                      href={link.href}
+                      className="px-3.5 py-2 rounded-xl text-xs md:text-sm font-sans font-semibold text-foreground/80 hover:text-white hover:bg-brand transition-colors duration-150"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
           </nav>
 
           {/* Desktop CTA */}
@@ -138,7 +165,7 @@ export default function Navbar() {
                   </button>
                 </div>
 
-                <div className="flex flex-col space-y-6">
+                <div className="flex flex-col space-y-5">
                   {NAV_LINKS.map((link) => (
                     <a
                       key={link.label}
@@ -149,6 +176,25 @@ export default function Navbar() {
                       {link.label}
                     </a>
                   ))}
+                </div>
+
+                {/* Policies in Mobile Menu */}
+                <div className="mt-6 pt-5 border-t border-border/50">
+                  <p className="text-xs uppercase tracking-wider text-foreground/45 font-bold mb-3">
+                    Legal &amp; Policies
+                  </p>
+                  <div className="flex flex-col space-y-2.5">
+                    {LEGAL_LINKS.map((link) => (
+                      <Link
+                        key={link.label}
+                        href={link.href}
+                        onClick={() => setIsOpen(false)}
+                        className="text-sm font-sans font-semibold text-foreground/75 hover:text-brand transition-colors duration-200"
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               </div>
 
