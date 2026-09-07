@@ -1,1 +1,1 @@
-export { default, metadata } from "@/app/refund/page";
+export { default, metadata } from "@/app/cancellation-and-refund-policy/page";

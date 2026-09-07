@@ -10,9 +10,9 @@ export const NAV_LINKS = [
 ];
 
 export const LEGAL_LINKS = [
-  { label: "Terms of Service", href: "/terms" },
-  { label: "Privacy Policy", href: "/privacy" },
-  { label: "Cancellation & Refund", href: "/refund" },
+  { label: "Terms & Conditions", href: "/terms-and-conditions" },
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Cancellation & Refund", href: "/cancellation-and-refund-policy" },
 ];
 
 export const FEATURE_CARDS = [
