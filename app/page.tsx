@@ -4,6 +4,11 @@ import dynamic from "next/dynamic";
 import type { Metadata } from "next";
 
 // Dynamically import heavy and below-the-fold components
+const ServicesSection = dynamic(() => import("@/components/ServicesSection").then((mod) => mod.ServicesSection), {
+  ssr: true,
+  loading: () => <div className="min-h-[400px] flex items-center justify-center text-muted-foreground text-sm font-medium">Loading services...</div>,
+});
+
 const CardsSlider = dynamic(() => import("@/components/CardsSlider").then((mod) => mod.CardsSlider), {
   ssr: true,
   loading: () => <div className="min-h-[400px] flex items-center justify-center text-muted-foreground text-sm font-medium">Loading projects...</div>,
@@ -42,6 +47,7 @@ export default function Home() {
       <Navbar />
       <main className="flex-1 w-full bg-background">
         <HeroBlock />
+        <ServicesSection />
         <CardsSlider />
         <FAQSection />
         <CTABlock />

@@ -1,5 +1,6 @@
 export const NAV_LINKS = [
   { label: "Home", href: "/" },
+  { label: "Services", href: "/#services" },
   { label: "Showcase", href: "/#projects" },
   { label: "Team", href: "/team" },
   { label: "Blog", href: "/blog" },
@@ -7,7 +8,19 @@ export const NAV_LINKS = [
   { label: "Contact", href: "/contact" },
 ];
 
+export const LEGAL_LINKS = [
+  { label: "Terms & Conditions", href: "/terms-and-conditions" },
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Cancellation & Refund", href: "/cancellation-and-refund-policy" },
+];
+
 export const FEATURE_CARDS = [
+  {
+    title: "Rocket LMS Platform",
+    description: "All-in-one LMS with course builder, live HD classes, and automated certificates.",
+    icon: "GraduationCap",
+    tag: "LMS",
+  },
   {
     title: "Website Development",
     description: "Responsive, SEO optimized websites built using modern frameworks.",
@@ -145,6 +158,13 @@ export const WHY_US = [
 ];
 
 export const PROJECTS = [
+  {
+    title: "Rocket LMS Platform",
+    description: "Complete Learning Management System with course builder, live classes, video player, instructor payout system, and automated certificates.",
+    image: "/images/rocket-lms.png",
+    tags: ["Next.js", "Tailwind CSS", "MySQL", "LMS"],
+    category: "LMS Web Platform",
+  },
   {
     title: "Fabrika D2C Storefront",
     description: "Fast Next.js online store for a D2C fashion brand with UPI payments, WhatsApp order tracking, and custom checkout — boosted mobile sales by 45%.",

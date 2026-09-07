@@ -20,6 +20,8 @@ import {
   ArrowRight,
   Check,
   Quote,
+  GraduationCap,
+  ChevronDown,
   type LucideProps
 } from "lucide-react";
 
@@ -45,6 +47,8 @@ export const iconMap = {
   ArrowRight,
   Check,
   Quote,
+  GraduationCap,
+  ChevronDown,
 };
 
 export type IconName = keyof typeof iconMap;
