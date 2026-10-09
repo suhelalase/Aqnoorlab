@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { motion, type Variants } from "framer-motion";
 import {
   AppWindow,
   Bot,
@@ -10,19 +9,9 @@ import {
   Workflow,
   Headset,
   ArrowRight,
-  Sparkles,
   CheckCircle2,
 } from "lucide-react";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-  CardFooter,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import Button from "@/components/Button";
 
 export interface ServiceItem {
   id: string;
@@ -30,21 +19,17 @@ export interface ServiceItem {
   badge: string;
   description: string;
   icon: React.ComponentType<{ className?: string }>;
-  accentGradient: string;
-  iconColor: string;
   features: string[];
 }
 
 export const SERVICES_DATA: ServiceItem[] = [
   {
     id: "full-stack",
-    title: "Full-Stack Applications",
-    badge: "Web & SaaS",
+    title: "Full-Stack Web Systems",
+    badge: "WEB & SAAS",
     description:
-      "Scalable, cloud-native web applications and enterprise platforms built with high-performance architectures, intuitive UX, and robust backend systems.",
+      "Scalable cloud-native web applications and enterprise platforms engineered with Next.js, Node, Go, and high-performance relational databases.",
     icon: AppWindow,
-    accentGradient: "from-blue-500/20 via-indigo-500/10 to-transparent",
-    iconColor: "text-blue-500 dark:text-blue-400",
     features: [
       "Next.js, React & Modern UI",
       "Fast Node / Go / Python Backends",
@@ -54,13 +39,11 @@ export const SERVICES_DATA: ServiceItem[] = [
   },
   {
     id: "ai-chatbots",
-    title: "AI Chatbots",
-    badge: "LLMs & Agents",
+    title: "AI Chatbots & Agents",
+    badge: "LLMS & AUTOMATION",
     description:
-      "Intelligent conversational AI bots and multi-channel assistants that resolve customer queries, capture high-intent leads, and automate support 24/7.",
+      "Intelligent conversational AI bots and multi-channel agents that resolve queries, capture high-intent leads, and automate support 24/7.",
     icon: Bot,
-    accentGradient: "from-purple-500/20 via-pink-500/10 to-transparent",
-    iconColor: "text-purple-500 dark:text-purple-400",
     features: [
       "WhatsApp & Web Live Chat",
       "RAG on Private Business Data",
@@ -70,13 +53,11 @@ export const SERVICES_DATA: ServiceItem[] = [
   },
   {
     id: "desktop-apps",
-    title: "Desktop Applications",
-    badge: "Cross-Platform",
+    title: "Desktop Software & POS",
+    badge: "CROSS-PLATFORM",
     description:
-      "Ultra-fast, offline-first desktop software for Windows, macOS, and Linux built for high-throughput enterprise tasks, POS billing, and local hardware control.",
+      "Ultra-fast, offline-first desktop software for Windows, macOS, and Linux built for POS billing, inventory, and hardware integration.",
     icon: Monitor,
-    accentGradient: "from-emerald-500/20 via-teal-500/10 to-transparent",
-    iconColor: "text-emerald-500 dark:text-emerald-400",
     features: [
       "Windows, macOS & Linux",
       "Offline-First SQLite Storage",
@@ -86,13 +67,11 @@ export const SERVICES_DATA: ServiceItem[] = [
   },
   {
     id: "mobile-apps",
-    title: "Mobile Apps",
-    badge: "iOS & Android",
+    title: "Mobile Applications",
+    badge: "IOS & ANDROID",
     description:
-      "Fluid, responsive native and cross-platform mobile apps engineered with pixel-perfect designs, biometric authentication, and lightning-fast speeds.",
+      "Fluid, responsive native and cross-platform mobile apps engineered with biometric authentication, push alerts, and UPI payment gateways.",
     icon: Smartphone,
-    accentGradient: "from-amber-500/20 via-orange-500/10 to-transparent",
-    iconColor: "text-amber-500 dark:text-amber-400",
     features: [
       "React Native & Flutter Builds",
       "Instant Push Notifications",
@@ -102,13 +81,11 @@ export const SERVICES_DATA: ServiceItem[] = [
   },
   {
     id: "ai-workflows",
-    title: "AI Workflows",
-    badge: "Automation",
+    title: "AI Workflows & n8n",
+    badge: "PIPELINES",
     description:
-      "End-to-end automated business pipelines and AI-driven document processing systems that connect your tools and eliminate manual repetitive tasks.",
+      "End-to-end automated business pipelines and AI document processing systems that connect your software stack and eliminate manual work.",
     icon: Workflow,
-    accentGradient: "from-cyan-500/20 via-blue-500/10 to-transparent",
-    iconColor: "text-cyan-500 dark:text-cyan-400",
     features: [
       "n8n & Custom Webhook Pipelines",
       "Intelligent OCR & PDF Extraction",
@@ -118,13 +95,11 @@ export const SERVICES_DATA: ServiceItem[] = [
   },
   {
     id: "customer-support",
-    title: "Customer Support Setup",
-    badge: "Email, Tickets, Calls",
+    title: "Support Infrastructure",
+    badge: "ENTERPRISE SUPPORT",
     description:
-      "Omnichannel customer support infrastructure integrating smart ticketing systems, shared inboxes, VoIP call routing, and self-serve help centers.",
+      "Omnichannel customer support setup integrating ticketing systems, shared inboxes, VoIP call routing, and self-serve help centers.",
     icon: Headset,
-    accentGradient: "from-rose-500/20 via-red-500/10 to-transparent",
-    iconColor: "text-rose-500 dark:text-rose-400",
     features: [
       "Unified Shared Inboxes & Tickets",
       "Cloud VoIP & Call Queuing",
@@ -134,188 +109,110 @@ export const SERVICES_DATA: ServiceItem[] = [
   },
 ];
 
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 25 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: "easeOut",
-    },
-  },
-};
-
 export function ServicesSection() {
   return (
     <section
       id="services"
-      className="relative w-full py-20 md:py-28 overflow-hidden bg-background"
+      className="relative w-full py-16 md:py-24 bg-[#f1f5f9] border-b border-slate-300"
     >
-      {/* Subtle Background Lighting & Grid Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-[350px] h-[350px] bg-accent/15 blur-[100px] rounded-full pointer-events-none" />
-
       <div className="relative z-10 w-full max-w-[1320px] mx-auto px-5 sm:px-6 md:px-12">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14 md:mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs sm:text-sm font-semibold mb-4 shadow-sm"
-          >
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Our Core Capabilities</span>
-          </motion.div>
+        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-slate-300 bg-white font-mono text-xs font-bold uppercase text-slate-700 mb-3 shadow-sm">
+            <span>[ SYSTEM CAPABILITIES ]</span>
+          </div>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1, duration: 0.5 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-foreground mb-5"
-          >
-            End-to-End Software &{" "}
-            <span className="bg-gradient-to-r from-primary via-brand to-indigo-600 bg-clip-text text-transparent">
-              AI Services
-            </span>
-          </motion.h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#162032] mb-4 font-display">
+            Core Engineering Capabilities
+          </h2>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="text-base sm:text-lg text-muted-foreground leading-relaxed font-medium"
-          >
-            From bespoke full-stack platforms and mobile apps to 24/7 AI chatbots
-            and automated support operations — we engineer solutions that scale
-            your business effortlessly.
-          </motion.p>
+          <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-medium">
+            From bespoke full-stack platforms and mobile applications to 24/7 AI chatbots
+            and automated workflow operations — we engineer software built for business performance.
+          </p>
         </div>
 
         {/* Services Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {SERVICES_DATA.map((service) => {
             const Icon = service.icon;
             return (
-              <motion.div
+              <div
                 key={service.id}
-                variants={cardVariants}
-                className="h-full"
+                className="enterprise-card flex flex-col justify-between p-6 h-full"
               >
-                <Card className="group relative flex flex-col justify-between h-full overflow-hidden rounded-2xl border border-border/80 bg-card/70 backdrop-blur-md shadow-sm transition-all duration-300 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1">
-                  {/* Subtle Top Gradient Glow */}
-                  <div
-                    className={`absolute inset-x-0 top-0 h-32 bg-gradient-to-b ${service.accentGradient} opacity-60 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none`}
-                  />
-
-                  <div>
-                    <CardHeader className="p-6 pb-4 relative z-10">
-                      <div className="flex items-center justify-between gap-3 mb-4">
-                        <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-background/90 shadow-sm transition-transform duration-300 group-hover:scale-110 group-hover:border-primary/40">
-                          <Icon className={`h-6 w-6 ${service.iconColor}`} />
-                        </div>
-                        <Badge
-                          variant="secondary"
-                          className="font-medium text-xs border border-border/60 bg-muted/60 text-muted-foreground group-hover:border-primary/20 group-hover:bg-primary/10 group-hover:text-primary transition-colors"
-                        >
-                          {service.badge}
-                        </Badge>
-                      </div>
-
-                      <CardTitle className="text-xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors duration-200">
-                        {service.title}
-                      </CardTitle>
-
-                      <CardDescription className="text-sm text-muted-foreground leading-relaxed pt-2">
-                        {service.description}
-                      </CardDescription>
-                    </CardHeader>
-
-                    <CardContent className="p-6 pt-0 relative z-10">
-                      <div className="border-t border-border/50 pt-4 mt-2">
-                        <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground/80 mb-3">
-                          Key Capabilities
-                        </p>
-                        <ul className="space-y-2">
-                          {service.features.map((feature, idx) => (
-                            <li
-                              key={idx}
-                              className="flex items-start gap-2 text-xs sm:text-sm text-foreground/80"
-                            >
-                              <CheckCircle2 className="h-4 w-4 shrink-0 text-primary mt-0.5" />
-                              <span>{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </CardContent>
+                <div>
+                  <div className="flex items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-200">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 border border-blue-200 text-[#0052cc] shadow-2xs">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <span className="enterprise-badge">{service.badge}</span>
                   </div>
 
-                  <CardFooter className="p-6 pt-0 relative z-10 border-t border-border/40 mt-4 bg-muted/20">
-                    <a
-                      href="#contact"
-                      className="inline-flex w-full items-center justify-between text-xs sm:text-sm font-semibold text-primary group-hover:text-primary/90 transition-colors pt-3"
-                    >
-                      <span>Discuss this service</span>
-                      <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                    </a>
-                  </CardFooter>
-                </Card>
-              </motion.div>
+                  <h3 className="text-xl font-bold tracking-tight text-slate-900 mb-2 font-display">
+                    {service.title}
+                  </h3>
+
+                  <p className="text-sm text-slate-600 leading-relaxed mb-5 font-normal">
+                    {service.description}
+                  </p>
+
+                  <div className="border-t border-slate-200 pt-4 mb-4">
+                    <p className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-500 mb-2.5">
+                      Technical Deliverables
+                    </p>
+                    <ul className="space-y-2">
+                      {service.features.map((feature, idx) => (
+                        <li
+                          key={idx}
+                          className="flex items-start gap-2 text-xs sm:text-sm text-slate-700"
+                        >
+                          <CheckCircle2 className="h-4 w-4 shrink-0 text-[#0052cc] mt-0.5" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="pt-3 border-t border-slate-200 mt-2">
+                  <a
+                    href="#contact"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0052cc] hover:text-[#003366] uppercase tracking-wider transition-colors"
+                  >
+                    <span>Inquire About This Capability</span>
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </a>
+                </div>
+              </div>
             );
           })}
-        </motion.div>
+        </div>
 
-        {/* Bottom Banner CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3, duration: 0.5 }}
-          className="mt-14 md:mt-20 p-6 md:p-8 rounded-2xl border border-primary/20 bg-gradient-to-r from-primary/5 via-accent/15 to-primary/5 backdrop-blur-sm flex flex-col sm:flex-row items-center justify-between gap-6"
-        >
+        {/* Bottom Callout Banner */}
+        <div className="mt-12 p-6 md:p-8 rounded-xl bg-gradient-to-r from-blue-50/70 via-slate-50 to-indigo-50/70 border border-blue-200/70 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="text-center sm:text-left">
-            <h3 className="text-lg sm:text-xl font-bold text-foreground mb-1">
-              Have a custom requirement or need a hybrid setup?
+            <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-1 font-display">
+              Require a Custom Architecture or Legacy Integration?
             </h3>
-            <p className="text-sm text-muted-foreground font-medium">
-              We design bespoke architectures tailored specifically to your tech stack, workflow, and budget.
+            <p className="text-sm text-slate-600 font-medium">
+              We design tailored software architectures aligned with your exact technical requirements and budget.
             </p>
           </div>
-          <a href="#contact" className="shrink-0 w-full sm:w-auto">
-            <Button
-              size="lg"
-              className="w-full sm:w-auto rounded-full font-semibold px-6 shadow-md shadow-primary/20 gap-2 cursor-pointer"
-            >
-              Request Custom Proposal
-              <ArrowRight className="h-4 w-4" />
-            </Button>
-          </a>
-        </motion.div>
+          <Button
+            href="#contact"
+            variant="primary"
+            size="md"
+            className="shrink-0 w-full sm:w-auto font-bold"
+          >
+            <span>Request Technical Proposal</span>
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
+        </div>
       </div>
     </section>
   );
 }
 
 export default ServicesSection;
+

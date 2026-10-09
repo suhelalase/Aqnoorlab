@@ -1,11 +1,10 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
-import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { ExternalLink, Zap, Cpu, ArrowUpRight, X, Monitor } from "lucide-react";
 import { N8N_PROJECTS } from "@/lib/constants";
 import { RocketLmsShowcase } from "@/components/RocketLmsShowcase";
+import Button from "@/components/Button";
 
 interface CardData {
   id: number;
@@ -56,10 +55,10 @@ const ENGINEERING_CARDS: CardData[] = [
   },
   {
     id: 2,
-    title: "MyMedicare",
+    title: "MyMedicare POS & ERP",
     description:
-      "A futuristic cloud-based Pharmacy POS & inventory system with automated GST billing, real-time stock tracking, and expiry alerts.",
-    category: "Web Application",
+      "Cloud-based Pharmacy POS & inventory system with automated GST billing, real-time stock tracking, and expiry alerts.",
+    category: "Enterprise System",
     image: "/images/mymedicare.png",
     tags: ["Next.js", "PostgreSQL", "Node.js"],
     year: "2025",
@@ -79,11 +78,11 @@ const ENGINEERING_CARDS: CardData[] = [
   },
   {
     id: 3,
-    title: "Biznexis",
+    title: "Biznexis Utility Engine",
     description:
-      "All-in-one business tool: client-side optimized e-commerce utility automating invoice parsing, barcode sheets, and multi-layer GST/DTC margins.",
+      "Client-side optimized e-commerce utility automating invoice parsing, barcode sheets, and multi-layer GST/DTC margins.",
     category: "Web Application",
-    image: "/images/biznexis.png",
+    image: "/images/mymedicare.png",
     tags: ["Next.js", "Tailwind CSS", "WebAssembly"],
     year: "2025",
     highlight: "Seller Automation",
@@ -94,7 +93,7 @@ const ENGINEERING_CARDS: CardData[] = [
       badge: "E-Commerce Utility",
       description:
         "Client-side optimized e-commerce utility automating invoice parsing, barcode sheets, and multi-layer GST/DTC margins.",
-      imageSrc: "/images/biznexis.png",
+      imageSrc: "/images/mymedicare.png",
       liveUrl: "https://biznexis.aqnoorlabs.online/",
       displayUrl: "https://biznexis.aqnoorlabs.online/",
       buttonText: "Open Biznexis App",
@@ -102,11 +101,11 @@ const ENGINEERING_CARDS: CardData[] = [
   },
   {
     id: 4,
-    title: "Hotel Diamond",
+    title: "Hotel Diamond POS",
     description:
       "Counter billing and QR-code table booking POS system with integrated AI chatbot and fully manageable control panel.",
-    category: "Web Application",
-    image: "/images/hoteldiamond.png",
+    category: "Hospitality ERP",
+    image: "/images/mobile_project.jpg",
     tags: ["Next.js", "Node.js", "AI Chatbot"],
     year: "2025",
     highlight: "Hospitality POS",
@@ -117,7 +116,7 @@ const ENGINEERING_CARDS: CardData[] = [
       badge: "Hospitality POS",
       description:
         "Counter billing and QR-code table booking POS system with integrated AI chatbot and fully manageable control panel.",
-      imageSrc: "/images/hoteldiamond.png",
+      imageSrc: "/images/mobile_project.jpg",
       liveUrl: "https://hoteldiamond.aqnoorlabs.online/",
       displayUrl: "https://hoteldiamond.aqnoorlabs.online/",
       buttonText: "Open Hotel Diamond POS",
@@ -128,11 +127,11 @@ const ENGINEERING_CARDS: CardData[] = [
     title: "Aura Fintech Mobile App",
     description:
       "A personal asset and expense tracker that helps users manage cash flow effortlessly with zero sync delays.",
-    category: "Mobile Application",
+    category: "Mobile Software",
     image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80",
     tags: ["React Native", "Spring Boot", "PostgreSQL"],
     year: "2024",
-    highlight: "Zero sync delays",
+    highlight: "Zero Sync Delays",
   },
   {
     id: 6,
@@ -143,18 +142,7 @@ const ENGINEERING_CARDS: CardData[] = [
     image: "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80",
     tags: ["Electron", "React", "TypeScript"],
     year: "2023",
-    highlight: "Instant alerts",
-  },
-  {
-    id: 7,
-    title: "NexusAI Support Assistant",
-    description:
-      "AI customer support chatbot that answers FAQs 24/7 — reducing support ticket response times by 60%.",
-    category: "AI Solution",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
-    tags: ["Python", "Cloudflare", "Vector DB"],
-    year: "2025",
-    highlight: "60% faster support",
+    highlight: "Instant Monitoring",
   },
 ];
 
@@ -168,13 +156,11 @@ const N8N_CARDS: CardData[] = N8N_PROJECTS.map((p, i) => ({
   year: "2025",
 }));
 
-function FeaturedCard({
+function ProjectCard({
   card,
-  large = false,
   onOpenPreview,
 }: {
   card: CardData;
-  large?: boolean;
   onOpenPreview?: (card: CardData) => void;
 }) {
   const handleClick = () => {
@@ -186,88 +172,73 @@ function FeaturedCard({
   };
 
   return (
-    <motion.div
+    <div
       onClick={handleClick}
-      className={`group relative overflow-hidden rounded-2xl border border-border/60 bg-card cursor-pointer ${
-        large ? "h-[380px]" : "h-[300px]"
-      }`}
-      whileHover={{ y: -4 }}
-      transition={{ duration: 0.25, ease: "easeOut" }}
+      className="enterprise-card group flex flex-col justify-between overflow-hidden cursor-pointer h-full"
     >
-      {/* Background image */}
-      <div className="absolute inset-0">
-        <img
-          src={card.image}
-          alt={card.title}
-          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-          draggable={false}
-        />
-        {/* Dark gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/10" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-transparent" />
-      </div>
+      <div>
+        <div className="relative h-44 w-full overflow-hidden bg-slate-900 border-b border-slate-200">
+          <img
+            src={card.image}
+            alt={card.title}
+            className="h-full w-full object-cover"
+            draggable={false}
+          />
+          <div className="absolute top-3 left-3">
+            <span className="enterprise-badge">{card.category}</span>
+          </div>
+          <div className="absolute top-3 right-3">
+            <span className="px-2 py-0.5 rounded bg-[#162032] text-white font-mono text-xs font-bold">
+              {card.year}
+            </span>
+          </div>
+        </div>
 
-      {/* Top badge */}
-      <div className="absolute top-4 left-4 z-10">
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/20 px-3 py-1 text-xs font-semibold text-white">
-          {card.category}
-        </span>
-      </div>
+        <div className="p-5">
+          {card.highlight && (
+            <span className="inline-block font-mono text-[11px] font-bold text-[#0052cc] uppercase tracking-wider mb-1">
+              [ {card.highlight} ]
+            </span>
+          )}
+          <h3 className="text-lg font-bold text-[#162032] leading-snug mb-2 font-display">
+            {card.title}
+          </h3>
+          <p className="text-xs text-slate-600 leading-relaxed mb-4 line-clamp-3">
+            {card.description}
+          </p>
 
-      {/* Year badge */}
-      <div className="absolute top-4 right-4 z-10">
-        <span className="inline-flex items-center rounded-full bg-primary/80 backdrop-blur-md px-2.5 py-1 text-xs font-bold text-white">
-          {card.year}
-        </span>
-      </div>
-
-      {/* Content at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 p-5">
-        {card.highlight && (
-          <span className="inline-flex items-center gap-1 mb-2 rounded-full bg-primary/95 px-2.5 py-0.5 text-[10px] font-bold text-white uppercase tracking-wider transition-all duration-300 transform md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0">
-            ✦ {card.highlight}
-          </span>
-        )}
-        <h3 className="text-base font-bold text-white leading-tight mb-1.5 group-hover:text-primary-foreground transition-colors">
-          {card.title}
-        </h3>
-        <p className="text-xs text-white/70 line-clamp-2 leading-relaxed mb-3">
-          {card.description}
-        </p>
-
-        {/* Tags & Action */}
-        <div className="flex items-center justify-between pt-1">
-          <div className="flex flex-wrap gap-1.5">
-            {card.tags.slice(0, 2).map((tag) => (
+          <div className="flex flex-wrap gap-1.5 mb-2">
+            {card.tags.map((tag) => (
               <span
                 key={tag}
-                className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-white/15 text-white/90 backdrop-blur-sm border border-white/15"
+                className="text-[11px] font-mono font-medium px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200"
               >
                 {tag}
               </span>
             ))}
-            {card.tags.length > 2 && (
-              <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-white/10 text-white/70">
-                +{card.tags.length - 2}
-              </span>
-            )}
-          </div>
-          <div className="flex items-center gap-1 text-xs font-bold text-white bg-primary rounded-full px-3 py-1.5 transition-all duration-300 transform md:opacity-0 md:scale-90 md:group-hover:opacity-100 md:group-hover:scale-100">
-            {card.isLmsPreview || card.previewData ? (
-              <>
-                <Monitor className="w-3 h-3" />
-                Preview UI
-              </>
-            ) : (
-              <>
-                <ExternalLink className="w-3 h-3" />
-                View
-              </>
-            )}
           </div>
         </div>
       </div>
-    </motion.div>
+
+      <div className="px-5 py-3 border-t border-slate-200 bg-slate-50 flex items-center justify-between">
+        <span className="text-xs font-bold text-slate-700">
+          {card.isLmsPreview || card.previewData ? "Interactive Preview" : "Production Release"}
+        </span>
+        <div className="inline-flex items-center gap-1 text-xs font-bold text-[#0052cc] group-hover:text-[#003366]">
+          {card.isLmsPreview || card.previewData ? (
+            <>
+              <Monitor className="w-3.5 h-3.5" />
+              <span>Launch Demo</span>
+            </>
+          ) : (
+            <>
+              <ExternalLink className="w-3.5 h-3.5" />
+              <span>View System</span>
+            </>
+          )}
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -277,177 +248,128 @@ export function CardsSlider() {
 
   const cards = activeTab === "engineering" ? ENGINEERING_CARDS : N8N_CARDS;
 
-  // Layout: first card is large (spans 2 rows on lg), rest fill a 3-col grid
-  const [featured, ...rest] = cards;
   return (
-    <div id="projects" className="w-full py-16 md:py-20">
+    <div id="projects" className="w-full py-16 md:py-24 bg-white border-b border-slate-300">
       {/* Section Header */}
-      <div className="max-w-[1280px] w-full md:w-[90%] mx-auto px-5 md:px-0 mb-10 text-center">
-        <Badge
-          variant="outline"
-          className="mb-4 inline-flex items-center gap-2 rounded-full border-primary/20 bg-primary/5 px-4 py-2 text-xs md:text-sm font-semibold uppercase tracking-wider text-primary"
-        >
-          Showcase
-        </Badge>
-        <h2 className="mb-3 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground">
-          Featured Projects
+      <div className="max-w-[1280px] w-full md:w-[90%] mx-auto px-5 md:px-0 mb-12 text-center">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-slate-300 bg-[#f1f5f9] font-mono text-xs font-bold uppercase text-slate-700 mb-3 shadow-sm">
+          <span>[ PRODUCTION DELIVERABLES ]</span>
+        </div>
+        <h2 className="mb-3 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#162032] font-display">
+          Featured Engineering Projects
         </h2>
-        <p className="text-foreground/65 max-w-2xl mx-auto text-sm sm:text-base md:text-lg leading-relaxed font-medium">
-          Real projects for real businesses — see what we&apos;ve built and what it did for them.
+        <p className="text-slate-600 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed font-medium">
+          Production systems built for real businesses — inspect live web applications, mobile platforms, and automated workflow pipelines.
         </p>
 
         {/* Tab Switcher */}
-        <div className="mt-8 inline-flex items-center gap-1.5 p-1.5 rounded-full bg-secondary/80 border border-border/50 shadow-sm">
+        <div className="mt-8 inline-flex items-center gap-2 p-1.5 rounded bg-slate-100 border border-slate-300">
           <button
             onClick={() => setActiveTab("engineering")}
-            className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer ${
+            className={`flex items-center gap-2 px-5 py-2 rounded text-xs font-bold font-mono uppercase tracking-wider transition-colors cursor-pointer ${
               activeTab === "engineering"
-                ? "bg-primary text-primary-foreground shadow-md"
-                : "text-muted-foreground hover:text-foreground"
+                ? "bg-[#162032] text-white shadow-sm"
+                : "text-slate-600 hover:text-[#162032]"
             }`}
           >
             <Cpu className="w-4 h-4" />
-            Web & Apps
+            Web Platforms &amp; Software
           </button>
           <button
             onClick={() => setActiveTab("n8n")}
-            className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer ${
+            className={`flex items-center gap-2 px-5 py-2 rounded text-xs font-bold font-mono uppercase tracking-wider transition-colors cursor-pointer ${
               activeTab === "n8n"
-                ? "bg-primary text-primary-foreground shadow-md"
-                : "text-muted-foreground hover:text-foreground"
+                ? "bg-[#162032] text-white shadow-sm"
+                : "text-slate-600 hover:text-[#162032]"
             }`}
           >
             <Zap className="w-4 h-4" />
-            AI Automation
+            AI &amp; n8n Automation
           </button>
         </div>
       </div>
 
       {/* Cards Grid */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={activeTab}
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -8 }}
-          transition={{ duration: 0.35 }}
-          className="max-w-[1280px] w-full md:w-[90%] mx-auto px-5 md:px-0"
-        >
-          {/* Bento-style layout */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
-            {/* Featured large card - spans 2 cols on lg */}
-            {featured && (
-              <div className="sm:col-span-2 lg:col-span-2">
-                <FeaturedCard
-                  card={featured}
-                  large
-                  onOpenPreview={(c) => setSelectedPreviewCard(c)}
-                />
-              </div>
-            )}
-
-            {/* Rest of cards */}
-            {rest.map((card) => (
-              <div key={card.id}>
-                <FeaturedCard
-                  card={card}
-                  onOpenPreview={(c) => setSelectedPreviewCard(c)}
-                />
-              </div>
-            ))}
-          </div>
-        </motion.div>
-      </AnimatePresence>
-
-      {/* Desktop Laptop Screen Preview Backdrop Modal */}
-      <AnimatePresence>
-        {selectedPreviewCard && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md p-4 sm:p-6 overflow-y-auto"
-            onClick={() => setSelectedPreviewCard(null)}
-          >
-            <motion.div
-              initial={{ scale: 0.95, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.95, opacity: 0, y: 20 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative w-full max-w-5xl my-auto"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Top Modal Header */}
-              <div className="flex items-center justify-between px-4 py-2 mb-2 text-white">
-                <div className="flex items-center gap-2 text-sm font-semibold text-white/90">
-                  <Monitor className="w-4 h-4 text-primary" />
-                  <span>{selectedPreviewCard.title} Platform Preview</span>
-                </div>
-                <button
-                  onClick={() => setSelectedPreviewCard(null)}
-                  className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
-                >
-                  <X className="w-4 h-4" />
-                  Close
-                </button>
-              </div>
-
-              {/* Desktop Laptop Mockup Screen Component */}
-              <RocketLmsShowcase
-                onClose={() => setSelectedPreviewCard(null)}
-                title={selectedPreviewCard.previewData?.title || selectedPreviewCard.title}
-                badge={selectedPreviewCard.previewData?.badge}
-                description={selectedPreviewCard.previewData?.description || selectedPreviewCard.description}
-                imageSrc={selectedPreviewCard.previewData?.imageSrc || selectedPreviewCard.image}
-                liveUrl={selectedPreviewCard.previewData?.liveUrl || selectedPreviewCard.link}
-                displayUrl={selectedPreviewCard.previewData?.displayUrl || selectedPreviewCard.link}
-                buttonText={selectedPreviewCard.previewData?.buttonText || "Open Live Demo"}
+      <div className="max-w-[1280px] w-full md:w-[90%] mx-auto px-5 md:px-0">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {cards.map((card) => (
+            <div key={card.id}>
+              <ProjectCard
+                card={card}
+                onOpenPreview={(c) => setSelectedPreviewCard(c)}
               />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Short CTA Banner */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-        className="max-w-[1280px] w-full md:w-[90%] mx-auto px-5 md:px-0 mt-12"
-      >
-        <div className="relative rounded-2xl overflow-hidden border border-primary/20 bg-gradient-to-r from-primary/8 via-primary/12 to-accent/8 p-6 md:p-10">
-          {/* Grid pattern */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px]" />
-
-          <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-6">
-            <div>
-              <p className="text-xs uppercase tracking-widest font-bold text-primary mb-1.5">
-                Have a project in mind?
-              </p>
-              <h3 className="text-2xl md:text-3xl font-extrabold text-foreground tracking-tight">
-                Let&apos;s turn it into{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/60">
-                  something real.
-                </span>
-              </h3>
-              <p className="text-sm text-muted-foreground mt-2 max-w-md font-medium leading-relaxed">
-                We usually reply within a few hours — no long waits, no chasing us for updates.
-              </p>
             </div>
+          ))}
+        </div>
+      </div>
 
-            <div className="shrink-0">
-              <a
-                href="#contact"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-primary text-primary-foreground font-bold text-sm md:text-base hover:opacity-90 hover:scale-105 transition-all duration-200 shadow-lg shadow-primary/25 cursor-pointer"
+      {/* Preview Modal */}
+      {selectedPreviewCard && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/85 p-4 overflow-y-auto"
+          onClick={() => setSelectedPreviewCard(null)}
+        >
+          <div
+            className="relative w-full max-w-5xl my-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between px-4 py-2.5 bg-slate-900 border-t border-x border-slate-700 rounded-t-lg text-white">
+              <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase text-slate-200">
+                <Monitor className="w-4 h-4 text-[#38bdf8]" />
+                <span>{selectedPreviewCard.title} &bull; System Inspection</span>
+              </div>
+              <button
+                onClick={() => setSelectedPreviewCard(null)}
+                className="flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded bg-slate-800 hover:bg-slate-700 text-white transition-colors cursor-pointer border border-slate-600"
               >
-                <span>Get a Free Quote</span>
-                <ArrowUpRight className="w-4 h-4" />
-              </a>
+                <X className="w-4 h-4" />
+                <span>Close</span>
+              </button>
             </div>
+
+            <RocketLmsShowcase
+              onClose={() => setSelectedPreviewCard(null)}
+              title={selectedPreviewCard.previewData?.title || selectedPreviewCard.title}
+              badge={selectedPreviewCard.previewData?.badge}
+              description={selectedPreviewCard.previewData?.description || selectedPreviewCard.description}
+              imageSrc={selectedPreviewCard.previewData?.imageSrc || selectedPreviewCard.image}
+              liveUrl={selectedPreviewCard.previewData?.liveUrl || selectedPreviewCard.link}
+              displayUrl={selectedPreviewCard.previewData?.displayUrl || selectedPreviewCard.link}
+              buttonText={selectedPreviewCard.previewData?.buttonText || "Open Live Demo"}
+            />
           </div>
         </div>
-      </motion.div>
+      )}
+
+      {/* Short CTA Banner */}
+      <div className="max-w-[1280px] w-full md:w-[90%] mx-auto px-5 md:px-0 mt-12">
+        <div className="rounded-xl bg-gradient-to-r from-blue-50/80 via-slate-50 to-indigo-50/80 text-slate-900 p-8 border border-blue-200/70 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xs">
+          <div>
+            <p className="text-xs font-mono font-bold uppercase tracking-widest text-[#0052cc] mb-1">
+              HAVE A CUSTOM SOFTWARE SYSTEM TO BUILD?
+            </p>
+            <h3 className="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight font-display">
+              Turn your requirements into production software.
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-600 mt-1.5 max-w-md font-medium leading-relaxed">
+              We respond promptly with technical estimates, scope of work, and clear milestone schedules.
+            </p>
+          </div>
+
+          <div className="shrink-0 w-full sm:w-auto">
+            <Button
+              href="#contact"
+              variant="primary"
+              size="lg"
+              className="w-full sm:w-auto font-bold bg-[#0052cc] hover:bg-[#0043a8] text-white"
+            >
+              <span>Request Project Quote</span>
+              <ArrowUpRight className="ml-2 w-4 h-4" />
+            </Button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
+

@@ -1,63 +1,49 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Mail, Phone, ShieldCheck, Cpu, MessageSquare, ArrowUpRight } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 import { ContactForm } from "@/components/ContactForm";
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-10 md:py-20 bg-background relative overflow-hidden flex items-center justify-center min-h-[80vh]">
-      {/* Background ambient glow */}
-      <div className="absolute bottom-0 right-0 w-[300px] sm:w-[400px] h-[300px] sm:h-[400px] rounded-full bg-primary/5 blur-[100px] sm:blur-[120px] pointer-events-none" />
-      <div className="absolute top-0 left-0 w-[300px] sm:w-[400px] h-[300px] sm:h-[400px] rounded-full bg-primary/5 blur-[100px] sm:blur-[120px] pointer-events-none" />
-
+    <section id="contact" className="py-12 md:py-20 bg-white relative flex items-center justify-center min-h-[75vh] border-b border-slate-200">
       <div className="max-w-[1280px] w-full md:w-[90%] mx-auto px-5 md:px-0 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch">
           
-          {/* Left Column: Company Info & Copy (System Design, Scale, Cache, UI/UX, Hosting) */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="md:col-span-5 flex flex-col justify-between space-y-8 md:space-y-0"
-          >
+          {/* Left Column: Corporate Info */}
+          <div className="md:col-span-5 flex flex-col justify-between space-y-6">
             <div>
-              <Badge
-                variant="outline"
-                className="mb-3 sm:mb-4 inline-flex items-center gap-2 rounded-full border-primary/20 bg-primary/5 px-3 py-1.5 text-xs sm:text-sm font-semibold uppercase tracking-wider text-primary backdrop-blur"
-              >
-                Get In Touch
-              </Badge>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground mb-4 sm:mb-5 leading-tight">
-                Let&apos;s Build Your Project.
+              <div className="mb-3 inline-flex items-center gap-2 rounded-md border border-slate-300 bg-slate-50 px-3 py-1 font-mono text-xs font-bold uppercase text-slate-700 shadow-2xs">
+                <span>[ CONTACT ENGINEERING ]</span>
+              </div>
+
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-4 font-display">
+                Request a Technical Estimate.
               </h2>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed font-normal">
-                At <span className="font-semibold text-foreground">AqNoorLabs</span>, we focus on getting your project right the first time:
+              <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+                At <span className="font-bold text-slate-900">AqNoorLabs</span>, we engineer software systems designed for precision and reliable execution:
               </p>
 
-              <div className="mt-6 sm:mt-8 space-y-5">
-                <div className="flex gap-3 sm:gap-4 items-start">
-                  <div className="mt-1 flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                    <Cpu className="h-4.5 w-4.5 sm:h-5 sm:w-5" />
+              <div className="mt-6 space-y-4">
+                <div className="flex gap-3 items-start p-3 rounded.xl bg-slate-50 border border-slate-200">
+                  <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-blue-50 border border-blue-200 text-[#0052cc]">
+                    <Cpu className="h-4 w-4" />
                   </div>
                   <div>
-                    <h3 className="text-sm sm:text-base font-bold text-foreground">Built to Handle Growth</h3>
-                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mt-0.5 sm:mt-1">
-                      Your app won&apos;t break or slow down as your users grow — we plan for scale from day one.
+                    <h3 className="text-sm font-bold text-slate-900 font-display">Engineering Scale &amp; Performance</h3>
+                    <p className="text-xs text-slate-600 leading-relaxed mt-0.5 font-normal">
+                      Planned and architected for high volume without performance degradation.
                     </p>
                   </div>
                 </div>
 
-                <div className="flex gap-3 sm:gap-4 items-start">
-                  <div className="mt-1 flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                    <ShieldCheck className="h-4.5 w-4.5 sm:h-5 sm:w-5" />
+                <div className="flex gap-3 items-start p-3 rounded-xl bg-slate-50 border border-slate-200">
+                  <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-blue-50 border border-blue-200 text-[#0052cc]">
+                    <ShieldCheck className="h-4 w-4" />
                   </div>
                   <div>
-                    <h3 className="text-sm sm:text-base font-bold text-foreground">Fast, Reliable &amp; Good-Looking</h3>
-                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mt-0.5 sm:mt-1">
-                      Quick load times, dependable hosting, and a design your customers will actually enjoy using.
+                    <h3 className="text-sm font-bold text-slate-900 font-display">Milestone Guarantee &amp; Support</h3>
+                    <p className="text-xs text-slate-600 leading-relaxed mt-0.5 font-normal">
+                      Transparent milestone delivery, fast hosting, and dedicated technical maintenance.
                     </p>
                   </div>
                 </div>
@@ -65,84 +51,75 @@ export default function Contact() {
             </div>
 
             {/* Quick Contact Details & WhatsApp Callout */}
-            <div className="space-y-5 border-t border-border/40 pt-6 mt-6 md:mt-0">
-              {/* Enhanced WhatsApp Button */}
+            <div className="space-y-4 border-t border-slate-200 pt-6">
               <a
                 href="https://wa.me/917387450332?text=Hi%20AqNoorLabs%2C%20I%20would%20like%20to%20discuss%20a%20project."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-gradient-to-r from-emerald-500/10 via-emerald-500/5 to-transparent border border-emerald-500/25 hover:border-emerald-500/50 transition-all duration-300 shadow-sm hover:shadow-lg hover:shadow-emerald-500/10 hover:scale-[1.01] active:scale-[0.99] cursor-pointer"
+                className="flex items-center justify-between p-3.5 rounded-xl bg-gradient-to-r from-emerald-50 to-teal-50 text-slate-900 border border-emerald-200 hover:border-emerald-300 transition-all shadow-2xs cursor-pointer group"
               >
-                <div className="flex items-center gap-3.5">
-                  <div className="relative flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-xl bg-emerald-500 text-white shadow-md shadow-emerald-500/30 group-hover:scale-105 transition-transform duration-300">
-                    <MessageSquare className="h-5 w-5 fill-white/20" />
-                    <span className="absolute -top-1 -right-1 flex h-3 w-3">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-400 border-2 border-background"></span>
-                    </span>
+                <div className="flex items-center gap-3">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-600 text-white shadow-2xs">
+                    <MessageSquare className="h-4 w-4" />
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <span className="text-sm sm:text-base font-bold text-foreground group-hover:text-emerald-500 transition-colors">
-                        Chat on WhatsApp
+                      <span className="text-sm font-bold text-slate-900">
+                        Direct WhatsApp Inquiry
                       </span>
-                      <span className="text-[10px] uppercase font-extrabold tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+                      <span className="text-[10px] uppercase font-mono font-bold px-1.5 py-0.5 rounded-md bg-emerald-100 text-emerald-800 border border-emerald-300">
                         Online
                       </span>
                     </div>
-                    <p className="text-xs text-muted-foreground font-medium">
-                      Fast response • Direct developer contact
+                    <p className="text-xs text-slate-600 font-mono">
+                      Fast Developer Response &bull; Direct Lead
                     </p>
                   </div>
                 </div>
 
-                <div className="hidden sm:flex items-center justify-center h-8 w-8 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300">
+                <div className="flex items-center justify-center h-7 w-7 rounded-md bg-white border border-emerald-200 text-emerald-700 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
                   <ArrowUpRight className="h-4 w-4" />
                 </div>
               </a>
 
-              <div className="flex flex-col space-y-3.5 text-sm sm:text-base text-muted-foreground pt-2">
-                <div className="flex items-start gap-3">
-                  <Mail className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+              <div className="grid grid-cols-1 gap-2.5 text-xs text-slate-700 font-medium pt-2">
+                <div className="flex items-center gap-2.5 p-2.5 rounded-lg bg-slate-50 border border-slate-200">
+                  <Mail className="h-4 w-4 text-[#0052cc] shrink-0" />
                   <div className="flex flex-col">
-                    <span className="text-[10px] text-muted-foreground uppercase tracking-wider font-bold mb-0.5">General Inquiries</span>
-                    <a href="mailto:hi@aqnoorlabs.online" className="hover:text-primary font-semibold transition-colors break-all">
+                    <span className="text-[10px] font-mono uppercase text-slate-500 font-bold">General Inquiries</span>
+                    <a href="mailto:hi@aqnoorlabs.online" className="hover:text-[#0052cc] font-bold text-slate-800">
                       hi@aqnoorlabs.online
                     </a>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
-                  <Mail className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+
+                <div className="flex items-center gap-2.5 p-2.5 rounded-lg bg-slate-50 border border-slate-200">
+                  <Mail className="h-4 w-4 text-[#0052cc] shrink-0" />
                   <div className="flex flex-col">
-                    <span className="text-[10px] text-muted-foreground uppercase tracking-wider font-bold mb-0.5">Support</span>
-                    <a href="mailto:support@aqnoorlabs.online" className="hover:text-primary font-semibold transition-colors break-all">
+                    <span className="text-[10px] font-mono uppercase text-slate-500 font-bold">Technical Support</span>
+                    <a href="mailto:support@aqnoorlabs.online" className="hover:text-[#0052cc] font-bold text-slate-800">
                       support@aqnoorlabs.online
                     </a>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
-                  <Phone className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+
+                <div className="flex items-center gap-2.5 p-2.5 rounded-lg bg-slate-50 border border-slate-200">
+                  <Phone className="h-4 w-4 text-[#0052cc] shrink-0" />
                   <div className="flex flex-col">
-                    <span className="text-[10px] text-muted-foreground uppercase tracking-wider font-bold mb-0.5">Phone &amp; WhatsApp</span>
-                    <a href="tel:+917387450332" className="hover:text-primary font-semibold transition-colors">
+                    <span className="text-[10px] font-mono uppercase text-slate-500 font-bold">Direct Phone &amp; WhatsApp</span>
+                    <a href="tel:+917387450332" className="hover:text-[#0052cc] font-bold text-slate-800">
                       +91 7387450332
                     </a>
                   </div>
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Right Column: Form Container */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="w-full max-w-[420px] md:max-w-none mx-auto md:mx-0 md:col-span-7 bg-card/40 border border-border/40 rounded-[20px] md:rounded-3xl p-6 md:p-10 backdrop-blur-xl shadow-xl flex flex-col justify-center min-h-[380px] sm:min-h-[400px]"
-          >
+          <div className="w-full md:col-span-7 enterprise-card p-6 md:p-8 flex flex-col justify-center shadow-xs">
             <ContactForm />
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

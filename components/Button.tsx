@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface ButtonProps {
@@ -27,55 +26,54 @@ export default function Button({
   ...props
 }: ButtonProps) {
   const baseStyles =
-    "inline-flex items-center justify-center font-sans font-semibold rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand/40 disabled:opacity-50 disabled:pointer-events-none";
+    "inline-flex items-center justify-center font-sans font-bold rounded transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-[#0052cc]/40 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98]";
 
   const variants = {
-    // Primary: Navy Blue background, transitions to Orange on hover
+    // Primary: Corporate Blue
     primary:
-      "bg-foreground text-white border border-transparent shadow-[0_4px_12px_rgba(4,50,109,0.25)] hover:bg-brand hover:shadow-[0_6px_18px_rgba(245,143,32,0.3)] hover:-translate-y-[1px]",
-    // Secondary: Orange background, transitions to darker Orange
+      "bg-[#0052cc] text-white border border-[#0052cc] hover:bg-[#0043a8] hover:border-[#0043a8] shadow-xs",
+    // Secondary: Light Slate Accent
     secondary:
-      "bg-brand text-white border border-transparent shadow-[0_4px_12px_rgba(245,143,32,0.25)] hover:bg-brand-deep hover:-translate-y-[1px]",
-    // Outline: Navy Blue outline, transitions to filled Navy on hover
+      "bg-slate-100 text-slate-900 border border-slate-300 hover:bg-slate-200 shadow-xs",
+    // Outline: Solid Light Card Outline
     outline:
-      "border-2 border-foreground bg-transparent text-foreground hover:bg-foreground hover:text-white hover:-translate-y-[1px]",
-    // Text: Muted dark grey-blue text, hover underline
-    text: "text-muted hover:text-foreground hover:bg-brand-light/10",
+      "border border-slate-300 bg-white text-slate-800 hover:bg-slate-50 hover:border-slate-400 shadow-xs",
+    // Text: Muted Slate
+    text: "text-slate-700 hover:text-[#0052cc] hover:bg-slate-100",
   };
 
   const sizes = {
-    sm: "px-4 py-2 text-xs uppercase tracking-wider",
-    md: "px-6 py-3 text-sm uppercase tracking-wider",
-    lg: "px-8 py-4 text-base uppercase tracking-wider",
+    sm: "px-3.5 py-1.5 text-xs uppercase tracking-wider",
+    md: "px-5 py-2.5 text-xs sm:text-sm uppercase tracking-wider",
+    lg: "px-7 py-3 text-sm sm:text-base uppercase tracking-wider",
   };
 
   const buttonClasses = cn(baseStyles, variants[variant], sizes[size], className);
 
   if (href) {
     return (
-      <motion.a
+      <a
         href={href}
         className={buttonClasses}
-        whileTap={{ scale: 0.98 }}
         onClick={onClick as React.MouseEventHandler<HTMLAnchorElement>}
         style={{ cursor: "pointer" }}
         {...props}
       >
         {children}
-      </motion.a>
+      </a>
     );
   }
 
   return (
-    <motion.button
+    <button
       type={type}
       disabled={disabled}
       className={buttonClasses}
-      whileTap={{ scale: 0.98 }}
       onClick={onClick as React.MouseEventHandler<HTMLButtonElement>}
       {...props}
     >
       {children}
-    </motion.button>
+    </button>
   );
 }
+

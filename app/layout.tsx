@@ -1,12 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Plus_Jakarta_Sans } from "next/font/google";
-import SmoothScroll from "@/components/SmoothScroll";
+import { Geist_Mono, Poppins } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
   display: "swap",
 });
 
@@ -16,21 +16,15 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-const plusJakarta = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta",
-  subsets: ["latin"],
-  display: "swap",
-});
-
 const SITE_URL = "https://aqnoorlabs.online";
 
 export const metadata: Metadata = {
   title: {
-    default: "AqNoorLabs — Software Development Agency for Indian Businesses",
+    default: "AqNoorLabs — Enterprise Software & AI Development",
     template: "%s | AqNoorLabs",
   },
   description:
-    "AqNoorLabs is a software development company in India helping businesses build websites, mobile apps, desktop software, and AI automation tools that actually work — delivered on time, on budget.",
+    "AqNoorLabs is a software engineering company in India helping businesses build web systems, desktop applications, mobile solutions, and AI automation.",
   authors: [{ name: "AqNoorLabs", url: SITE_URL }],
   creator: "AqNoorLabs",
   publisher: "AqNoorLabs",
@@ -51,9 +45,9 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: SITE_URL,
     title:
-      "AqNoorLabs — Custom Websites, Apps & AI Systems for Indian Businesses",
+      "AqNoorLabs — Custom Software, Apps & AI Engineering",
     description:
-      "Hire custom website, mobile app & AI automation developers in India. On-time delivery, milestone-based pricing, and reliable support.",
+      "Hire custom website, mobile app & AI automation developers in India. On-time delivery, milestone-based pricing, and reliable enterprise support.",
     siteName: "AqNoorLabs",
     images: [
       {
@@ -68,7 +62,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "AqNoorLabs — Custom Websites, Apps & AI Systems for Indian Businesses",
+      "AqNoorLabs — Custom Software, Apps & AI Engineering",
     description:
       "Hire custom website, mobile app & AI automation developers in India. On-time delivery, milestone-based pricing, and reliable support.",
     images: ["/logos/logo.png"],
@@ -93,7 +87,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#F5F4FA",
+  themeColor: "#0f172a",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -107,7 +101,7 @@ const jsonLdOrganization = {
   logo: `${SITE_URL}/logos/logo.png`,
   image: `${SITE_URL}/logos/logo.png`,
   description:
-    "AqNoorLabs is a custom website development company, mobile app agency, and AI automation partner helping Indian businesses build software that actually works.",
+    "AqNoorLabs is a custom software development company, mobile app agency, and AI automation partner helping Indian businesses build software that actually works.",
   telephone: "+91-7387450332",
   email: "hi@aqnoorlabs.online",
   priceRange: "₹₹",
@@ -173,7 +167,7 @@ const jsonLdFaq = {
       name: "What is your approach to design and user experience?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We focus on fast, intuitive, modern interfaces with clear navigation and responsive experiences across desktop and mobile.",
+        text: "We focus on fast, intuitive, highly structured interfaces with clear navigation and responsive experiences across desktop and mobile.",
       },
     },
     {
@@ -195,7 +189,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${plusJakarta.variable} h-full scroll-smooth antialiased`}
+      className={`${poppins.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>
@@ -236,11 +230,9 @@ export default function RootLayout({
       </head>
 
       <body
-        className="min-h-full flex flex-col selection:bg-brand/20 selection:text-brand"
+        className="min-h-full flex flex-col"
         suppressHydrationWarning
       >
-        <SmoothScroll />
-
         {children}
 
         {/* Google Tag Manager (noscript) */}
@@ -260,3 +252,4 @@ export default function RootLayout({
     </html>
   );
 }
+

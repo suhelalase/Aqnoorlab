@@ -1,125 +1,152 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowDown, Mail } from "lucide-react";
+import { useState, useEffect } from "react";
+import { ArrowRight, CheckCircle2, ShieldCheck } from "lucide-react";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
+import Button from "@/components/Button";
+
+const HERO_SLIDES = [
+  {
+    id: 1,
+    image: "/images/hero_slide_1.png",
+    title: "Web Engineering & Cloud Systems",
+  },
+  {
+    id: 2,
+    image: "/images/hero_slide_2.png",
+    title: "iOS & Android Mobile Applications",
+  },
+  {
+    id: 3,
+    image: "/images/hero_slide_3.png",
+    title: "Desktop POS & Retail ERP Billing",
+  },
+  {
+    id: 4,
+    image: "/images/hero_slide_4.png",
+    title: "AI Workflows & 24/7 Automation",
+  },
+];
 
 export function HeroBlock() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section id="home" className="relative flex min-h-fit md:min-h-screen w-full items-center justify-center overflow-hidden bg-background pt-28 pb-16 md:pt-0 md:pb-0">
-      {/* Animated background grid */}
-      <div className="hero-grid-bg" />
-
-      {/* Ambient glow blobs */}
-      <div className="absolute top-1/3 left-1/4 w-72 h-72 rounded-full bg-primary/10 blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-1/3 right-1/4 w-64 h-64 rounded-full bg-primary/8 blur-[80px] pointer-events-none" />
-
-      <div className="relative z-10 w-full md:w-[90%] max-w-4xl mx-auto px-5 md:px-0 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          {/* Logo */}
-          <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.15, type: "spring", stiffness: 180 }}
-            className="mb-8 inline-block"
+    <section
+      id="home"
+      className="relative flex min-h-[85vh] md:min-h-[90vh] w-full items-center justify-center overflow-hidden pt-24 pb-16 md:pt-28 md:pb-20 border-b border-slate-800 bg-slate-950"
+    >
+      {/* 100% Opacity Full-Bleed Auto-Sliding Background Images */}
+      <div className="absolute inset-0 z-0">
+        {HERO_SLIDES.map((slide, idx) => (
+          <div
+            key={slide.id}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              idx === currentSlide ? "opacity-100" : "opacity-0"
+            }`}
           >
-            <div className="mx-auto flex h-32 w-32 md:h-36 md:w-36 items-center justify-center rounded-full border-4 border-primary/25 bg-gradient-to-br from-primary/20 via-background to-muted/40 p-2.5 shadow-2xl shadow-primary/20 hover:scale-110 transition-transform duration-300 cursor-pointer">
-              <div className="relative h-full w-full overflow-hidden rounded-full bg-white flex items-center justify-center p-1 shadow-inner">
-                <Image
-                  src="/images/logo.png"
-                  alt="AqNoorLabs Logo"
-                  width={110}
-                  height={110}
-                  className="object-contain scale-115 transition-transform duration-300"
-                  priority
-                />
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="mb-6 text-4xl font-bold text-foreground md:text-6xl tracking-tight"
-          >
-            AqNoor<span className="text-primary">Labs</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="mx-auto mb-8 max-w-2xl text-lg text-muted-foreground md:text-lg lg:text-xl leading-relaxed font-medium"
-          >
-            We build websites, apps &amp; AI systems that help your business grow — on time, on budget.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full"
-          >
-            <a href="#contact" className="w-full sm:w-auto flex justify-center">
-              <Button
-                size="lg"
-                className="w-full sm:w-auto max-w-[320px] h-[52px] sm:h-11 gap-2 rounded-full font-semibold px-8 cursor-pointer shadow-lg shadow-primary/20 flex items-center justify-center"
-              >
-                <Mail className="h-4 w-4 shrink-0" />
-                Get a Free Quote
-              </Button>
-            </a>
-            <a href="#projects" className="w-full sm:w-auto flex justify-center">
-              <Button
-                size="lg"
-                variant="outline"
-                className="w-full sm:w-auto max-w-[320px] h-[52px] sm:h-11 gap-2 rounded-full font-semibold px-8 cursor-pointer flex items-center justify-center"
-              >
-                See Our Work
-                <ArrowDown className="h-4 w-4 shrink-0" />
-              </Button>
-            </a>
-          </motion.div>
-
-          {/* Trust badges */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.7, duration: 0.6 }}
-            className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-sm text-muted-foreground font-medium"
-          >
-            <span className="flex items-center gap-2">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500 inline-block" />
-              <span className="text-emerald-600 font-semibold">Accepting new projects across India</span>
-            </span>
-            <span className="hidden sm:inline-block text-muted-foreground/40">•</span>
-            <span className="font-medium text-muted-foreground">We usually reply within a few hours — no chasing us for updates</span>
-          </motion.div>
-        </motion.div>
+            <Image
+              src={slide.image}
+              alt={slide.title}
+              fill
+              className="object-cover object-center"
+              priority={idx === 0}
+              unoptimized
+            />
+          </div>
+        ))}
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.6 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <a href="#projects">
-            <ArrowDown className="h-6 w-6 text-muted-foreground hover:text-primary transition-colors" />
-          </a>
-        </motion.div>
-      </motion.div>
+      {/* Translucent Black Overlay Div for High Text Contrast */}
+      <div className="absolute inset-0 z-1 bg-black/55" />
+
+      {/* Main Content Container */}
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-5 md:px-8 text-center">
+        {/* Company Logo Badge */}
+        <div className="mb-5 flex justify-center">
+          <div className="flex h-20 w-20 md:h-24 md:w-24 items-center justify-center rounded-2xl border border-white/80 bg-white p-3 shadow-2xl">
+            <Image
+              src="/images/logo.png"
+              alt="AqNoorLabs Logo"
+              width={80}
+              height={80}
+              className="object-contain"
+              priority
+            />
+          </div>
+        </div>
+
+        {/* Title */}
+        <h1 className="mb-4 text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight font-display drop-shadow-md">
+          AqNoor<span className="text-[#38bdf8]">Labs</span>
+        </h1>
+
+        <p className="mx-auto mb-4 max-w-3xl text-xl sm:text-2xl font-bold text-slate-100 leading-snug drop-shadow-sm">
+          Custom Enterprise Websites, Mobile Apps &amp; AI Systems Built for Real Growth.
+        </p>
+
+        <p className="mx-auto mb-8 max-w-2xl text-sm sm:text-base text-slate-200 leading-relaxed font-medium drop-shadow-xs">
+          We engineer robust full-stack platforms, cross-platform mobile apps, POS desktop software, and 24/7 AI workflow automation. Delivered on time, on budget, with transparent milestone pricing.
+        </p>
+
+        {/* Call to action buttons */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 w-full mb-10">
+          <Button
+            href="#contact"
+            size="lg"
+            variant="primary"
+            className="w-full sm:w-auto font-bold px-8 py-3.5 bg-[#0052cc] hover:bg-[#0043a8] text-white shadow-xl text-sm border-none"
+          >
+            <span>Get a Free Quote</span>
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
+          <Button
+            href="#projects"
+            size="lg"
+            variant="outline"
+            className="w-full sm:w-auto font-bold px-8 py-3.5 bg-white/15 hover:bg-white/25 text-white border-white/30 backdrop-blur-xs shadow-xl text-sm"
+          >
+            <span>View Work &amp; Demos</span>
+          </Button>
+        </div>
+
+        {/* Corporate Trust Badges Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-3xl mx-auto pt-6 border-t border-white/20 mb-6">
+          <div className="flex items-center justify-center gap-2 p-2.5 rounded-lg bg-slate-900/80 backdrop-blur-md border border-slate-700/80 text-xs font-semibold text-slate-200 shadow-md">
+            <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
+            <span>Milestone-Based Billing</span>
+          </div>
+          <div className="flex items-center justify-center gap-2 p-2.5 rounded-lg bg-slate-900/80 backdrop-blur-md border border-slate-700/80 text-xs font-semibold text-slate-200 shadow-md">
+            <ShieldCheck className="h-4 w-4 text-[#38bdf8] shrink-0" />
+            <span>Scalable Cloud Architecture</span>
+          </div>
+          <div className="flex items-center justify-center gap-2 p-2.5 rounded-lg bg-slate-900/80 backdrop-blur-md border border-slate-700/80 text-xs font-semibold text-slate-200 shadow-md">
+            <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
+            <span>Post-Launch Technical Support</span>
+          </div>
+        </div>
+
+        {/* Auto Slider Progress Bar Indicator */}
+        <div className="flex items-center justify-center gap-2 pt-2">
+          {HERO_SLIDES.map((slide, index) => (
+            <div
+              key={slide.id}
+              className={`h-2 rounded-full transition-all duration-500 ${
+                index === currentSlide ? "w-8 bg-[#38bdf8]" : "w-2 bg-white/40"
+              }`}
+            />
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
+
+export default HeroBlock;
